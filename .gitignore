@@ -1,5 +1,5 @@
-settings/
-drivers/
+settings/*
+drivers/*
 /results/*
 /.pytest_cache
 debug.log
