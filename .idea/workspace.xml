@@ -140,13 +140,13 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium" />
+      <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium\venv\Lib\site-packages" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium\settings" />
       <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium\tests" />
-      <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium\venv\Lib\site-packages" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium" />
       <recent name="C:\Users\NeVitalik\PycharmProjects\nais_selenium\venv\Lib\site-packages" />
     </key>
   </component>
