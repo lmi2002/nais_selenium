@@ -4,3 +4,4 @@ drivers/
 /.pytest_cache
 debug.log
 workspase.xml
+.idea/vcs.xml
