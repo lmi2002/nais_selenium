@@ -1,5 +1,5 @@
-from locators.auth_locator import AuthLocator
-from pages import base
+from servive.drrp.locators.auth_locator import AuthLocator
+from servive.drrp.pages import base
 
 
 class AuthPage(AuthLocator):

@@ -1,6 +1,4 @@
-import pytest
-
-from pages.auth_page import AuthPage
+from servive.drrp.pages.auth_page import AuthPage
 from settings.setting_rule_user import users
 
 

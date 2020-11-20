@@ -1,8 +1,6 @@
-from selenium.webdriver import ActionChains
-
-from locators.common_locator import CommonLocator
-from locators.statement_locator import StatementLocator
-from pages import base
+from servive.drrp.locators.common_locator import CommonLocator
+from servive.drrp.locators.statement_locator import StatementLocator
+from servive.drrp.pages import base
 
 
 class StatementPage(StatementLocator, CommonLocator):
