@@ -1,9 +1,9 @@
-from servive.drrp.locators.common_locator import CommonLocator
-from servive.drrp.locators.statement_locator import StatementLocator
-from servive.drrp.pages import base
+from service.drrp.locators.common_locator import DrrpCommonLocator
+from service.drrp.locators.statement_locator import DrrpStatementLocator
+from helpers import base
 
 
-class StatementPage(StatementLocator, CommonLocator):
+class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def click_main_menu_statement(self, driver):
         return base.click(driver, self.main_menu_statement)

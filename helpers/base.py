@@ -167,13 +167,12 @@ def get_current_url(driver):
 
 def move_to_element(driver, item):
     elem = get_web_element(driver, item)
-    ActionChains(driver).move_to_element(elem)
+    ActionChains(driver).move_to_element(elem).perform()
 
 
 def move_to_element_and_click(driver, item, index=None):
     if index is None:
         elem = get_web_element(driver, item)
-        w1 = 1
     else:
         elem = get_web_elements(driver, item)[index]
     ActionChains(driver).move_to_element(elem).click().perform()

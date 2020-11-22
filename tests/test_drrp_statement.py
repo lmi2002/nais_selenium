@@ -1,25 +1,28 @@
 import time
 import pytest
 
-from servive.drrp.locators.statement_locator import StatementLocator
-from servive.drrp.pages.statement_page import StatementPage
-from settings.setting_browser import SettingsBrowser
+from service.drrp.locators.statement_locator import DrrpStatementLocator
+from service.drrp.methods.auth_method import DrrpAuthMethod
+from service.drrp.methods.common_method import DrrpCommonMethod
+from service.drrp.pages.statement_page import DrrpStatementPage
 from settings.setting_person import info
 
 
-class TestStatement(SettingsBrowser, StatementPage):
+class TestStatement(DrrpAuthMethod, DrrpStatementPage, DrrpCommonMethod):
 
     @pytest.mark.smoke
-    @pytest.mark.parametrize("statement, elem", StatementLocator.sub_sub_menu_statement.items())
-    def test_create_statement(self, get_user, statement, elem):
-        get_user
-        #browser = desktop_browser
+    @pytest.mark.parametrize("statement, elem", DrrpStatementLocator.sub_sub_menu_statement.items())
+    def test_drrp_create_statement(self, start_session, statement, elem):
+        browser = start_session
 
         # if statement == "ownership":
-        # self.click_main_menu_statement(browser)
-        #
-        # self.click_sub_menu_create_statement(browser)
-        # self.click_sub_sub_menu_statement(browser, elem)
+        self.click_main_menu_statement(browser)
+
+        self.click_sub_menu_create_statement(browser)
+        self.click_sub_sub_menu_statement(browser, elem)
+
+        time.sleep(10)
+
         #
         # # block common info
         # self.click_block_common_info(browser)
@@ -87,7 +90,6 @@ class TestStatement(SettingsBrowser, StatementPage):
         # self.click_payment_type(browser)
         # self.click_payment_type_list(browser)
         # self.insert_value_payment_num(browser, info['payment']['payment_num'])
-        # f = info['payment']['payment_date']
         # self.insert_value_payment_date(browser, info['payment']['payment_date'])
         # self.insert_value_payment_summ(browser, info['payment']['payment_summ'])
         # self.insert_value_org_name(browser, info['payment']['org_name'])
@@ -125,4 +127,3 @@ class TestStatement(SettingsBrowser, StatementPage):
     #     self.click_main_menu_statement(browser)
     #     self.click_sub_menu_create_statement(browser)
     #     self.sub_sub_menu_statement_encumbrances(browser)
-

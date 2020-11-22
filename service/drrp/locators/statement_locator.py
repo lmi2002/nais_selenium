@@ -1,12 +1,13 @@
 from selenium.webdriver.common.by import By
 
 
-class StatementLocator:
+class DrrpStatementLocator:
+
     main_menu_statement = (By.XPATH, '//span[text()="Реєстрація та обробка заяв"]/..')
     sub_menu_create_statement = (By.XPATH, '//span[text()="Реєстрація заяви"]')
     sub_sub_menu_statement_ownership = (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..')
     sub_sub_menu_statement = {
-        "ownership": (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..'),
+        # "ownership": (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..'),
         "irp": (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
         # "encumbrances": (By.XPATH, '//span[text()="заява про реєстрацію обтяження"]/..'),
         # "relinquishment_of_property": (By.XPATH, '//span[text()="заява про відмову від речового права"]/..')
