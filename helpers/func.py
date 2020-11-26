@@ -1,5 +1,6 @@
 import re
 import datetime
+import time
 
 
 def left_only_digits(string):
@@ -25,3 +26,7 @@ def replace_sym(string, lst):
 def get_data_today():
     today = datetime.datetime.today()
     return today.strftime("%d.%m.%Y")
+
+
+def get_generate_num():
+    return int(round(time.time() * 1000))
