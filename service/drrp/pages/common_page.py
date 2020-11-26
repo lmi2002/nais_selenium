@@ -25,3 +25,6 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
 
     def click_clear_local_form(self, driver):
         base.move_to_element_and_click(driver, self.clear_local_form)
+
+    def click_close_tab(self, driver):
+        base.move_to_element_and_click(driver, self.close_tab)

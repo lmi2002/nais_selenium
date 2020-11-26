@@ -16,4 +16,6 @@ class DrrpCommonLocator:
     clear_local_store = (By.XPATH, '//span[text()="Очистити локальне сховище"]/../..')
     close_form = (By.CLASS_NAME, 'x-tool-close')
     clear_local_form = (By.XPATH, '//span[text()="Очистити сховище форм"]/../..')
+    close_tab = (By.CSS_SELECTOR, 'span[title="Закрити вкладку"]')
+
 

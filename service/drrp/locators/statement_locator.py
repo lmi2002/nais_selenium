@@ -6,7 +6,7 @@ class DrrpStatementLocator:
     sub_menu_create_statement = (By.XPATH, '//span[text()="Реєстрація заяви"]')
     sub_sub_menu_statement = {
         'ownership': (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..'),
-        # 'irp': (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
+        'irp': (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
         # 'encumbrances': (By.XPATH, '//span[text()="заява про реєстрацію обтяження"]/..'),
         # 'relinquishment_of_property': (By.XPATH, '//span[text()="заява про відмову від речового права"]/..')
     }

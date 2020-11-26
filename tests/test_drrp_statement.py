@@ -51,4 +51,5 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
 
         self.click_statement_btn_registretion(browser)
 
-        time.sleep(3500)
+        self.click_close_form(browser)
+        self.click_close_tab(browser)
