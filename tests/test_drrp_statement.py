@@ -17,9 +17,11 @@ from service.drrp.methods.ubdocument import DrrpUbdocument
 class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBlockOnm,
                         DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpUbdocument, DrrpBlockCommonInfo):
 
+    data_dict = {}
+
     @pytest.mark.smoke
     @pytest.mark.parametrize("statement", DrrpStatementLocator.sub_sub_menu_statement.keys())
-    def test_drrp_create_statement_ownership(self, start_session, statement):
+    def test_drrp_create_statement(self, start_session, statement):
         browser = start_session
 
         if statement == 'ownership':
@@ -52,4 +54,8 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_statement_btn_registretion(browser)
 
         self.click_close_form(browser)
-        self.click_close_tab(browser)
+
+        # self.click_close_tab(browser)
+        print(self.get_text_list(browser))
+        print(self.get_text_of_node_list(browser))
+        time.sleep(300)

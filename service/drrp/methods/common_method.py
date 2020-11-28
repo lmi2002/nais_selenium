@@ -19,3 +19,5 @@ class DrrpCommonMethod(DrrpCommonPage):
         time.sleep(2)
         self.click_close_form(driver)
 
+
+
