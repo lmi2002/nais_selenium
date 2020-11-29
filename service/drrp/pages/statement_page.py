@@ -14,9 +14,6 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def click_sub_sub_menu_statement(self, driver, statement):
         base.move_to_element_and_click(driver, self.sub_sub_menu_statement[statement])
 
-    def click_sub_sub_menu_statement_relinquishment_of_property(self, driver):
-        base.move_to_element_and_click(driver, self.sub_sub_menu_statement_relinquishment_of_property)
-
     def click_block_common_info(self, driver):
         base.move_to_element(driver, self.block_common_info)
 
@@ -64,6 +61,9 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def select_subtype_onm_list(self, driver):
         base.move_to_element_and_click(driver, self.subtype_onm_list, index=1)
+
+    def select_subtype_onm_list_encumbrances(self, driver):
+        base.move_to_element_and_click(driver, self.subtype_onm_list, index=2)
 
     def insert_value_addition_of_subtype_onm(self, driver, value):
         base.get_web_element(driver, self.addition_of_subtype_onm).send_keys(value)
@@ -250,3 +250,24 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def insert_value_addition_type_irp(self, driver, value):
         base.get_web_element(driver, self.addition_type_irp).send_keys(value)
+
+    def click_field_type_encumbrances(self, driver):
+        base.move_to_element_and_click(driver, self.field_type_encumbrances)
+
+    def select_type_encumbrances_list(self, driver):
+        base.move_to_element_and_click(driver, self.type_encumbrances_list)
+
+    def click_type_ownership(self, driver):
+        base.move_to_element_and_click(driver, self.type_ownership)
+
+    def select_type_ownership_list(self, driver):
+        base.move_to_element_and_click(driver, self.type_ownership_list)
+
+    def click_type_another_property_right(self, driver):
+        base.move_to_element_and_click(driver, self.type_another_property_right)
+
+    def select_type_another_property_right_list(self, driver):
+        base.move_to_element_and_click(driver, self.type_another_property_right_list)
+
+    def check_visible_statement_status (self, driver):
+        base.get_web_element(driver, self.statement_status)
