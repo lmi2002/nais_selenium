@@ -34,7 +34,7 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.fill_block_common_info(browser, statement)
 
         # block onm
-        self.fill_block_onm(browser)
+        self.fill_block_onm(browser, statement)
 
         # block address onm
         self.fill_block_address_onm(browser)
@@ -54,8 +54,12 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_statement_btn_registretion(browser)
 
         self.click_close_form(browser)
+        self.check_visible_statement_status(browser)
 
-        # self.click_close_tab(browser)
+        self.data_dict[statement] = self.get_text_list(browser)[0]
+        breakpoint()
+
         print(self.get_text_list(browser))
         print(self.get_text_of_node_list(browser))
-        time.sleep(300)
+
+        self.click_close_tab(browser)
