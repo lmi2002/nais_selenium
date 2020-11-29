@@ -153,6 +153,22 @@ def get_element_containing_text(driver, text):
         raise TextNotFoundException(locator, text, e)
 
 
+def get_next_element_present_text(driver, text):
+    locator = (By.XPATH, '//*[text()="{text}"]/following-sibling::*'.format(text=text))
+    try:
+        return get_web_elements(driver, locator)[0]
+    except TimeoutException as e:
+        raise TextNotFoundException(locator, text, e)
+
+
+def get_node_element_present_text(driver, text):
+    locator = (By.XPATH, '//*[node()="{text}"]'.format(text=text))
+    try:
+        return get_web_elements(driver, locator)[0]
+    except TimeoutException as e:
+        raise TextNotFoundException(locator, text, e)
+
+
 def get_elements_containing_text(driver, text):
     locator = (By.XPATH, '//*[contains(text()="{text}")]'.format(text=text))
     try:

@@ -6,13 +6,16 @@ from helpers import base
 class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def click_main_menu_statement(self, driver):
-        return base.click(driver, self.main_menu_statement)
+        base.move_to_element_and_click(driver, self.main_menu_statement)
 
     def click_sub_menu_create_statement(self, driver):
         base.move_to_element_and_click(driver, self.sub_menu_create_statement)
 
-    def click_sub_sub_menu_statement(self, driver, sub_sub_menu_statement):
-        base.move_to_element_and_click(driver, sub_sub_menu_statement)
+    def click_sub_sub_menu_statement(self, driver, statement):
+        base.move_to_element_and_click(driver, self.sub_sub_menu_statement[statement])
+
+    def click_sub_sub_menu_statement_relinquishment_of_property(self, driver):
+        base.move_to_element_and_click(driver, self.sub_sub_menu_statement_relinquishment_of_property)
 
     def click_block_common_info(self, driver):
         base.move_to_element(driver, self.block_common_info)
@@ -46,6 +49,9 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def click_block_add_onm(self, driver):
         base.move_to_element_and_click(driver, self.block_add_onm)
+
+    def click_block_onm(self, driver):
+        base.move_to_element_and_click(driver, self.block_onm)
 
     def select_type_onm_list(self, driver):
         base.move_to_element_and_click(driver, self.type_onm_list)
@@ -235,3 +241,12 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def visible_ubdocument(self, driver):
         base.get_visible_element(driver, self.ubdocument)
+
+    def click_field_type_irp(self, driver):
+        base.move_to_element_and_click(driver, self.field_type_irp)
+
+    def select_field_type_irp_list(self, driver):
+        base.move_to_element_and_click(driver, self.field_type_irp_list)
+
+    def insert_value_addition_type_irp(self, driver, value):
+        base.get_web_element(driver, self.addition_type_irp).send_keys(value)

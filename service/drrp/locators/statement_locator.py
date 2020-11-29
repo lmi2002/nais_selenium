@@ -2,15 +2,13 @@ from selenium.webdriver.common.by import By
 
 
 class DrrpStatementLocator:
-
     main_menu_statement = (By.XPATH, '//span[text()="Реєстрація та обробка заяв"]/..')
     sub_menu_create_statement = (By.XPATH, '//span[text()="Реєстрація заяви"]')
-    sub_sub_menu_statement_ownership = (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..')
     sub_sub_menu_statement = {
-        # "ownership": (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..'),
-        "irp": (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
-        # "encumbrances": (By.XPATH, '//span[text()="заява про реєстрацію обтяження"]/..'),
-        # "relinquishment_of_property": (By.XPATH, '//span[text()="заява про відмову від речового права"]/..')
+        'ownership': (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..'),
+        # 'irp': (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
+        # 'encumbrances': (By.XPATH, '//span[text()="заява про реєстрацію обтяження"]/..'),
+        # 'relinquishment_of_property': (By.XPATH, '//span[text()="заява про відмову від речового права"]/..')
     }
     block_common_info = (By.XPATH, '//span[text()="Відомості"]/..')
     kind_registration = (By.CSS_SELECTOR, 'input[name$="EntityChangeTypeBit"]')
@@ -20,6 +18,7 @@ class DrrpStatementLocator:
     form_ownership_list = (By.XPATH, '//ul/li[text()="приватна"]')
     kind_common_ownership = (By.CSS_SELECTOR, 'input[name$="CommonKind"]')
     kind_common_ownership_list = (By.XPATH, '//ul/li[text()="спільна сумісна"]')
+    block_onm = (By.XPATH, '//span[text()="Об’єкти нерухомого майна"]/..')
     block_add_onm = (By.XPATH, '//span[text()="Додати ОНМ"]/..')
     type_onm = (By.CSS_SELECTOR, 'input[name$="ReType"]')
     type_onm_list = (By.XPATH, '//ul/li[text()="квартира"]')
@@ -75,3 +74,12 @@ class DrrpStatementLocator:
     statement_receive_type_list = (By.XPATH, '//ul/li[text()="особисто"]')
     addition_of_statement = (By.CSS_SELECTOR, 'textarea[name="additional"]')
     ubdocument = (By.CSS_SELECTOR, 'div[id^="ubdocument"]')
+    field_type_irp = (By.CSS_SELECTOR, 'input[name$="IrpSortReq"]')
+    field_type_irp_list = (By.XPATH, '//li[text()="інше речове право"]')
+    addition_type_irp = (By.CSS_SELECTOR, 'input[name="irpPrTypeExtension"]')
+    field_type_encumbrances = (By.CSS_SELECTOR, 'input[name$="LmType"]')
+    type_encumbrances_list = (By.XPATH, '//li[text()="іпотека"]')
+    checkbox = (By.CSS_SELECTOR, 'input[role="checkbox"]')
+
+
+
