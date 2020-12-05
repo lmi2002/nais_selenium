@@ -1,11 +1,11 @@
 import time
 
 import pytest
-from settings.setting_data_info import data_info
 from helpers.func import get_data_today
-from service.drrp.list_data_validation import onm_dict
+from service.drrp.list_data_validation import onm_validation, statement_validation_second, person_validation
 from service.drrp.locators.statement_locator import DrrpStatementLocator
-from service.drrp.methods.auth_method import DrrpAuthMethod, project_rule, PROJECT, RULE
+from settings.setting_project import project_rule, PROJECT, RULE
+from service.drrp.methods.auth_method import DrrpAuthMethod
 from service.drrp.methods.block_address_onm import BlockAddressOnm
 from service.drrp.methods.block_common_info import DrrpBlockCommonInfo
 from service.drrp.methods.block_document import DrrpBlockDocument
@@ -30,25 +30,8 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
     @pytest.mark.smoke
     @pytest.mark.parametrize("statement", DrrpStatementLocator.sub_sub_menu_statement.keys())
     def test_drrp_create_statement(self, start_session, statement):
-        tuple_statement_data_first = (
+        statement_validation_first = (
             'зареєстровано', self.statement_name[statement], get_data_today(), project_rule[PROJECT][RULE]['name_user'])
-
-        tuple_statement_data_second = (
-            data_info['statement']['statement_num'], data_info['statement']['statement_date'],
-            data_info['payment']['payment_summ'],
-            data_info['payment']['payment_num'])
-
-        tuple_person_data = (
-            'Фізична особа {person_name} код: {person_code}'.format(person_name=data_info['person']['person_name'],
-                                                                    person_code=data_info['person']['person_code']),
-            'Громадянство: Україна паспорт громадянина України: {passport_series} {passport_date} р. ' \
-            'видавник {passport_publisher}'.format(
-                passport_series=data_info['person']['passport_series'],
-                passport_date=data_info['person']['passport_date'],
-                passport_publisher=info['person']['passport_publisher']),
-            'Наявна уповн. особа: ні Телефон/email: {person_phone} Додаткові відомості: {addition_of_person}'.format(
-                person_phone=data_info['person']['person_phone'], addition_of_person=data_info['person']['addition_of_person'])
-        )
 
         browser = start_session
 
@@ -86,23 +69,23 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
 
         self.data_dict[statement] = self.get_text_statement_list(browser)[0]
 
-        # statement
-        for num, vlf in enumerate(self.get_text_statement_list(browser)):
-            assert tuple_statement_data_first[num] in vlf
+        # validated data statement
+        for num, v in enumerate(self.get_text_statement_list(browser)):
+            assert statement_validation_first[num] in v
 
-        for num, vls in enumerate(self.get_text_statement_of_node_list(browser)):
-            assert tuple_statement_data_second[num], vls
+        for num, v in enumerate(self.get_text_statement_of_node_list(browser)):
+            assert statement_validation_second[num] in v
 
-        # person
+        # validated data person
         self.click_person_tab_menu(browser)
 
-        for num, pd in enumerate(self.get_text_person_of_node_list(browser)):
-            assert pd == tuple_person_data[num]
+        for num, v in enumerate(self.get_text_person_of_node_list(browser)):
+            assert v == person_validation[num]
 
-        # onm
+        # validated data onm
         self.click_onm_tab_menu(browser)
 
-        for num, onl in enumerate(self.get_text_onm_of_node_list(browser, statement)):
-            assert onm_dict[statement][num] == onl
+        for num, v in enumerate(self.get_text_onm_of_node_list(browser, statement)):
+            assert onm_validation[statement][num] == v
 
         self.click_close_tab(browser)

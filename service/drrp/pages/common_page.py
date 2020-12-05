@@ -1,4 +1,4 @@
-from service.drrp import list_words
+from service.drrp import list_text_line
 from service.drrp.locators.auth_locator import DrrpAuthLocator
 from service.drrp.locators.common_locator import DrrpCommonLocator
 from helpers import base
@@ -31,13 +31,15 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
         base.move_to_element_and_click(driver, self.close_tab)
 
     def get_text_statement_list(self, driver):
-        return [base.get_next_element_present_text(driver, word).text for word in list_words.statement_data_first]
+        return [base.get_next_element_present_text(driver, word).text for word in
+                list_text_line.statement_registration_status]
 
     def get_text_statement_of_node_list(self, driver):
-        return [base.get_node_element_present_text(driver, word).text for word in list_words.statement_data_second]
+        return [base.get_node_element_present_text(driver, word).text for word in
+                list_text_line.statement_registration_info]
 
     def get_text_person_of_node_list(self, driver):
-        return [base.get_node_element_present_text(driver, word).text for word in list_words.person_data]
+        return [base.get_node_element_present_text(driver, word).text for word in list_text_line.person_data]
 
     def click_person_tab_menu(self, driver):
         base.move_to_element_and_click(driver, self.person_tab_menu)
@@ -46,4 +48,4 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
         base.move_to_element_and_click(driver, self.onm_tab_menu)
 
     def get_text_onm_of_node_list(self, driver, statement):
-        return [base.get_node_element_present_text(driver, word).text for word in list_words.onm_data[statement]]
+        return [base.get_node_element_present_text(driver, word).text for word in list_text_line.onm_data[statement]]

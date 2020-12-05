@@ -1,6 +1,25 @@
 from settings.setting_data_info import data_info
 
-onm_dict = {
+statement_validation_second = (
+    data_info['statement']['statement_num'], data_info['statement']['statement_date'],
+    data_info['payment']['payment_summ'],
+    data_info['payment']['payment_num']
+)
+
+person_validation = (
+    'Фізична особа {person_name} код: {person_code}'.format(person_name=data_info['person']['person_name'],
+                                                            person_code=data_info['person']['person_code']),
+    'Громадянство: Україна паспорт громадянина України: {passport_series} {passport_date} р. ' \
+    'видавник {passport_publisher}'.format(
+        passport_series=data_info['person']['passport_series'],
+        passport_date=data_info['person']['passport_date'],
+        passport_publisher=data_info['person']['passport_publisher']),
+    'Наявна уповн. особа: ні Телефон/email: {person_phone} Додаткові відомості: {addition_of_person}'.format(
+        person_phone=data_info['person']['person_phone'], addition_of_person=data_info['person']['addition_of_person'])
+)
+
+
+onm_validation = {
     "ownership": [
         "Тип права власності: {type_ownership}".format(type_ownership=data_info['onm']['type_ownership']),
         "Вид реєстрації: {kind_registration}".format(kind_registration=data_info['onm']['kind_registration']),
