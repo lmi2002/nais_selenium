@@ -18,7 +18,6 @@ person_validation = (
         person_phone=data_info['person']['person_phone'], addition_of_person=data_info['person']['addition_of_person'])
 )
 
-
 onm_validation = {
     "ownership": [
         "Тип права власності: {type_ownership}".format(type_ownership=data_info['onm']['type_ownership']),
@@ -73,3 +72,18 @@ onm_validation = {
         "Опис ОНМ: {description_onm}".format(description_onm=data_info['onm']['description_onm'])
     ]
 }
+
+address_onm_validation = (
+    'м.{address_onm_locality}, вулиця {address_onm_street}, {house_type} {house_num}, {building_type} {building_num}, ' \
+    '{object_num_type} {object_num}'.format(address_onm_locality=data_info['address_onm']['address_onm_locality'],
+                                            address_onm_street=data_info['address_onm']['address_onm_street'],
+                                            house_type=data_info['address_onm']['house_type'],
+                                            house_num=data_info['address_onm']['house_num'],
+                                            building_type=data_info['address_onm']['building_type'],
+                                            building_num=data_info['address_onm']['building_num'],
+                                            object_num_type=data_info['address_onm']['object_num_type'],
+                                            object_num=data_info['address_onm']['object_num']),
+
+    'Додаткові відомості: {addition_of_address_onm}'.format(
+        addition_of_address_onm=data_info['address_onm']['addition_of_address_onm'])
+)

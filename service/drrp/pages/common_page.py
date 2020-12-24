@@ -30,14 +30,6 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
     def click_close_tab(self, driver):
         base.move_to_element_and_click(driver, self.close_tab)
 
-    def get_text_statement_list(self, driver):
-        return [base.get_next_element_present_text(driver, word).text for word in
-                list_text_line.statement_registration_status]
-
-    def get_text_statement_of_node_list(self, driver):
-        return [base.get_node_element_present_text(driver, word).text for word in
-                list_text_line.statement_registration_info]
-
     def get_text_person_of_node_list(self, driver):
         return [base.get_node_element_present_text(driver, word).text for word in list_text_line.person_data]
 
@@ -49,3 +41,6 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
 
     def get_text_onm_of_node_list(self, driver, statement):
         return [base.get_node_element_present_text(driver, word).text for word in list_text_line.onm_data[statement]]
+
+    def get_text_line_address_onm(self, driver):
+        return [el.text for el in base.get_web_elements(driver, self.line_address_onm)]

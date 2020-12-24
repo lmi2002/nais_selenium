@@ -2,7 +2,8 @@ import time
 
 import pytest
 from helpers.func import get_data_today
-from service.drrp.list_data_validation import onm_validation, statement_validation_second, person_validation
+from service.drrp.list_data_validation import onm_validation, statement_validation_second, person_validation, \
+    address_onm_validation
 from service.drrp.locators.statement_locator import DrrpStatementLocator
 from settings.setting_project import project_rule, PROJECT, RULE
 from service.drrp.methods.auth_method import DrrpAuthMethod
@@ -30,6 +31,9 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
     @pytest.mark.smoke
     @pytest.mark.parametrize("statement", DrrpStatementLocator.sub_sub_menu_statement.keys())
     def test_drrp_create_statement(self, start_session, statement):
+
+        data_list = []
+
         statement_validation_first = (
             'зареєстровано', self.statement_name[statement], get_data_today(), project_rule[PROJECT][RULE]['name_user'])
 
@@ -67,7 +71,9 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_close_form(browser)
         self.check_visible_statement_status(browser)
 
-        self.data_dict[statement] = self.get_text_statement_list(browser)[0]
+        data_list.append(self.get_text_statement_num(browser))
+        data_list.append(self.get_text_statement_list(browser))
+        self.data_dict[statement] = data_list
 
         # validated data statement
         for num, v in enumerate(self.get_text_statement_list(browser)):
@@ -76,16 +82,21 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         for num, v in enumerate(self.get_text_statement_of_node_list(browser)):
             assert statement_validation_second[num] in v
 
-        # validated data person
         self.click_person_tab_menu(browser)
 
+        # validated data person
         for num, v in enumerate(self.get_text_person_of_node_list(browser)):
             assert v == person_validation[num]
 
-        # validated data onm
         self.click_onm_tab_menu(browser)
 
+        # validated data onm
         for num, v in enumerate(self.get_text_onm_of_node_list(browser, statement)):
             assert onm_validation[statement][num] == v
 
+        # validated data address_onm
+        assert (self.get_text_line_address_onm(browser)[0],
+                self.get_text_line_address_onm(browser)[1]) == address_onm_validation
+
         self.click_close_tab(browser)
+

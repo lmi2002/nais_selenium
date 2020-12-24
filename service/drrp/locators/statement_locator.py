@@ -36,7 +36,8 @@ class DrrpStatementLocator:
     address_onm_locality = (By.CSS_SELECTOR, 'input[name="ATU_ATU_ID"]')
     address_onm_locality_list = (By.CSS_SELECTOR, '.combo-search-match')
     address_onm_street = (By.CSS_SELECTOR, 'input[name="streetName"]')
-    address_onm_street_list = (By.XPATH, '//ul/li/span[text()="Палладіна"]')
+    address_onm_street_list = (By.XPATH, '//ul/li/span[text()="{address_onm_street}"]'.format(
+        address_onm_street=data_info['address_onm']['address_onm_street']))
     house_type = (By.CSS_SELECTOR, 'input[name$="HouseType"]')
     building_type = (By.CSS_SELECTOR, 'input[name$="BuildingType"]')
     house_type_list = (By.XPATH, '//ul/li/span[text()="будинок"]/..')

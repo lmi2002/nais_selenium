@@ -19,5 +19,6 @@ class DrrpCommonLocator:
     close_tab = (By.CSS_SELECTOR, 'span[title="Закрити вкладку"]')
     person_tab_menu = (By.XPATH, '//span[text()="Суб’єкти"]/..')
     onm_tab_menu = (By.XPATH, '//span[text()="ОНМ"]/..')
+    line_address_onm = (By.XPATH, '//*[text()="Адреса ОНМ"]/ancestor::legend/following::label')
 
 

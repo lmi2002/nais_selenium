@@ -1,3 +1,4 @@
+from service.drrp import list_text_line
 from service.drrp.locators.common_locator import DrrpCommonLocator
 from service.drrp.locators.statement_locator import DrrpStatementLocator
 from helpers import base
@@ -271,3 +272,14 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def check_visible_statement_status (self, driver):
         base.get_web_element(driver, self.statement_status)
+
+    def get_text_statement_list(self, driver):
+        return [base.get_next_element_present_text(driver, word).text for word in
+                list_text_line.statement_registration_status]
+
+    def get_text_statement_num(self, driver):
+        return base.get_next_element_present_text(driver, list_text_line.statement_num[0]).text
+
+    def get_text_statement_of_node_list(self, driver):
+        return [base.get_node_element_present_text(driver, word).text for word in
+                list_text_line.statement_registration_info]

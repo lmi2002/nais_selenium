@@ -1,3 +1,4 @@
+statement_num = ['Заява №:']
 statement_registration_status = ['Стан:', 'Тип заяви:', 'Дата реєстрації:', 'Реєстратор:']
 
 statement_registration_info = ['Вихідний номер:', 'Вихідна дата:', 'Сума:', 'Номер документа']
