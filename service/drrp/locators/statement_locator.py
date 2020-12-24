@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from settings.setting_data_info import data_info
 
 
 class DrrpStatementLocator:
@@ -12,26 +13,31 @@ class DrrpStatementLocator:
     }
     block_common_info = (By.XPATH, '//span[text()="Відомості"]/..')
     kind_registration = (By.CSS_SELECTOR, 'input[name$="EntityChangeTypeBit"]')
-    kind_registration_list = (By.XPATH, '//ul/li[text()="виникнення"]')
+    kind_registration_list = (
+        By.XPATH,
+        '//ul/li[text()="{kind_registration}"]'.format(kind_registration=data_info['onm']['kind_registration']))
     num_ownership = (By.CSS_SELECTOR, 'input[name="enum"]')
     form_ownership = (By.CSS_SELECTOR, 'input[name$="PrType"]')
-    form_ownership_list = (By.XPATH, '//ul/li[text()="приватна"]')
+    form_ownership_list = (
+        By.XPATH, '//ul/li[text()="{form_ownership}"]'.format(form_ownership=data_info['onm']['form_ownership']))
     kind_common_ownership = (By.CSS_SELECTOR, 'input[name$="CommonKind"]')
-    kind_common_ownership_list = (By.XPATH, '//ul/li[text()="спільна сумісна"]')
+    kind_common_ownership_list = (By.XPATH, '//ul/li[text()="{kind_common_ownership}"]'.format(
+        kind_common_ownership=data_info['onm']['kind_common_ownership']))
     block_onm = (By.XPATH, '//span[text()="Об’єкти нерухомого майна"]/..')
     block_add_onm = (By.XPATH, '//span[text()="Додати ОНМ"]/..')
     type_onm = (By.CSS_SELECTOR, 'input[name$="ReType"]')
     type_onm_list = (By.XPATH, '//ul/li[text()="квартира"]')
     addition_of_type_onm = (By.CSS_SELECTOR, 'input[name$="TypeExtension"]')
     subtype_onm = (By.CSS_SELECTOR, 'input[name$="ReSubType"]')
-    subtype_onm_list = (By.XPATH, '//ul/li[text()="інше"]')
+    subtype_onm_list = (By.XPATH, '//ul/li[text()="{subtype_onm}"]'.format(subtype_onm=data_info['onm']['subtype_onm']))
     addition_of_subtype_onm = (By.CSS_SELECTOR, 'input[name$="SubTypeExtension"]')
     description_onm = (By.CSS_SELECTOR, 'textarea[name="description"]')
     block_add_address_onm = (By.XPATH, '//span[text()="Додати адресу ОНМ"]/..')
     address_onm_locality = (By.CSS_SELECTOR, 'input[name="ATU_ATU_ID"]')
     address_onm_locality_list = (By.CSS_SELECTOR, '.combo-search-match')
     address_onm_street = (By.CSS_SELECTOR, 'input[name="streetName"]')
-    address_onm_street_list = (By.XPATH, '//ul/li/span[text()="Палладіна"]')
+    address_onm_street_list = (By.XPATH, '//ul/li/span[text()="{address_onm_street}"]'.format(
+        address_onm_street=data_info['address_onm']['address_onm_street']))
     house_type = (By.CSS_SELECTOR, 'input[name$="HouseType"]')
     building_type = (By.CSS_SELECTOR, 'input[name$="BuildingType"]')
     house_type_list = (By.XPATH, '//ul/li/span[text()="будинок"]/..')
@@ -75,7 +81,7 @@ class DrrpStatementLocator:
     addition_of_statement = (By.CSS_SELECTOR, 'textarea[name="additional"]')
     ubdocument = (By.CSS_SELECTOR, 'div[id^="ubdocument"]')
     field_type_irp = (By.CSS_SELECTOR, 'input[name$="IrpSortReq"]')
-    field_type_irp_list = (By.XPATH, '//li[text()="інше речове право"]')
+    field_type_irp_list = (By.XPATH, '//li[text()="{type_irp}"]'.format(type_irp=data_info['onm']['type_irp']))
     addition_type_irp = (By.CSS_SELECTOR, 'input[name="irpPrTypeExtension"]')
     field_type_encumbrances = (By.CSS_SELECTOR, 'input[name$="LmType"]')
     type_encumbrances_list = (By.XPATH, '//li[text()="іпотека"]')
