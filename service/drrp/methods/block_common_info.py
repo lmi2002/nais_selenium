@@ -2,6 +2,7 @@ from service.drrp.methods.common_method import DrrpCommonMethod
 from service.drrp.pages.statement_page import DrrpStatementPage
 from settings.setting_data_info import data_info
 
+
 class DrrpBlockCommonInfo(DrrpStatementPage, DrrpCommonMethod):
 
     def fill_block_common_info(self, driver, statement):
@@ -30,5 +31,3 @@ class DrrpBlockCommonInfo(DrrpStatementPage, DrrpCommonMethod):
         elif statement == 'encumbrances':
             self.click_field_type_encumbrances(driver)
             self.select_type_encumbrances_list(driver)
-
-

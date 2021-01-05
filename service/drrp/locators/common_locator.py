@@ -20,5 +20,14 @@ class DrrpCommonLocator:
     person_tab_menu = (By.XPATH, '//span[text()="Суб’єкти"]/..')
     onm_tab_menu = (By.XPATH, '//span[text()="ОНМ"]/..')
     line_address_onm = (By.XPATH, '//*[text()="Адреса ОНМ"]/ancestor::legend/following::label')
+    main_menu_statement = (By.XPATH, '//span[text()="Реєстрація та обробка заяв"]/..')
+    button_search = (By.XPATH, '//span[text()="Пошук"]')
+    gridview = (By.CSS_SELECTOR, 'tr[id^="gridview"]')
+    button_continue = (By.XPATH, '//span[text()="Продовжити"]')
+    btn_admit = (By.XPATH, '//span[text()="Застосувати"]')
+    message_btn_OK = (By.XPATH, '//span[text()="OK"]/..')
+    messagebox = (By.CLASS_NAME, 'x-message-box')
+    loader = (By.CLASS_NAME, '.x-mask-msg')
+    message_btn_Так = (By.XPATH, '//span[text()="Так"]/..')
 
 

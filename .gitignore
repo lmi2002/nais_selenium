@@ -11,6 +11,6 @@ workspase.xml
 geckodriver.log
 pytest.xml
 /build/
-venv/
+/venv
 **/screenshots/
 pip-selfcheck.json

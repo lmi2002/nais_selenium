@@ -17,4 +17,4 @@ class DrrpBlockPayment(DrrpStatementPage, DrrpCommonMethod):
         self.insert_value_payment_date(driver, data_info['payment']['payment_date'])
         self.insert_value_payment_summ(driver, data_info['payment']['payment_summ'])
         self.insert_value_org_name(driver, "ощадбанк_{num}".format(num=str(func.get_generate_num())))
-        self.click_block_payment_btn_admit(driver)
+        self.click_btn_admit(driver)
