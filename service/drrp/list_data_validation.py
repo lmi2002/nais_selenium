@@ -87,3 +87,10 @@ address_onm_validation = (
     'Додаткові відомості: {addition_of_address_onm}'.format(
         addition_of_address_onm=data_info['address_onm']['addition_of_address_onm'])
 )
+
+decision_validation = [
+
+]
+
+
+

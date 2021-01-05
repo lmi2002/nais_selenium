@@ -146,7 +146,7 @@ def get_elements_present_text(driver, text):
 
 
 def get_element_containing_text(driver, text):
-    locator = (By.XPATH, '//*[contains(text()="{text}")]'.format(text=text))
+    locator = (By.XPATH, '//*[contains(text(), "{text}")]'.format(text=text))
     try:
         return get_web_element(driver, locator)
     except TimeoutException as e:
@@ -170,7 +170,7 @@ def get_node_element_present_text(driver, text):
 
 
 def get_elements_containing_text(driver, text):
-    locator = (By.XPATH, '//*[contains(text()="{text}")]'.format(text=text))
+    locator = (By.XPATH, '//*[contains(text(), "{text}")]'.format(text=text))
     try:
         return get_web_elements(driver, locator)
     except TimeoutException as e:
@@ -192,3 +192,24 @@ def move_to_element_and_click(driver, item, index=None):
     else:
         elem = get_web_elements(driver, item)[index]
     ActionChains(driver).move_to_element(elem).click().perform()
+
+
+def double_click_element(driver, item):
+    elem = get_web_element(driver, item)
+    ActionChains(driver).double_click(elem).perform()
+
+
+def get_elements_locator(driver, locator):
+    locator = locator
+    try:
+        return get_web_elements(driver, locator)
+    except TimeoutException as e:
+        raise TextNotFoundException(locator, e)
+
+
+def get_element_locator(driver, locator):
+    locator = locator
+    try:
+        return get_web_element(driver, locator)
+    except TimeoutException as e:
+        raise TextNotFoundException(locator, e)

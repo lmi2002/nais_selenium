@@ -3,13 +3,12 @@ from settings.setting_data_info import data_info
 
 
 class DrrpStatementLocator:
-    main_menu_statement = (By.XPATH, '//span[text()="Реєстрація та обробка заяв"]/..')
     sub_menu_create_statement = (By.XPATH, '//span[text()="Реєстрація заяви"]')
     sub_sub_menu_statement = {
         'ownership': (By.XPATH, '//span[text()="заява про реєстрацію права власності"]/..'),
-        'irp': (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
-        'encumbrances': (By.XPATH, '//span[text()="заява про реєстрацію обтяження"]/..'),
-        'relinquishment_of_property': (By.XPATH, '//span[text()="заява про відмову від речового права"]/..')
+        # 'irp': (By.XPATH, '//span[text()="заява про реєстрацію іншого речового права"]/..'),
+        # 'encumbrances': (By.XPATH, '//span[text()="заява про реєстрацію обтяження"]/..'),
+        # 'relinquishment_of_property': (By.XPATH, '//span[text()="заява про відмову від речового права"]/..')
     }
     block_common_info = (By.XPATH, '//span[text()="Відомості"]/..')
     kind_registration = (By.CSS_SELECTOR, 'input[name$="EntityChangeTypeBit"]')
@@ -23,6 +22,8 @@ class DrrpStatementLocator:
     kind_common_ownership = (By.CSS_SELECTOR, 'input[name$="CommonKind"]')
     kind_common_ownership_list = (By.XPATH, '//ul/li[text()="{kind_common_ownership}"]'.format(
         kind_common_ownership=data_info['onm']['kind_common_ownership']))
+    kind_common_ownership_list_edit = (By.XPATH, '//ul/li[text()="{kind_common_ownership_edit}"]'.format(
+        kind_common_ownership_edit=data_info['onm']['kind_common_ownership_edit']))
     block_onm = (By.XPATH, '//span[text()="Об’єкти нерухомого майна"]/..')
     block_add_onm = (By.XPATH, '//span[text()="Додати ОНМ"]/..')
     type_onm = (By.CSS_SELECTOR, 'input[name$="ReType"]')
@@ -64,7 +65,6 @@ class DrrpStatementLocator:
     payment_date = (By.CSS_SELECTOR, 'input[name$="rpdDate"]')
     payment_summ = (By.CSS_SELECTOR, 'input[name="summ"]')
     org_name = (By.CSS_SELECTOR, 'input[name="orgName"]')
-    block_payment_btn_admit = (By.XPATH, '//span[text()="Застосувати"]')
     document_type = (By.CSS_SELECTOR, 'input[name$="CdType"]')
     document_type_list = (By.XPATH, '//span[text()="договір іпотеки"]')
     addition_document_type = (By.CSS_SELECTOR, 'input[name="cdTypeExtension"]')
@@ -89,5 +89,14 @@ class DrrpStatementLocator:
     type_ownership = (By.CSS_SELECTOR, 'input[name$="EnumType"]')
     type_ownership_list = (By.XPATH, '//li[text()="Інше речове право"]')
     type_another_property_right = (By.CSS_SELECTOR, 'input[name$="IrpSortReq"]')
-    type_another_property_right_list = (By.XPATH, '//li[text()="право володіння"]')
+    type_another_property_right_list = (By.XPATH, '//li[text()="{type_another_property_right}"]'.format(
+        type_another_property_right=data_info['common_info']['type_another_property_right']))
     statement_status = (By.XPATH, '//*[text()="зареєстровано"]')
+    form_edit_statement_field_reason = (By.CSS_SELECTOR, 'textarea[name="reason"]')
+    form_edit_statement_button_edit = (By.XPATH, '//span[text()="Редагувати"]')
+    operations_tab_menu = (By.XPATH, '//span[text()="Операції"]/..')
+    form_edit_statement_undo_last_action = (By.XPATH, '//span[text()="Відмінити останню операцію"]')
+    form_edit_statement_button_undo_last_action = (By.XPATH, '//span[text()="Відмінити останню операцію"]')
+    data_qtip_undo_last_action = (By.CSS_SELECTOR, 'td[data-qtip="Відміна помилкової  операції із заявою"]')
+    form_edit_statement_decision = (By.XPATH, '//span[text()="Рішення"]')
+    decision_sub_menu_make_decision = (By.XPATH, '//span[text()="Прийняти рішення про державну реєстрацію"]')

@@ -6,9 +6,6 @@ from helpers import base
 
 class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
-    def click_main_menu_statement(self, driver):
-        base.move_to_element_and_click(driver, self.main_menu_statement)
-
     def click_sub_menu_create_statement(self, driver):
         base.move_to_element_and_click(driver, self.sub_menu_create_statement)
 
@@ -41,6 +38,9 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def select_kind_common_ownership_list(self, driver):
         base.move_to_element_and_click(driver, self.kind_common_ownership_list)
+
+    def select_kind_common_ownership_list_edit(self, driver):
+        base.move_to_element_and_click(driver, self.kind_common_ownership_list_edit)
 
     def click_type_onm(self, driver):
         base.move_to_element_and_click(driver, self.type_onm)
@@ -186,9 +186,6 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def insert_value_org_name(self, driver, value):
         base.get_web_element(driver, self.org_name).send_keys(value)
 
-    def click_block_payment_btn_admit(self, driver):
-        base.move_to_element_and_click(driver, self.block_payment_btn_admit)
-
     def click_block_document_btn_add(self, driver):
         base.move_to_element_and_click(driver, self.btn_add, index=2)
 
@@ -270,16 +267,46 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def select_type_another_property_right_list(self, driver):
         base.move_to_element_and_click(driver, self.type_another_property_right_list)
 
-    def check_visible_statement_status (self, driver):
+    def check_visible_statement_status(self, driver):
         base.get_web_element(driver, self.statement_status)
 
-    def get_text_statement_list(self, driver):
+    @staticmethod
+    def get_text_statement_list(driver):
         return [base.get_next_element_present_text(driver, word).text for word in
                 list_text_line.statement_registration_status]
 
-    def get_text_statement_num(self, driver):
+    @staticmethod
+    def get_text_statement_num(driver):
         return base.get_next_element_present_text(driver, list_text_line.statement_num[0]).text
 
-    def get_text_statement_of_node_list(self, driver):
+    @staticmethod
+    def get_text_statement_of_node_list(driver):
         return [base.get_node_element_present_text(driver, word).text for word in
                 list_text_line.statement_registration_info]
+
+    def insert_value_form_edit_statement_field_reason(self, driver, value):
+        base.get_web_element(driver, self.form_edit_statement_field_reason).send_keys(value)
+
+    def click_form_edit_statement_button_edit(self, driver):
+        base.move_to_element_and_click(driver, self.form_edit_statement_button_edit, index=1)
+
+    def get_text_kind_common_ownership(self, driver):
+        return base.get_node_element_present_text(driver, "вид спільної власності:").text
+
+    def click_operations_tab_menu(self, driver):
+        base.move_to_element_and_click(driver, self.operations_tab_menu)
+
+    def click_form_edit_statement_undo_last_action(self, driver):
+        base.move_to_element_and_click(driver, self.form_edit_statement_undo_last_action)
+
+    def click_form_edit_statement_button_undo_last_action(self, driver):
+        base.move_to_element_and_click(driver, self.form_edit_statement_button_undo_last_action, index=1)
+
+    def check_visible_data_qtip_undo_last_action(self, driver):
+        base.get_visible_element(driver, self.data_qtip_undo_last_action)
+
+    def move_to_form_edit_statement_decision(self, driver):
+        base.move_to_element(driver, self.form_edit_statement_decision)
+
+    def click_decision_sub_menu_make_decision(self, driver):
+        base.move_to_element_and_click(driver, self.decision_sub_menu_make_decision)
