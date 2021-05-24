@@ -59,6 +59,7 @@ class DrrpStatementLocator:
     passport_date = (By.CSS_SELECTOR, 'input[name="docDate"]')
     passport_publisher = (By.CSS_SELECTOR, 'input[name="publisher"]')
     addition_of_person = (By.CSS_SELECTOR, 'textarea[name="additional"]')
+    payment_block = (By.XPATH, '//span[text()="Реквізити оплати"]/..')
     payment_type = (By.CSS_SELECTOR, 'input[name$="PayType"]')
     payment_type_list = (By.XPATH, '//ul/li[text()="Адміністративний збір за реєстраційні дії"]')
     payment_num = (By.CSS_SELECTOR, 'input[name="enum"]')
@@ -100,3 +101,4 @@ class DrrpStatementLocator:
     data_qtip_undo_last_action = (By.CSS_SELECTOR, 'td[data-qtip="Відміна помилкової  операції із заявою"]')
     form_edit_statement_decision = (By.XPATH, '//span[text()="Рішення"]')
     decision_sub_menu_make_decision = (By.XPATH, '//span[text()="Прийняти рішення про державну реєстрацію"]')
+    payment_btn_plus = (By.CLASS_NAME, 'fa-plus-circle')

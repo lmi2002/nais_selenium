@@ -28,3 +28,4 @@ class DrrpAuthMethod(SettingsBrowser, DrrpAuthPage, DrrpCommonPage):
         yield browser
         # self.logout(browser)
         # browser.quit()
+

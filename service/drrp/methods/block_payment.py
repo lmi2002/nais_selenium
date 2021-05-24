@@ -9,6 +9,7 @@ from settings.setting_data_info import data_info
 class DrrpBlockPayment(DrrpStatementPage, DrrpCommonMethod):
 
     def fill_block_payment(self, driver):
+        self.click_payment_block(driver)
         self.click_block_payment_btn_plus(driver)
         self.click_block_payment_btn_plus(driver)
         self.click_payment_type(driver)
