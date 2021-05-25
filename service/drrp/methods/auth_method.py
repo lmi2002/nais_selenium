@@ -18,7 +18,7 @@ class DrrpAuthMethod(SettingsBrowser, DrrpAuthPage, DrrpCommonPage):
         self.click_input_type_key(driver)
         time.sleep(2)
         self.select_type_key_list_first_element(driver)
-        self.insert_input_select_file(driver, r'D:\Project\nais_selenium\drivers\Key-6.dat')
+        self.insert_input_select_file(driver, r'D:\Project\nais_selenium\settings\kep\Key-6.dat')
         self.insert_input_passw(driver, '123456789')
         time.sleep(2)
         self.click_btn_load(driver)
