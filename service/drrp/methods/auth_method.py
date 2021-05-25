@@ -14,7 +14,14 @@ class DrrpAuthMethod(SettingsBrowser, DrrpAuthPage, DrrpCommonPage):
         self.get_user(driver).send_keys(project_rule[PROJECT][RULE]['login'])
         self.get_passw(driver).send_keys(project_rule[PROJECT][RULE]['passw'])
         self.get_entry(driver).click()
-        time.sleep(30)
+        time.sleep(2)
+        self.click_input_type_key(driver)
+        time.sleep(2)
+        self.select_type_key_list_first_element(driver)
+        self.insert_input_select_file(driver, r'D:\Project\nais_selenium\drivers\Key-6.dat')
+        self.insert_input_passw(driver, '123456789')
+        time.sleep(2)
+        self.click_btn_load(driver)
 
     def logout(self, driver):
         self.click_user_code(driver)
@@ -28,4 +35,3 @@ class DrrpAuthMethod(SettingsBrowser, DrrpAuthPage, DrrpCommonPage):
         yield browser
         # self.logout(browser)
         # browser.quit()
-

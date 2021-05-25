@@ -313,3 +313,4 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def click_payment_block(self, driver):
         base.move_to_element_and_click(driver, self.payment_block)
+
