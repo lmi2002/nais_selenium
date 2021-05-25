@@ -103,7 +103,7 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         assert (self.get_text_line_address_onm(browser)[0],
                 self.get_text_line_address_onm(browser)[1]) == address_onm_validation
 
-        self.click_close_tab(browser)
+        self.click_close_tab_ub64(browser)
 
     @pytest.mark.smoke
     @pytest.mark.notarius
@@ -113,9 +113,9 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         # self.click_main_menu_statement(browser)
         self.click_sub_menu_search_statement(browser)
         self.insert_value_num_statement(browser, statement_num)
-        self.click_button_search(browser)
+        self.click_button_search_ub64(browser)
         self.double_click_gridview(browser)
-        self.click_close_tab(browser)
+        self.click_close_tab_ub64(browser)
         self.click_button_continue(browser)
         self.check_visible_statement_status(browser)
         assert self.get_text_statement_num(browser) == statement_num
@@ -130,7 +130,7 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_form_edit_statement_button_edit(browser)
         self.click_kind_common_ownership(browser)
         self.select_kind_common_ownership_list_edit(browser)
-        self.click_btn_admit(browser, index=1)
+        self.click_btn_admit(browser,  index=1)
         self.click_onm_tab_menu(browser)
         assert data_info['onm']['kind_common_ownership_edit'] in self.get_text_kind_common_ownership(browser)
 
@@ -142,8 +142,8 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_form_edit_statement_undo_last_action(browser)
         self.insert_value_form_edit_statement_field_reason(browser, "Помилка")
         self.click_form_edit_statement_button_undo_last_action(browser)
-        self.check_visible_message(browser)
-        self.click_message_btn_OK(browser)
+        self.check_visible_el_dialog_footer(browser)
+        self.click_el_dialog_footer_button(browser)
         self.check_visible_statement_status(browser)
         time.sleep(1)
         self.click_operations_tab_menu(browser)
@@ -162,12 +162,14 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_button_perform_action(browser)
         self.move_to_form_edit_statement_decision(browser)
         self.click_decision_sub_menu_make_decision(browser)
-        self.check_visible_message(browser)
-        self.click_message_btn_Так(browser)
+        # self.check_visible_message(browser)
+        # self.click_message_btn_Так(browser)
+        self.check_visible_el_dialog_footer(browser)
+        self.click_el_dialog_footer_button(browser, index=1)
         self.fill_decision(browser)
         self.click_decision_btn_registration(browser)
         self.document_btn_close(browser, index=1)
-        self.click_close_tab(browser)
+        self.click_close_tab_ub64(browser)
 
         # validated data decision
         data_decision = self.data_decision_block_info(browser)

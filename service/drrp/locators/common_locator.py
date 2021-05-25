@@ -27,7 +27,11 @@ class DrrpCommonLocator:
     btn_admit = (By.XPATH, '//span[text()="Застосувати"]')
     message_btn_OK = (By.XPATH, '//span[text()="OK"]/..')
     messagebox = (By.CLASS_NAME, 'x-message-box')
+    el_dialog_footer = (By.CLASS_NAME, 'el-dialog__footer')
+    el_dialog_footer_button = (By.CSS_SELECTOR, '.el-dialog__footer button')
     loader = (By.CLASS_NAME, '.x-mask-msg')
     message_btn_Так = (By.XPATH, '//span[text()="Так"]/..')
+    close_tab_ub64 = (By.CLASS_NAME, 'u-navbar__tab-close-button')
+
 
 

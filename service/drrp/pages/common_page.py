@@ -30,6 +30,9 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
     def click_close_tab(self, driver):
         base.move_to_element_and_click(driver, self.close_tab)
 
+    def click_close_tab_ub64(self, driver):
+        base.move_to_element_and_click(driver, self.close_tab_ub64)
+
     def get_text_person_of_node_list(self, driver):
         return [base.get_node_element_present_text(driver, word).text for word in list_text_line.person_data]
 
@@ -51,6 +54,9 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
     def click_button_search(self, driver):
         base.move_to_element_and_click(driver, self.button_search)
 
+    def click_button_search_ub64(self, driver):
+        base.move_to_element_and_click(driver, self.button_search, index=1)
+
     def double_click_gridview(self, driver):
         base.double_click_element(driver, self.gridview)
 
@@ -58,6 +64,7 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
         base.move_to_element_and_click(driver, self.button_continue)
 
     def click_btn_admit(self, driver, index=None):
+        i = index
         base.move_to_element_and_click(driver, self.btn_admit, index)
 
     def click_message_btn_OK(self, driver):
@@ -65,6 +72,12 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
 
     def check_visible_message(self, driver):
         base.get_visible_element(driver, self.messagebox)
+
+    def check_visible_el_dialog_footer(self, driver):
+        base.get_visible_element(driver, self.el_dialog_footer)
+
+    def click_el_dialog_footer_button(self, driver, index=None):
+        base.move_to_element_and_click(driver, self.el_dialog_footer_button, index)
 
     def click_message_btn_Так(self, driver):
         base.move_to_element_and_click(driver, self.message_btn_Так)

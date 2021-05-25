@@ -166,7 +166,7 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
         base.move_to_element_and_click(driver, self.btn_OK, index=2)
 
     def click_block_payment_btn_plus(self, driver):
-        base.move_to_element_and_click(driver, self.btn_plus, index=2)
+        base.move_to_element_and_click(driver, self.payment_btn_plus)
 
     def click_payment_type(self, driver):
         base.move_to_element_and_click(driver, self.payment_type)
@@ -310,3 +310,7 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def click_decision_sub_menu_make_decision(self, driver):
         base.move_to_element_and_click(driver, self.decision_sub_menu_make_decision)
+
+    def click_payment_block(self, driver):
+        base.move_to_element_and_click(driver, self.payment_block)
+
