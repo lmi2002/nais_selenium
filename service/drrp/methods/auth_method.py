@@ -14,13 +14,13 @@ class DrrpAuthMethod(SettingsBrowser, DrrpAuthPage, DrrpCommonPage):
         self.get_user(driver).send_keys(project_rule[PROJECT][RULE]['login'])
         self.get_passw(driver).send_keys(project_rule[PROJECT][RULE]['passw'])
         self.get_entry(driver).click()
-        time.sleep(2)
+        self.visible_v_modal(driver)
         self.click_input_type_key(driver)
-        time.sleep(2)
+        self.visible_div_is_focus(driver)
         self.select_type_key_list_first_element(driver)
-        self.insert_input_select_file(driver, r'D:\Project\nais_selenium\settings\kep\Key-6.dat')
-        self.insert_input_passw(driver, '123456789')
-        time.sleep(2)
+        self.insert_input_select_file(driver, project_rule[PROJECT][RULE]['key_path'])
+        self.insert_input_passw(driver, project_rule[PROJECT][RULE]['passw_key'])
+        self.check_invisible_button_is_disabled(driver)
         self.click_btn_load(driver)
 
     def logout(self, driver):

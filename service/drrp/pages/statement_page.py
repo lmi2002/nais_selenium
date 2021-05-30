@@ -314,3 +314,6 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def click_payment_block(self, driver):
         base.move_to_element_and_click(driver, self.payment_block)
 
+    def visible_li_is_opened(self, driver):
+        base.get_visible_element(driver, self.li_is_opened)
+

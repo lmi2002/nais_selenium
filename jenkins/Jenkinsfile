@@ -1,0 +1,40 @@
+#!groovy
+
+// Check ub1 properties
+properties([disableConcurrentBuilds()])
+
+// Run docker build
+pipeline {
+    agent {
+        label 'master'
+     }
+
+    stages {
+
+        stage("create docker image") {
+            steps {
+                echo " ============== start building image =================="
+                dir ('../home/lmi/nais_selenium/docker_toolbox') {
+                	sh 'docker build -t "nais_selenium" . '
+                }
+            }
+        }
+        stage("run docker container") {
+            steps {
+                echo " ============== run docker container =================="
+                sh 'docker run nais_selenium'
+            }
+        }
+    }
+    post {
+        always {
+            allure([
+                includeProperties: false,
+                jdk: '',
+                properties: [],
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'target/allure-results']]
+            ])
+        }
+    }
+}

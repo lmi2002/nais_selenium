@@ -1,6 +1,8 @@
 import time
-
+import allure
 import pytest
+
+
 from helpers.func import get_data_today
 from service.drrp.list_data_validation import onm_validation, statement_validation_second, person_validation, \
     address_onm_validation
@@ -17,7 +19,6 @@ from service.drrp.methods.block_person import DrrpBlockPerson
 from service.drrp.methods.block_statement import DrrpBlockStatement
 from service.drrp.methods.decision_statement_method import DrrpDecisionStatementMethod
 from service.drrp.methods.ubdocument import DrrpUbdocument
-from service.drrp.pages.decision_statement_page import DrrpDecisionStatementPage
 from service.drrp.pages.perform_action_menu_page import DrrpPerformActionMenuPage
 from service.drrp.pages.search_statement_page import DrrpSearchStatementPage
 
@@ -35,6 +36,7 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
 
     @pytest.mark.smoke
     @pytest.mark.notarius
+    @pytest.mark.first
     @pytest.mark.parametrize("statement", DrrpStatementLocator.sub_sub_menu_statement.keys())
     def test_create_statement(self, start_session, statement):
 
@@ -47,6 +49,7 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         if statement == 'ownership':
             self.click_main_menu_statement(browser)
 
+        self.visible_li_is_opened(browser)
         self.click_sub_menu_create_statement(browser)
         self.click_sub_sub_menu_statement(browser, statement)
 
