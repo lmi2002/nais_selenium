@@ -102,3 +102,4 @@ class DrrpStatementLocator:
     form_edit_statement_decision = (By.XPATH, '//span[text()="Рішення"]')
     decision_sub_menu_make_decision = (By.XPATH, '//span[text()="Прийняти рішення про державну реєстрацію"]')
     payment_btn_plus = (By.CLASS_NAME, 'fa-plus-circle')
+    li_is_opened = (By.CLASS_NAME, "is-opened")

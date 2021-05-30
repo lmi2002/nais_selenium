@@ -17,9 +17,6 @@ class DrrpAuthPage(DrrpAuthLocator):
     def click_input_type_key(self, driver):
         base.move_to_element_and_click(driver, self.input_type_key)
 
-    def select_type_key_list_first_element(self, driver):
-        base.move_to_element_and_click(driver, self.type_key_list)
-
     def insert_input_select_file(self, driver, value):
         base.get_web_element(driver, self.input_select_file).send_keys(value)
 
@@ -28,3 +25,19 @@ class DrrpAuthPage(DrrpAuthLocator):
 
     def click_btn_load(self, driver):
         base.move_to_element_and_click(driver, self.btn_load)
+
+    def check_invisible_button_is_disabled(self, driver):
+        base.check_invisible_element(driver, self.button_is_disabled)
+
+    def visible_v_modal(self, driver):
+        base.get_visible_element(driver, self.v_modal)
+
+    def visible_div_is_focus(self, driver):
+        base.get_visible_element(driver, self.div_is_focus)
+
+    @staticmethod
+    def select_type_key_list_first_element(driver):
+        driver.execute_script("document.getElementsByClassName('el-select-dropdown__item')[0].click()")
+
+
+
