@@ -1,15 +1,13 @@
-import time
-
 import pytest
 
-# from service.drrp.list_auth_test import data_auth_test
-from service.drrp.pages.auth_page import DrrpAuthPage
+from service.drrp.list_auth_test import data_auth_test
+from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
 from settings.setting_browser import SettingsBrowser
 from settings.setting_project import *
 
 
-class DrrpAuthMethod(SettingsBrowser, DrrpAuthPage, DrrpCommonPage):
+class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage):
 
     def login(self, driver):
         self.get_user(driver).send_keys(project_rule[PROJECT][RULE]['login'])

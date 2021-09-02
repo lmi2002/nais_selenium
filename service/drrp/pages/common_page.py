@@ -1,10 +1,10 @@
 from service.drrp import list_text_line
-from service.drrp.locators.auth_locator import DrrpAuthLocator
+from service.auth.locators.auth_locator import AuthLocator
 from service.drrp.locators.common_locator import DrrpCommonLocator
 from helpers import base
 
 
-class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
+class DrrpCommonPage(AuthLocator, DrrpCommonLocator):
 
     def click_user_code(self, driver):
         base.move_to_element_and_click(driver, self.user_code)
@@ -38,6 +38,15 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
 
     def click_person_tab_menu(self, driver):
         base.move_to_element_and_click(driver, self.person_tab_menu)
+
+    def click_document_tab_menu(self, driver):
+        base.move_to_element_and_click(driver, self.document_tab_menu)
+
+    def click_document_tab_menu(self, driver):
+        base.move_to_element_and_click(driver, self.document_tab_menu)
+
+    def click_document_tab_menu_image_doc(self, driver):
+        base.move_to_element_and_click(driver, self.document_tab_menu_image_doc)
 
     def click_onm_tab_menu(self, driver):
         base.move_to_element_and_click(driver, self.onm_tab_menu)
@@ -81,3 +90,15 @@ class DrrpCommonPage(DrrpAuthLocator, DrrpCommonLocator):
 
     def click_message_btn_Так(self, driver):
         base.move_to_element_and_click(driver, self.message_btn_Так)
+
+    def click_u_navbar_dropdown(self, driver):
+        base.move_to_element_and_click(driver, self.u_navbar_dropdown, index=1)
+
+    def check_visible_u_navbar_dropdown(self, driver):
+        base.get_visible_element(driver, self.u_navbar_dropdown)
+
+    def get_attr_src_iframe(self, driver):
+        return base.get_web_element(driver, self.iframe).get_attribute('src')
+
+
+

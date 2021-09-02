@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class DrrpAuthLocator:
+class AuthLocator:
 
     user = (By.TAG_NAME, 'input')
     passw = (By.TAG_NAME, 'input')

@@ -1,8 +1,8 @@
 from helpers import base
-from service.drrp.locators.auth_locator import DrrpAuthLocator
+from service.auth.locators.auth_locator import AuthLocator
 
 
-class DrrpAuthPage(DrrpAuthLocator):
+class AuthPage(AuthLocator):
 
     def get_user(self, driver):
         return base.get_web_element(driver, self.user)

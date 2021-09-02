@@ -23,3 +23,13 @@ class DrrpBlockOnm(DrrpStatementPage, DrrpCommonMethod):
         self.insert_value_addition_of_subtype_onm(driver, data_info['onm']['addition_of_subtype_onm'])
         self.insert_value_description_onm(driver, data_info['onm']['description_onm'])
         self.click_block_onm_btn_OK(driver)
+
+    def fill_block_onm_dzk(self, driver):
+        self.click_block_onm(driver)
+        self.click_block_onm_btn_add(driver)
+        self.click_block_add_onm(driver)
+        self.click_type_onm(driver)
+        self.select_type_onm_ground(driver)
+        self.insert_value_cad_num_onm(driver, data_info['onm']['cad_num_onm'])
+        self.click_btn_get_info_dzk(driver)
+
