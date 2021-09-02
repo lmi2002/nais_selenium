@@ -6,7 +6,6 @@ class DrrpAuthLocator:
     user = (By.TAG_NAME, 'input')
     passw = (By.TAG_NAME, 'input')
     entry = (By.XPATH, '//span[text()="Продовжити"]/..')
-    client_login_form = (By.ID, 'extClientLoginForm-body')
     input_type_key = (By.CSS_SELECTOR, 'input[placeholder="Оберіть тип носія"]')
     type_key_list = (By.CLASS_NAME, 'el-select-dropdown__item')
     input_select_file = (By.CSS_SELECTOR, 'input[type="file"]')
@@ -16,4 +15,9 @@ class DrrpAuthLocator:
     v_modal = (By.CLASS_NAME, "v-modal")
     div_is_focus = (By.CLASS_NAME, "is-focus")
     li_hover = (By.CLASS_NAME, "hover")
+    el_popup_parent_hidden = (By.CLASS_NAME,'el-popup-parent--hidden')
+    ub_dialog_break_word = (By.CLASS_NAME,'ub-dialog_break-word')
+    client_login_form = (By.CLASS_NAME, 'auth-page__container')
+    el_form_item_error = (By.CLASS_NAME, 'el-form-item__error')
+    el_select_dropdown_empty = (By.CLASS_NAME, 'el-select-dropdown__empty')
 
