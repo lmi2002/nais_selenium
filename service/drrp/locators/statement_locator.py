@@ -28,6 +28,9 @@ class DrrpStatementLocator:
     block_add_onm = (By.XPATH, '//span[text()="Додати ОНМ"]/..')
     type_onm = (By.CSS_SELECTOR, 'input[name$="ReType"]')
     type_onm_list = (By.XPATH, '//ul/li[text()="квартира"]')
+    type_onm_list_ground = (By.XPATH, '//ul/li[text()="земельна ділянка"]')
+    cad_num_onm = (By.CSS_SELECTOR, 'input[name="cadNum"]')
+    btn_get_info_dzk = (By.CSS_SELECTOR, 'a[data-qtip="Отримати відомості з ДЗК"]')
     addition_of_type_onm = (By.CSS_SELECTOR, 'input[name$="TypeExtension"]')
     subtype_onm = (By.CSS_SELECTOR, 'input[name$="ReSubType"]')
     subtype_onm_list = (By.XPATH, '//ul/li[text()="{subtype_onm}"]'.format(subtype_onm=data_info['onm']['subtype_onm']))
@@ -68,6 +71,8 @@ class DrrpStatementLocator:
     org_name = (By.CSS_SELECTOR, 'input[name="orgName"]')
     document_type = (By.CSS_SELECTOR, 'input[name$="CdType"]')
     document_type_list = (By.XPATH, '//span[text()="договір іпотеки"]')
+    document_type_dabi = (By.XPATH, '//span[text()="сертифікат ДАБІ"]')
+    document_type_edrsr = (By.XPATH, '//span[text()="рішення суду"]')
     addition_document_type = (By.CSS_SELECTOR, 'input[name="cdTypeExtension"]')
     document_num = (By.CSS_SELECTOR, 'input[name="enum"]')
     document_date = (By.CSS_SELECTOR, 'input[name="docDate"]')
@@ -103,3 +108,13 @@ class DrrpStatementLocator:
     decision_sub_menu_make_decision = (By.XPATH, '//span[text()="Прийняти рішення про державну реєстрацію"]')
     payment_btn_plus = (By.CLASS_NAME, 'fa-plus-circle')
     li_is_opened = (By.CLASS_NAME, "is-opened")
+    span_get_erd = (By.XPATH, '//span[text()="Отримати з ЄРД"]/..')
+    get_edrsr = (By.XPATH, '//*[node()="Запит до ЄДРСР"]/../..')
+
+
+class DrrpFormRequestEdrsrLocator:
+    form_request_edrsr = (By.XPATH, '//span[text()="Запит до ЄДРСР"]')
+    form_request_edrsr_date = (By.CSS_SELECTOR, 'input[name="docDate"]')
+    form_request_edrsr_num = (By.CSS_SELECTOR, 'input[name="caseNum"]')
+    form_request_edrsr_name_court = (By.CSS_SELECTOR, 'input[name="courtID"]')
+    form_request_edrsr_type_doc = (By.CSS_SELECTOR, 'input[name="docTypeID"]')

@@ -1,6 +1,6 @@
 from service.drrp import list_text_line
 from service.drrp.locators.common_locator import DrrpCommonLocator
-from service.drrp.locators.statement_locator import DrrpStatementLocator
+from service.drrp.locators.statement_locator import DrrpStatementLocator, DrrpFormRequestEdrsrLocator
 from helpers import base
 
 
@@ -53,6 +53,9 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
 
     def select_type_onm_list(self, driver):
         base.move_to_element_and_click(driver, self.type_onm_list)
+
+    def select_type_onm_ground(self, driver):
+        base.move_to_element_and_click(driver, self.type_onm_list_ground)
 
     def insert_value_addition_of_type_onm(self, driver, value):
         base.get_web_elements(driver, self.addition_of_type_onm)[3].send_keys(value)
@@ -216,17 +219,23 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def click_document_type_list(self, driver):
         base.move_to_element_and_click(driver, self.document_type_list)
 
+    def click_document_type_dabi(self, driver):
+        base.move_to_element_and_click(driver, self.document_type_dabi)
+
+    def click_document_type_edrsr(self, driver):
+        base.move_to_element_and_click(driver, self.document_type_edrsr)
+
     def insert_value_addition_document_type(self, driver, value):
         base.get_web_element(driver, self.addition_document_type).send_keys(value)
 
-    def insert_value_document_num(self, driver, value):
-        base.get_web_elements(driver, self.document_num)[8].send_keys(value)
+    def insert_value_document_num(self, driver, value, index):
+        base.get_web_elements(driver, self.document_num)[index].send_keys(value)
 
     def insert_value_document_date(self, driver, value):
         base.get_web_elements(driver, self.document_date)[1].send_keys(value)
 
-    def insert_value_document_publisher(self, driver, value):
-        base.get_web_elements(driver, self.document_publisher)[1].send_keys(value)
+    def insert_value_document_publisher(self, driver, value, index):
+        base.get_web_elements(driver, self.document_publisher)[index].send_keys(value)
 
     def insert_value_document_count_page(self, driver, value):
         base.get_web_element(driver, self.document_count_page).send_keys(value)
@@ -317,3 +326,29 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def visible_li_is_opened(self, driver):
         base.get_visible_element(driver, self.li_is_opened)
 
+    def insert_value_cad_num_onm(self, driver, value):
+        base.get_web_elements(driver, self.cad_num_onm)[2].send_keys(value)
+
+    def click_btn_get_info_dzk(self, driver):
+        base.move_to_element_and_click(driver, self.btn_get_info_dzk)
+
+    def click_span_get_erd(self, driver):
+        base.move_to_element_and_click(driver, self.span_get_erd)
+
+    def click_get_edrsr(self, driver):
+        base.move_to_element_and_click(driver, self.get_edrsr)
+
+
+class DrrpFormRequestEdrsrPage(DrrpFormRequestEdrsrLocator):
+
+    def insert_value_form_request_edrsr_date(self, driver, value, index):
+        base.get_web_elements(driver, self.form_request_edrsr_date)[index].send_keys(value)
+
+    def insert_value_form_request_edrsr_num(self, driver, value, index):
+        base.get_web_elements(driver, self.form_request_edrsr_num)[index].send_keys(value)
+
+    # def insert_value_form_request_edrsr_name_court(self, driver, value, index):
+    #     base.get_web_elements(driver, self.form_request_edrsr_name_court)[index].send_keys(value)
+
+    # def insert_value_form_request_edrsr_type_doc(self, driver, value, index):
+    #     base.get_web_elements(driver, self.form_request_edrsr_type_doc)[index].send_keys(value)

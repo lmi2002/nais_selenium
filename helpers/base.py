@@ -7,7 +7,7 @@ from selenium.webdriver.support.select import Select
 
 from exception import *
 
-timeout = 60
+timeout = 30
 delay = 1
 
 

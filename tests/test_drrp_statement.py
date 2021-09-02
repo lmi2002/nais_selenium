@@ -1,7 +1,5 @@
 import time
-import allure
 import pytest
-
 
 from helpers.func import get_data_today
 from service.drrp.list_data_validation import onm_validation, statement_validation_second, person_validation, \
@@ -9,7 +7,7 @@ from service.drrp.list_data_validation import onm_validation, statement_validati
 from settings.setting_data_info import data_info
 from service.drrp.locators.statement_locator import DrrpStatementLocator
 from settings.setting_project import project_rule, PROJECT, RULE
-from service.drrp.methods.auth_method import DrrpAuthMethod
+from service.auth.methods.auth_method import AuthMethod
 from service.drrp.methods.block_address_onm import BlockAddressOnm
 from service.drrp.methods.block_common_info import DrrpBlockCommonInfo
 from service.drrp.methods.block_document import DrrpBlockDocument
@@ -23,7 +21,7 @@ from service.drrp.pages.perform_action_menu_page import DrrpPerformActionMenuPag
 from service.drrp.pages.search_statement_page import DrrpSearchStatementPage
 
 
-class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBlockOnm,
+class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBlockOnm,
                         DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpUbdocument, DrrpBlockCommonInfo,
                         DrrpSearchStatementPage, DrrpPerformActionMenuPage, DrrpDecisionStatementMethod):
     data_dict = {}
@@ -133,7 +131,7 @@ class TestDrrpStatement(DrrpAuthMethod, BlockAddressOnm, DrrpBlockDocument, Drrp
         self.click_form_edit_statement_button_edit(browser)
         self.click_kind_common_ownership(browser)
         self.select_kind_common_ownership_list_edit(browser)
-        self.click_btn_admit(browser,  index=1)
+        self.click_btn_admit(browser, index=1)
         self.click_onm_tab_menu(browser)
         assert data_info['onm']['kind_common_ownership_edit'] in self.get_text_kind_common_ownership(browser)
 
