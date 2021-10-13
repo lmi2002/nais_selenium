@@ -262,6 +262,8 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
 
+    # Тест забирает всю память
+    @pytest.mark.skip
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_search
@@ -274,6 +276,8 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
 
+    # Тест забирает всю память
+    @pytest.mark.skip
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_search

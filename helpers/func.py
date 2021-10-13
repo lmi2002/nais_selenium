@@ -33,6 +33,11 @@ def get_data_today():
     return today.strftime("%d.%m.%Y")
 
 
+def get_data_tomorrow():
+    tomorrow = datetime.datetime.today() + datetime.timedelta(days=1)
+    return tomorrow.strftime("%d.%m.%Y")
+
+
 def get_generate_num():
     return int(round(time.time() * 1000))
 

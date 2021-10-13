@@ -36,6 +36,6 @@ class DrrpCommonLocator:
     close_tab_ub64 = (By.CLASS_NAME, 'u-navbar__tab-close-button')
     u_navbar_dropdown = (By.CLASS_NAME, 'u-navbar__dropdown')
     iframe = (By.TAG_NAME, 'iframe')
-
+    # $x('//*[@x-placement="bottom-start"]//li/span[text()="Файл"]')
 
 

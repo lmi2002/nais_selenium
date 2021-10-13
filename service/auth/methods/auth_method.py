@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from service.drrp.list_auth_test import data_auth_test
@@ -17,8 +19,10 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage):
         self.visible_v_modal(driver)
         self.click_input_type_key(driver)
         self.visible_div_is_focus(driver)
-        self.set_attr_hover_first_element(driver, 4)
-        self.select_type_key_list_first_element(driver, 4)
+        time.sleep(2)
+        self.set_attr_hover_first_element(driver, 0)
+        self.set_attr_selected_first_element(driver, 0)
+        self.select_type_key_list_first_element(driver, 0)
         self.insert_input_select_file(driver, project_rule[PROJECT][RULE]['key_path'])
         self.insert_input_passw(driver, project_rule[PROJECT][RULE]['passw_key'])
         self.check_invisible_button_is_disabled(driver)
@@ -69,8 +73,10 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage):
         self.visible_v_modal(driver)
         self.click_input_type_key(driver)
         self.visible_div_is_focus(driver)
-        self.set_attr_hover_first_element(driver, data_auth_test[name_test]['num_elem'])
-        self.select_type_key_list_first_element(driver, data_auth_test[name_test]['num_elem'])
+        time.sleep(2)
+        self.set_attr_hover_first_element(driver, 0)
+        self.set_attr_selected_first_element(driver, 0)
+        self.select_type_key_list_first_element(driver, 0)
         self.insert_input_select_file(driver, data_auth_test[name_test]['key_path'])
         self.insert_input_passw(driver, data_auth_test[name_test]['passw_key'])
         self.check_invisible_button_is_disabled(driver)
@@ -81,8 +87,10 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage):
         self.visible_v_modal(driver)
         self.click_input_type_key(driver)
         self.visible_div_is_focus(driver)
-        self.set_attr_hover_first_element(driver, data_auth_test[name_test]['num_elem'])
-        self.select_type_key_list_first_element(driver, data_auth_test[name_test]['num_elem'])
+        time.sleep(2)
+        self.set_attr_hover_first_element(driver, 0)
+        self.set_attr_selected_first_element(driver, 0)
+        self.select_type_key_list_first_element(driver, 0)
         self.insert_input_select_file(driver, data_auth_test[name_test]['key_path'])
         self.insert_input_passw(driver, data_auth_test[name_test]['passw_key'])
         self.check_invisible_button_is_disabled(driver)

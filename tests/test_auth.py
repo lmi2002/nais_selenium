@@ -1,3 +1,5 @@
+import time
+
 import pytest
 
 from service.drrp.list_auth_test import message_text_invalid_cert_login_passw
@@ -8,7 +10,7 @@ class TestUbAuth(AuthMethod):
 
     # ok
     @pytest.mark.auth
-    def test_auth(self, start_browser, request):
+    def test_valid_login_passw(self, start_browser, request):
         browser = start_browser
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
@@ -75,7 +77,9 @@ class TestUbAuth(AuthMethod):
         self.visible_v_modal(browser)
         self.click_input_type_key(browser)
         self.visible_div_is_focus(browser)
+        time.sleep(2)
         self.set_attr_hover_first_element(browser, 7)
+        self.set_attr_selected_first_element(browser, 7)
         self.select_type_key_list_first_element(browser, 7)
         self.click_field_select_device(browser)
 
