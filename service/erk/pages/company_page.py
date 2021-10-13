@@ -1,8 +1,9 @@
 from helpers import base
+from service.erk.locators.common_locator import ErkCommonLocator
 from service.erk.locators.company_locator import ErkCompanyLocator
 
 
-class ErkCompanyPage(ErkCompanyLocator):
+class ErkCompanyPage(ErkCompanyLocator, ErkCommonLocator):
     def visible_short_name(self, driver):
         base.get_visible_element(driver, self.operation_company_short_name)
 
@@ -27,11 +28,8 @@ class ErkCompanyPage(ErkCompanyLocator):
     def insert_value_operation_company_asfo(self, driver, value):
         base.get_web_element(driver, self.operation_company_asfo).send_keys(value)
 
-    def insert_value_operation_company_post_index(self, driver, value):
-        base.get_web_element(driver, self.operation_company_post_index).send_keys(value)
-
-    def insert_value_operation_company_post_street(self, driver, value):
-        base.get_web_element(driver, self.operation_company_post_street).send_keys(value)
+    def insert_value_operation_company_address_street(self, driver, value):
+        base.get_web_element(driver, self.operation_company_address_street).send_keys(value)
 
     def click_operation_company_locality(self, driver):
         base.move_to_element_and_click(driver, self.operation_company_ext_gen, index=3)
@@ -42,11 +40,117 @@ class ErkCompanyPage(ErkCompanyLocator):
     def select_operation_company_locality(self, driver):
         base.move_to_element_and_click(driver, self.operation_company_locality)
 
-    def select_peration_company_region(self, driver):
+    def select_operation_company_region(self, driver):
         base.move_to_element_and_click(driver, self.operation_company_region)
 
     def insert_value_operation_company_locality(self, driver, value):
         base.get_web_elements(driver, self.operation_company_ubcombobox)[1].send_keys(value)
 
-    def insert_value_operation_company_category(self, driver, value):
-        base.get_web_element(driver, self.operation_category_name).send_keys(value)
+    def insert_value_field_operation_category_region(self, driver, value):
+        base.get_web_element(driver, self.field_operation_category_region).send_keys(value)
+
+    def insert_value_field_operation_category_name(self, driver, value):
+        base.get_web_element(driver, self.field_operation_category_name).send_keys(value)
+
+    def insert_value_operation_company_address_index(self, driver, value):
+        base.get_web_element(driver, self.operation_company_address_index).send_keys(value)
+
+    def insert_value_field_operation_category_address_address(self, driver, value):
+        base.get_web_element(driver, self.field_operation_category_address_address).send_keys(value)
+
+    def select_operation_company_address_address(self, driver):
+        base.move_to_element_and_click(driver, self.operation_company_address_address)
+
+    def click_operation_company_post(self, driver):
+        base.move_to_element_and_click(driver, self.operation_company_post)
+
+    def insert_value_operation_company_post_index(self, driver, value):
+        base.get_web_element(driver, self.operation_company_post_index).send_keys(value)
+
+    def insert_value_field_operation_company_post_address(self, driver, value):
+        base.get_web_element(driver, self.field_operation_company_post_address).send_keys(value)
+
+    def insert_value_operation_company_post_street(self, driver, value):
+        base.get_web_element(driver, self.operation_company_post_street).send_keys(value)
+
+    def select_operation_company_post_address(self, driver):
+        base.move_to_element_and_click(driver, self.operation_company_post_address, index=1)
+
+    def insert_value_operation_company_subord(self, driver, value):
+        base.get_web_elements(driver, self.operation_company_ubcombobox)[3].send_keys(value)
+
+    def select_operation_company_subord_list(self, driver):
+        base.move_to_element_and_click(driver, self.operation_company_subord_list)
+
+    def click_operation_company_subord(self, driver):
+        base.move_to_element_and_click(driver, self.operation_company_subord)
+
+    def click_btn_save(self, driver):
+        base.move_to_element_and_click(driver, self.btn_save)
+
+    def click_tab_service_area(self, driver):
+        base.move_to_element_and_click(driver, self.tab_service_area)
+
+    def click_tab_rename_company(self, driver):
+        base.move_to_element_and_click(driver, self.tab_rename_company)
+
+    def click_btn_edit_service_area(self, driver):
+        base.move_to_element_and_click(driver, self.btn_edit_service_area)
+
+    def visible_text_edit_service_area(self, driver):
+        base.get_visible_element(driver, self.text_edit_service_area)
+
+    def click_list_service_area(self, driver):
+        base.move_to_element_and_click(driver, self.list_service_area)
+
+    def click_add_service_area(self, driver):
+        base.move_to_element_and_click(driver, self.fas_fa_angle_right)
+
+    def click_btn_company_exit_form(self, driver):
+        base.move_to_element_and_click(driver, self.btn_company_exit_form)
+
+    def count_elem_grid_company(self, driver):
+        return len(base.get_web_elements(driver, self.grid_company))
+
+    def click_form_rename_company(self, driver):
+        base.move_to_element_and_click(driver, self.fas_fa_plus_company)
+
+    def insert_value_field_rename_company(self, driver, value):
+        elem = base.move_to_element_and_click(driver, self.inputs_rename_company, index=1)
+        elem.send_keys(value)
+
+    def insert_value_field_shortname_company(self, driver, value):
+        elem = base.move_to_element_and_click(driver, self.inputs_rename_company, index=2)
+        elem.send_keys(value)
+
+    def insert_value_rename_company_date(self, driver, value):
+        elem = base.move_to_element_and_click(driver, self.input_rename_company_date)
+        elem.send_keys(value)
+
+    def insert_input_textfield_rename_company(self, driver, value):
+        base.get_web_elements(driver, self.input_textfield_rename_company)[13].send_keys(value)
+
+    def check_text_rename_company(self, driver, text):
+        base.get_element_containing_text(driver, text)
+
+    def visible_form_edit_rename_company(self, driver):
+        base.get_visible_element(driver, self.text_edit_rename_company)
+
+    def click_tab_doc_company(self, driver):
+        base.move_to_element_and_click(driver, self.tab_doc_company)
+
+    def click_form_doc_company(self, driver):
+        base.move_to_element_and_click(driver, self.fas_fa_plus_company, index=1)
+
+    def visible_form_scan_doc_company(self, driver):
+        base.get_visible_element(driver, self.text_scan_doc_company)
+
+    def click_btn_add_scan_doc(self, driver):
+        base.move_to_element_and_click(driver, self.btn_add_scan_doc)
+
+    def click_btn_add_file(self, driver):
+        base.move_to_element_and_click(driver, self.btn_add_file)
+
+    def insert_value_input_select_file(self, driver, value):
+        elem = base.move_to_element_and_click(driver, self.input_select_file)
+        elem.send_keys(value)

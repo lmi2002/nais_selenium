@@ -13,9 +13,6 @@ class AuthPage(AuthLocator):
     def get_entry(self, driver):
         return base.get_web_element(driver, self.entry)
 
-    # def click_input_type_key(self, driver):
-    #     base.move_to_element_and_click(driver, self.input_type_key)
-
     def insert_input_select_file(self, driver, value):
         base.get_web_element(driver, self.input_select_file).send_keys(value)
 
@@ -35,14 +32,22 @@ class AuthPage(AuthLocator):
         base.get_visible_element(driver, self.div_is_focus)
 
     @staticmethod
-    def set_attr_hover_first_element(driver, num_elem):
-        driver.execute_script("document.getElementsByTagName('li')['{num_elem}'].setAttribute('class', 'hover')".format(
-            num_elem=num_elem))
+    def set_attr_hover_first_element(driver, num):
+        driver.execute_script(
+            "document.querySelectorAll('div[x-placement=\"bottom-start\"] li span')[{num}].setAttribute('class', 'hover')".format(
+                num=num))
 
     @staticmethod
-    def select_type_key_list_first_element(driver, num_elem):
-        driver.execute_script("document.getElementsByTagName('li')['{num_elem}'].click()".format(
-            num_elem=num_elem))
+    def set_attr_selected_first_element(driver, num):
+        driver.execute_script(
+            "document.querySelectorAll('div[x-placement=\"bottom-start\"] li span')[{num}].setAttribute('class', 'selected')".format(
+                num=num))
+
+    @staticmethod
+    def select_type_key_list_first_element(driver, num):
+        driver.execute_script(
+            "document.querySelectorAll('div[x-placement=\"bottom-start\"] li span')[{num}].click()".format(
+                num=num))
 
     def visible_el_popup_parent_hidden(self, driver):
         base.get_visible_element(driver, self.el_popup_parent_hidden)
@@ -70,7 +75,8 @@ class AuthPage(AuthLocator):
         base.get_visible_element(driver, self.el_select_dropdown_empty)
 
     def check_text_message_invalid_passw_of_key(self, driver):
-        base.check_text_present_in_element(driver, self.ub_dialog_break_word, "Виникла помилка при відкритті особистого ключа (невірний пароль чи ключ пошкоджений)")
+        base.check_text_present_in_element(driver, self.ub_dialog_break_word,
+                                           "Виникла помилка при відкритті особистого ключа (невірний пароль чи ключ пошкоджений)")
 
     def visible_entry(self, driver):
         base.get_visible_element(driver, self.entry)

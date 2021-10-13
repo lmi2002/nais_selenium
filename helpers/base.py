@@ -192,6 +192,7 @@ def move_to_element_and_click(driver, item, index=None):
     else:
         elem = get_web_elements(driver, item)[index]
     ActionChains(driver).move_to_element(elem).click().perform()
+    return elem
 
 
 def double_click_element(driver, item):

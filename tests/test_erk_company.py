@@ -1,21 +1,25 @@
 import time
 import pytest
 import allure
+from helpers.func import get_data_tomorrow
 
 from service.auth.methods.auth_method import AuthMethod
 from service.erk.pages.common_page import ErkCommonPage
 from service.erk.pages.company_page import ErkCompanyPage
+from service.erk.pages.employee_page import ErkEmployeePage
 from service.erk.pages.main_page import ErkMainPage
 from settings import setting_erk_data_info
 
 
 @allure.severity(allure.severity_level.NORMAL)
-class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage):
+class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, ErkEmployeePage):
+    dict_company = {}
+    dict_company['company_name'] = setting_erk_data_info.company['operation_company_name']
 
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_company
-    def test_open_page_company(self, start_session):
+    def test_create_company(self, start_session):
         browser = start_session
         self.click_desktop_select_button(browser)
         self.click_u_desktop_drawer_item_title(browser)
@@ -25,32 +29,162 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage):
         self.click_sublabel_operation_company(browser)
         self.visible_short_name(browser)
         self.click_btn_menu_add(browser)
-        import pdb;
-        pdb.set_trace()
         self.click_field_operation_company_category(browser)
-        self.insert_value_operation_company_category(browser, setting_erk_data_info.company['operation_company_category'])
+
+        self.insert_value_field_operation_category_name(browser,
+                                                        setting_erk_data_info.company['operation_company_category'])
+        time.sleep(2)
         self.select_operation_category_name(browser)
-        self.insert_value_operation_company_name(browser, setting_erk_data_info.company['operation_company_name'])
-        self.insert_value_operation_company_shortname(browser,
-                                                      setting_erk_data_info.company['operation_company_name'])
+        time.sleep(1)
+        self.insert_value_operation_company_name(browser, self.dict_company['company_name'])
+        self.insert_value_operation_company_shortname(browser, self.dict_company['company_name'])
         self.insert_value_operation_company_phone(browser, setting_erk_data_info.company['operation_company_phone'])
         self.insert_value_operation_company_edrpou(browser, setting_erk_data_info.company['operation_company_edrpou'])
         self.insert_value_operation_company_asfo(browser, setting_erk_data_info.company['operation_company_asfo'])
-        self.click_operation_company_locality(browser)
         self.insert_value_operation_company_locality(browser,
                                                      setting_erk_data_info.company['operation_company_locality'])
+        time.sleep(2)
         self.select_operation_company_locality(browser)
         self.click_operation_company_region(browser)
-        self.select_peration_company_region(browser)
-        self.insert_value_operation_company_post_index(browser,
-                                                       setting_erk_data_info.company['operation_company_post_index'])
-        self.insert_value_operation_company_asfo(browser, setting_erk_data_info.company['operation_company_asfo'])
-        self.insert_value_insert_value_operation_company_post_address(browser, setting_erk_data_info.company[
-            'operation_company_post_address'])
-        self.insert_value_operation_company_post_street(browser,
-                                                        setting_erk_data_info.company['operation_company_post_street'])
+        self.insert_value_field_operation_category_region(browser,
+                                                          setting_erk_data_info.company['operation_company_region'])
+        time.sleep(2)
+        self.select_operation_company_region(browser)
 
-        self.click_operation_company_locality(browser)
-        self.select_operation_company_locality(browser)
-        self.click_operation_company_region(browser)
-        self.select_peration_company_region(browser)
+        self.insert_value_operation_company_address_index(browser,
+                                                          setting_erk_data_info.company['operation_company_index'])
+        self.insert_value_field_operation_category_address_address(browser,
+                                                                   setting_erk_data_info.company[
+                                                                       'operation_company_address'])
+        time.sleep(2)
+        self.select_operation_company_address_address(browser)
+
+        self.insert_value_operation_company_address_street(browser,
+                                                           setting_erk_data_info.company['operation_company_street'])
+
+        self.click_operation_company_post(browser)
+
+        self.insert_value_operation_company_post_index(browser, setting_erk_data_info.company[
+            'operation_company_index'])
+
+        self.insert_value_field_operation_company_post_address(browser, setting_erk_data_info.company[
+            'operation_company_address'])
+
+        time.sleep(2)
+        self.select_operation_company_post_address(browser)
+
+        self.insert_value_operation_company_post_street(browser,
+                                                        setting_erk_data_info.company['operation_company_street'])
+
+        self.click_operation_company_subord(browser)
+        self.insert_value_operation_company_subord(browser, setting_erk_data_info.company['operation_company_subord'])
+        self.select_operation_company_subord_list(browser)
+
+        self.click_btn_save(browser)
+        time.sleep(2)
+
+    @pytest.mark.erk
+    @pytest.mark.admin
+    # @pytest.mark.erk_company
+    def test_add_service_area(self, start_session):
+        browser = start_session
+        self.click_tab_service_area(browser)
+        self.click_btn_edit_service_area(browser)
+        self.visible_text_edit_service_area(browser)
+        self.click_list_service_area(browser)
+        self.click_add_service_area(browser)
+        self.click_btn_company_exit_form(browser)
+        self.click_btn_save(browser)
+        assert self.count_elem_grid_company(browser) == 1
+
+    @pytest.mark.erk
+    @pytest.mark.admin
+    # @pytest.mark.erk_company
+    def test_rename_company(self, start_session):
+        browser = start_session
+        self.click_tab_rename_company(browser)
+
+        self.click_form_rename_company(browser)
+        self.visible_form_edit_rename_company(browser)
+        self.insert_value_field_rename_company(browser, '{new}_{name}'.format(new="Переименование",
+                                                                              name=self.dict_company[
+                                                                                  'company_name']))
+        self.insert_value_field_shortname_company(browser, '{new}_{name}'.format(new="Переименование",
+                                                                                 name=self.dict_company[
+                                                                                     'company_name']))
+        self.insert_value_rename_company_date(browser, get_data_tomorrow())
+        self.insert_input_textfield_rename_company(browser, 'Автотест')
+        self.click_btn_company_exit_form(browser)
+        self.check_text_rename_company(browser, '{new}_{name}'.format(new="Переименование",
+                                                                      name=self.dict_company[
+                                                                          'company_name']))
+
+    # Не доделан!
+    @pytest.mark.skip
+    @pytest.mark.erk
+    @pytest.mark.admin
+    @pytest.mark.erk_company
+    def test_add_doc_company(self, start_session):
+        browser = start_session
+        self.click_tab_doc_company(browser)
+        self.click_form_doc_company(browser)
+        self.visible_form_scan_doc_company(browser)
+        self.click_btn_add_scan_doc(browser)
+        self.click_btn_add_file(browser)
+        self.insert_value_input_select_file(browser, "122")
+
+    @pytest.mark.erk
+    @pytest.mark.admin
+    @pytest.mark.erk_company
+    def test_add_employee_company(self, start_session):
+        browser = start_session
+        self.click_tab_employee(browser)
+        self.click_form_employee(browser)
+        self.visible_form_edit_employee(browser)
+        self.insert_value_field_category_employee(browser,
+                                                  setting_erk_data_info.employee['category_employee'])
+        self.select_category_employee_list(browser)
+        self.insert_value_field_last_name_employee(browser, setting_erk_data_info.employee[
+            'last_name_employee'])
+        self.insert_value_field_first_name_employee(browser, setting_erk_data_info.employee[
+            'first_name_employee'])
+        self.insert_value_field_father_name_employee(browser, setting_erk_data_info.employee[
+            'father_name_employee'])
+        self.insert_value_field_position_employee(browser,
+                                                  setting_erk_data_info.employee['position_employee'])
+        self.select_position_employee_list(browser)
+        self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_employee'])
+        self.insert_value_field_asfo_employee(browser, setting_erk_data_info.employee['asfo_employee'])
+        self.insert_value_field_license_employee(browser,
+                                                 setting_erk_data_info.employee['code_employee'])
+        self.insert_value_field_phone_employee(browser, setting_erk_data_info.employee['phone_employee'])
+        self.insert_value_field_additional_employee(browser, setting_erk_data_info.employee['additional_employee'])
+
+        self.click_tab_attributes_employee(browser)
+
+        self.double_click_date_start_status_attributes_employee(browser)
+        self.click_btn_admit_employee(browser)
+
+        self.double_click_date_licence_attributes_employee(browser)
+        self.click_btn_admit_employee(browser)
+
+        import pdb;
+        pdb.set_trace()
+        self.double_click_operator_registrar_attributes_employee(browser)
+        self.insert_value_field_value_attributes_employee(browser,
+                                                          setting_erk_data_info.employee[
+                                                              'value_operator_registrar_attributes_employee'])
+        self.click_btn_admit_employee(browser)
+
+        self.double_click_notarius_status_attributes_employee(browser)
+        self.click_field_value_attributes_employee(browser)
+        self.values_attributes_employee(browser)
+        self.click_btn_admit_employee(browser)
+
+        self.double_click_notarius_position_attributes_employee(browser)
+        self.click_field_value_attributes_employee(browser)
+        self.values_attributes_employee(browser)
+        self.click_btn_admit_employee(browser)
+
+        self.click_btn_save_form_employee(browser)
+        time.sleep(2)
