@@ -1,8 +1,9 @@
 import time
-import pytest
-import allure
-from helpers.func import get_data_tomorrow
 
+import allure
+import pytest
+
+from helpers.func import get_data_tomorrow
 from service.auth.methods.auth_method import AuthMethod
 from service.erk.pages.common_page import ErkCommonPage
 from service.erk.pages.company_page import ErkCompanyPage
@@ -29,6 +30,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.click_sublabel_operation_company(browser)
         self.visible_short_name(browser)
         self.click_btn_menu_add(browser)
+        self.visible_tab_general_statements_company(browser)
         self.click_field_operation_company_category(browser)
 
         self.insert_value_field_operation_category_name(browser,
@@ -81,11 +83,12 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.select_operation_company_subord_list(browser)
 
         self.click_btn_save(browser)
-        time.sleep(2)
+        time.sleep(4)
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
-    # @pytest.mark.erk_company
+    @pytest.mark.erk_company
     def test_add_service_area(self, start_session):
         browser = start_session
         self.click_tab_service_area(browser)
@@ -96,14 +99,14 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.click_btn_company_exit_form(browser)
         self.click_btn_save(browser)
         assert self.count_elem_grid_company(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
-    # @pytest.mark.erk_company
+    @pytest.mark.erk_company
     def test_rename_company(self, start_session):
         browser = start_session
         self.click_tab_rename_company(browser)
-
         self.click_form_rename_company(browser)
         self.visible_form_edit_rename_company(browser)
         self.insert_value_field_rename_company(browser, '{new}_{name}'.format(new="Переименование",
@@ -118,6 +121,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.check_text_rename_company(browser, '{new}_{name}'.format(new="Переименование",
                                                                       name=self.dict_company[
                                                                           'company_name']))
+        self.create_screenshot(browser)
 
     # Не доделан!
     @pytest.mark.skip
@@ -132,6 +136,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.click_btn_add_scan_doc(browser)
         self.click_btn_add_file(browser)
         self.insert_value_input_select_file(browser, "122")
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -143,7 +148,9 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.visible_form_edit_employee(browser)
         self.insert_value_field_category_employee(browser,
                                                   setting_erk_data_info.employee['category_employee'])
+        time.sleep(1)
         self.select_category_employee_list(browser)
+        time.sleep(1)
         self.insert_value_field_last_name_employee(browser, setting_erk_data_info.employee[
             'last_name_employee'])
         self.insert_value_field_first_name_employee(browser, setting_erk_data_info.employee[
@@ -152,6 +159,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
             'father_name_employee'])
         self.insert_value_field_position_employee(browser,
                                                   setting_erk_data_info.employee['position_employee'])
+        time.sleep(1)
         self.select_position_employee_list(browser)
         self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_employee'])
         self.insert_value_field_asfo_employee(browser, setting_erk_data_info.employee['asfo_employee'])
@@ -168,23 +176,34 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.double_click_date_licence_attributes_employee(browser)
         self.click_btn_admit_employee(browser)
 
-        import pdb;
-        pdb.set_trace()
         self.double_click_operator_registrar_attributes_employee(browser)
+        self.visible_form_attribute_employee(browser)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_operator_registrar_attributes_employee'])
+
+        self.select_operator_registrar_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
 
         self.double_click_notarius_status_attributes_employee(browser)
-        self.click_field_value_attributes_employee(browser)
-        self.values_attributes_employee(browser)
+        self.visible_form_attribute_employee(browser)
+        self.insert_value_field_value_attributes_employee(browser,
+                                                          setting_erk_data_info.employee[
+                                                              'value_notarius_status_attributes_employee'])
+
+        time.sleep(1)
+        self.select_notarius_status_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
 
         self.double_click_notarius_position_attributes_employee(browser)
-        self.click_field_value_attributes_employee(browser)
-        self.values_attributes_employee(browser)
+        self.visible_form_attribute_employee(browser)
+        self.insert_value_field_value_attributes_employee(browser,
+                                                          setting_erk_data_info.employee[
+                                                              'value_notarius_position_attributes_employee'])
+        time.sleep(1)
+        self.select_notarius_position_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
-
-        self.click_btn_save_form_employee(browser)
-        time.sleep(2)
+        self.click_btn_save_and_close_employee(browser)
+        self.check_invisible_form_edit_employee(browser)
+        self.check_text_fio_employee(browser)
+        self.create_screenshot(browser)

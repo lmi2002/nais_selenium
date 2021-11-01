@@ -1,6 +1,8 @@
 import time
 import os
 
+import allure
+
 from helpers.func import extract_text_from_pdf
 from service.auth.methods.auth_method import AuthMethod
 from service.drrp.methods.block_address_onm import BlockAddressOnm
@@ -15,8 +17,10 @@ from service.drrp.pages.statement_page import DrrpFormRequestEdrsrPage
 from settings.setting_data_info import data_info
 
 
+@allure.severity(allure.severity_level.NORMAL)
 class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, DrrpBlockDocument,
-                   DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpBlockCommonInfo, DrrpFormRequestEdrsrPage):
+                   DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpBlockCommonInfo,
+                   DrrpFormRequestEdrsrPage):
 
     def test_exchange_dzk(self, start_browser_with_login):
         browser = start_browser_with_login
@@ -64,7 +68,6 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
         self.click_close_form(browser)
 
     def test_exchange_edrsr(self, start_browser_with_login):
-
         browser = start_browser_with_login
         statement = 'ownership'
 

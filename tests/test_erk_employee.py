@@ -1,6 +1,5 @@
-import time
-import pytest
 import allure
+import pytest
 
 from service.auth.methods.auth_method import AuthMethod
 from service.erk.pages.main_page import ErkMainPage
@@ -20,4 +19,3 @@ class TestErkEmployee(AuthMethod, ErkMainPage):
         browser = start_session
         self.click_sublabel_employee(browser)
         self.click_btn_add_emloyee(browser)
-
