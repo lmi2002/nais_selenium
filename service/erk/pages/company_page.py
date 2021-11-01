@@ -7,6 +7,9 @@ class ErkCompanyPage(ErkCompanyLocator, ErkCommonLocator):
     def visible_short_name(self, driver):
         base.get_visible_element(driver, self.operation_company_short_name)
 
+    def visible_tab_general_statements_company(self, driver):
+        base.get_visible_element(driver, self.tab_general_statements_company)
+
     def click_field_operation_company_category(self, driver):
         base.move_to_element_and_click(driver, self.operation_company_ext_gen, index=1)
 

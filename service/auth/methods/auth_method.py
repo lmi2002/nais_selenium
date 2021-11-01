@@ -7,9 +7,10 @@ from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
 from settings.setting_browser import SettingsBrowser
 from settings.setting_project import *
+from settings.setting_sreenshots import SettingsScreenshots
 
 
-class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage):
+class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots):
 
     def login(self, driver):
         self.get_user(driver).send_keys(project_rule[PROJECT][RULE]['login'])
@@ -37,31 +38,52 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage):
     @pytest.fixture(scope="session")
     def start_session(self):
         browser = self.desktop_browser()
-        self.login(browser)
-        yield browser
-        self.logout(browser)
-        browser.quit()
+        try:
+            self.login(browser)
+            yield browser
+        except Exception:
+            browser.quit()
+        else:
+            browser.quit()
 
-    @pytest.fixture()
+    @pytest.fixture
     def start_browser_with_login(self):
-        browser = self.desktop_browser()
-        self.login(browser)
-        yield browser
-        # self.logout(browser)
-        # browser.quit()
 
-    @pytest.fixture()
+        browser = self.desktop_browser()
+        try:
+            self.login(browser)
+            yield browser
+        except Exception:
+            self.create_screenshot(browser)
+        else:
+            self.create_screenshot(browser)
+        finally:
+            browser.quit()
+
+    @pytest.fixture
     def start_browser(self):
         browser = self.desktop_browser()
-        yield browser
-        self.logout(browser)
-        browser.quit()
+        try:
+            yield browser
+            self.logout(browser)
+        except Exception:
+            self.create_screenshot(browser)
+        else:
+            self.create_screenshot(browser)
+        finally:
+            browser.quit()
 
-    @pytest.fixture()
+    @pytest.fixture
     def start_browser_auth(self):
         browser = self.desktop_browser()
-        yield browser
-        browser.quit()
+        try:
+            yield browser
+        except Exception:
+            self.create_screenshot(browser)
+        else:
+            self.create_screenshot(browser)
+        finally:
+            browser.quit()
 
     def login_auth_first_level(self, driver, name_test):
         self.get_user(driver).send_keys(data_auth_test[name_test]['login'])

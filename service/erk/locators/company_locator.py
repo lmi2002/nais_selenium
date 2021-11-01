@@ -54,3 +54,4 @@ class ErkCompanyLocator:
     btn_add_scan_doc = (By.XPATH, '//span/span[text()="Додати електронну копію"]')
     btn_add_file = (By.XPATH, '//span[text()="З файлу"]/..')
     input_select_file = (By.CSS_SELECTOR, 'input[readonly="readonly"].ub-require-control-u')
+    tab_general_statements_company = (By.XPATH, '//span[text()="Загальні відомості"]/..')

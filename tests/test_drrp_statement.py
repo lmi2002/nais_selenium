@@ -1,4 +1,6 @@
 import time
+
+import allure
 import pytest
 
 from helpers.func import get_data_today
@@ -21,6 +23,7 @@ from service.drrp.pages.perform_action_menu_page import DrrpPerformActionMenuPag
 from service.drrp.pages.search_statement_page import DrrpSearchStatementPage
 
 
+@allure.severity(allure.severity_level.NORMAL)
 class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBlockOnm,
                         DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpUbdocument, DrrpBlockCommonInfo,
                         DrrpSearchStatementPage, DrrpPerformActionMenuPage, DrrpDecisionStatementMethod):

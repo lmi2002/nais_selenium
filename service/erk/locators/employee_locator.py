@@ -26,4 +26,21 @@ class ErkEmployeeLocator:
     notarius_status_attributes_employee = (By.XPATH, '//div[text()="Статус нотаріуса"]')
     notarius_position_attributes_employee = (By.XPATH, '//div[text()="Посада нотаріуса"]')
     field_value_attributes_employee = (By.CSS_SELECTOR, 'span[id*=ext-comp] input[id*=ubcombobox]')
+    operator_registrar_attributes_employee_list = (
+        By.XPATH, '//li/span[text()="{value_operator_registrar_attributes_employee}"]'.format(
+            value_operator_registrar_attributes_employee=setting_erk_data_info.employee[
+                "value_operator_registrar_attributes_employee"]))
+
+    form_attribute_employee = (By.CSS_SELECTOR, 'div[id*=ub-wnd-erc_obj_cp_values].x-window')
+    notarius_status_attributes_employee_list = (
+        By.XPATH, '//li/span[text()="{value_notarius_status_attributes_employee}"]'.format(
+            value_notarius_status_attributes_employee=setting_erk_data_info.employee[
+                "value_notarius_status_attributes_employee"]))
+
+    notarius_position_attributes_employee_list = (
+        By.XPATH, '//li/span[text()="{value_notarius_position_attributes_employee}"]'.format(
+            value_notarius_position_attributes_employee=setting_erk_data_info.employee[
+                "value_notarius_position_attributes_employee"]))
+
+    btn_save_and_close_employee = (By.CSS_SELECTOR, 'a[data-qtip="Зберегти та закрити"]')
 

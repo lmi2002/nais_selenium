@@ -2,6 +2,7 @@ import re
 import datetime
 import time
 import io
+
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
@@ -16,7 +17,7 @@ def replace_all_sym(string, sym):
     return re.sub('\\W', sym, string)
 
 
-def replace_sym(string, lst):
+def replace_symb(string, lst):
     """
         Изменяет символы на необходимые символы по очередности.
         lst = содержит элементы типа tuple. В tuple содержится 2 элемента:

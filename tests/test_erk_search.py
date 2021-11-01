@@ -1,6 +1,5 @@
-import time
-import pytest
 import allure
+import pytest
 
 from service.auth.methods.auth_method import AuthMethod
 from service.erk.pages.common_page import ErkCommonPage
@@ -24,6 +23,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.visible_label_search_is_opened(browser)
         self.click_sublabel_company(browser)
         assert self.visible_found_companyes(browser)
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -33,6 +33,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_name(browser, setting_erk_data_info.company['name'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -44,6 +45,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_code(browser, setting_erk_data_info.company['code'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -56,6 +58,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_category_lawyers(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.skip
     @pytest.mark.erk
@@ -69,6 +72,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_company_state_is_active(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -81,6 +85,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_region_kiev(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -93,6 +98,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_company_address(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -104,6 +110,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_rk(browser, setting_erk_data_info.company['rk'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.skip
     @pytest.mark.erk
@@ -118,6 +125,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_subord_list(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -129,6 +137,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_asfo(browser, setting_erk_data_info.company['asfo'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -140,6 +149,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_index(browser, setting_erk_data_info.company['index'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 6
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -151,6 +161,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_street(browser, setting_erk_data_info.company['street'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 11
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -160,6 +171,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_close_tab_admin_first(browser)
         self.click_sublabel_employee(browser)
         assert self.visible_found_employees(browser)
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -171,6 +183,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_employee_father_name(browser, setting_erk_data_info.employee['father_name'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -182,6 +195,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_employee_license(browser, setting_erk_data_info.employee['license'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.skip
     @pytest.mark.erk
@@ -195,6 +209,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_employee_state_is_active(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -207,6 +222,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_employee_category_gov_notar(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -219,6 +235,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_employee_position_engineer(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -230,6 +247,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_employee_code(browser, setting_erk_data_info.employee['code'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -241,6 +259,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_asfo(browser, setting_erk_data_info.employee['asfo'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -250,6 +269,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_close_tab_admin_first(browser)
         self.click_sublabel_user(browser)
         assert self.visible_found_users(browser)
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -261,6 +281,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_name(browser, setting_erk_data_info.user['login'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     # Тест забирает всю память
     @pytest.mark.skip
@@ -275,6 +296,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_user_state(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     # Тест забирает всю память
     @pytest.mark.skip
@@ -289,6 +311,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_user_user_web(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -302,6 +325,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_field_user_category(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -315,6 +339,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_field_user_role_rk(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -328,6 +353,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_field_user_role_web(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -337,6 +363,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.click_close_tab_admin_first(browser)
         self.click_sublabel_search_statement(browser)
         assert self.visible_found_companyes(browser)
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -348,6 +375,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_statement_num(browser, setting_erk_data_info.statement['num'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) == 1
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -360,6 +388,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_statement_employee_list(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -371,6 +400,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_employee_father_name(browser, setting_erk_data_info.statement['father_name'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -383,6 +413,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_statement_user_list(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -395,6 +426,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.insert_value_field_statement_end_date(browser, setting_erk_data_info.statement['end_date'])
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -407,6 +439,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_statement_state(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
     @pytest.mark.erk
     @pytest.mark.admin
@@ -419,7 +452,9 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_statement_progress(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)
 
+    @pytest.skip
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_search
@@ -431,3 +466,4 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.select_statement_blocked(browser)
         self.click_btn_search(browser)
         assert self.count_elem_tr_ubtableview(browser) > 0
+        self.create_screenshot(browser)

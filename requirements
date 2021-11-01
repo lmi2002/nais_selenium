@@ -4,7 +4,6 @@ selenium==3.141.0
 setuptools==50.3.2
 urllib3==1.26.2
 allure-pytest==2.9.42
-allure-python-commons==2.9.42
 requests==2.25.1
 pytest-xvfb==2.0.0
 pytest-xdist==1.30.0

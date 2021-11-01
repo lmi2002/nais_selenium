@@ -1,11 +1,10 @@
 from helpers import base
 from service.erk.locators.common_locator import ErkCommonLocator
 from service.erk.locators.employee_locator import ErkEmployeeLocator
+from settings import setting_erk_data_info
 
 
 class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
-    # def click_btn_add_emloyee(self, driver):
-    #     base.move_to_element_and_click(driver, self.fas_fa_plus_employee)
 
     def click_tab_employee(self, driver):
         base.move_to_element_and_click(driver, self.tab_employee)
@@ -83,4 +82,28 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
         elem = base.move_to_element_and_click(driver, self.field_value_attributes_employee, index=1)
         elem.send_keys(value)
 
+    def select_operator_registrar_attributes_employee_list(self, driver):
+        base.move_to_element_and_click(driver, self.operator_registrar_attributes_employee_list)
 
+    def visible_form_attribute_employee(self, driver):
+        base.get_visible_element(driver, self.form_attribute_employee)
+
+    def select_notarius_status_attributes_employee_list(self, driver):
+        base.move_to_element_and_click(driver, self.notarius_status_attributes_employee_list)
+
+    def select_notarius_position_attributes_employee_list(self, driver):
+        base.move_to_element_and_click(driver, self.notarius_position_attributes_employee_list, index=1)
+
+    def click_btn_save_and_close_employee(self, driver):
+        base.move_to_element_and_click(driver, self.btn_save_and_close_employee, index=1)
+
+    def check_invisible_form_edit_employee(self, driver):
+        base.check_invisible_element(driver, self.text_edit_employee)
+
+    def check_text_fio_employee(self, driver):
+        base.get_element_containing_text(driver,
+                                         '{last_name_employee} {first_name_employee} {father_name_employee}'.format(
+                                             last_name_employee=setting_erk_data_info.employee['last_name_employee'],
+                                             first_name_employee=setting_erk_data_info.employee['first_name_employee'],
+                                             father_name_employee=setting_erk_data_info.employee[
+                                                 'father_name_employee']))
