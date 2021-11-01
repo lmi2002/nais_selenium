@@ -110,4 +110,3 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
         self.insert_value_form_request_edrsr_date(browser, data_info["request_edrsr"]["document_date"], 1)
         self.insert_value_form_request_edrsr_num(browser, data_info["request_edrsr"]["document_date"], 1)
 
-        c = 1
