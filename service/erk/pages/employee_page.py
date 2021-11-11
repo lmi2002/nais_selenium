@@ -10,7 +10,7 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
         base.move_to_element_and_click(driver, self.tab_employee)
 
     def click_form_employee(self, driver):
-        base.move_to_element_and_click(driver, self.fas_fa_plus_employee)
+        base.move_to_element_and_click(driver, self.fas_fa_plus_employee, index=1)
 
     def insert_value_field_category_employee(self, driver, value):
         base.get_web_elements(driver, self.field_category_employee)[1].send_keys(value)
@@ -112,11 +112,13 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def check_invisible_form_edit_employee(self, driver):
         base.check_invisible_element(driver, self.text_edit_employee)
 
-    def check_text_fio_employee(self, driver):
+    def check_text_fio_company_employee(self, driver):
         base.get_element_containing_text(driver,
-                                         '{last_name_employee} {first_name_employee} {father_name_employee}'.format(
-                                             last_name_employee=setting_erk_data_info.employee['last_name_employee'],
-                                             first_name_employee=setting_erk_data_info.employee['first_name_employee'],
+                                         '{last_name_company_employee} {first_name_company_employee} {father_name_employee}'.format(
+                                             last_name_company_employee=setting_erk_data_info.employee[
+                                                 'last_name_company_employee'],
+                                             first_name_company_employee=setting_erk_data_info.employee[
+                                                 'first_name_company_employee'],
                                              father_name_employee=setting_erk_data_info.employee[
                                                  'father_name_employee']))
 

@@ -169,7 +169,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
     def test_search_open_page_search_employee(self, start_session):
         browser = start_session
         self.click_close_tab_admin_first(browser)
-        self.click_sublabel_employee(browser)
+        self.click_search_sublabel_employee(browser)
         assert self.visible_found_employees(browser)
         self.create_screenshot(browser)
 
@@ -454,7 +454,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.skip
+    @pytest.mark.skip
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_search

@@ -204,17 +204,25 @@ def get_current_url(driver):
 
 
 def move_to_element(driver, item):
-    elem = get_web_element(driver, item)
-    ActionChains(driver).move_to_element(elem).perform()
+    try:
+        elem = get_web_element(driver, item)
+        ActionChains(driver).move_to_element(elem).perform()
+    except ElementNotInteractableException as e:
+        ssc.create_screenshot(driver)
+        raise ElementNotInteractableException(item, e)
 
 
 def move_to_element_and_click(driver, item, index=None):
-    if index is None:
-        elem = get_web_element(driver, item)
-    else:
-        elem = get_web_elements(driver, item)[index]
-    ActionChains(driver).move_to_element(elem).click().perform()
-    return elem
+    try:
+        if index is None:
+            elem = get_web_element(driver, item)
+        else:
+            elem = get_web_elements(driver, item)[index]
+        ActionChains(driver).move_to_element(elem).click().perform()
+        return elem
+    except ElementNotInteractableException as e:
+        ssc.create_screenshot(driver)
+        raise ElementNotInteractableException(item, e)
 
 
 def double_click_element(driver, item):
