@@ -18,6 +18,7 @@ class ErkEmployeeLocator:
     field_additional_employee = (By.CSS_SELECTOR, 'input[name="additional"]')
     inputs_name_employee = (By.CSS_SELECTOR, 'input[id*="textfield"].ub-require-control-u')
     text_edit_employee = (By.XPATH, '//span[text()="Співробітник"]')
+    text_edit_operation_employee = (By.XPATH, '//span[contains(@class,"x-header-text") and text()="Співробітник"]')
     field_phone_employee = (By.CSS_SELECTOR, 'input[name="phone"]')
     tab_attributes_employee = (By.XPATH, '//span[@class="x-tab-button"]/span[text()="Атрибути"]')
     date_start_status_attributes_employee = (By.XPATH, '//div[text()="Дата набуття статусу"]')
@@ -43,4 +44,15 @@ class ErkEmployeeLocator:
                 "value_notarius_position_attributes_employee"]))
 
     btn_save_and_close_employee = (By.CSS_SELECTOR, 'a[data-qtip="Зберегти та закрити"]')
-
+    operation_employee_company = (By.CSS_SELECTOR, 'input[name="objObjID"]')
+    operation_employee_company_list = (By.XPATH, '//li//span[text()="{operation_employee_company}"]'.format(
+        operation_employee_company=setting_erk_data_info.employee["operation_employee_company"]))
+    operation_employee_category_list = (By.XPATH, '//li/span[text()="{operation_employee_category}"]'.format(
+        operation_employee_category=setting_erk_data_info.employee["operation_employee_category"]))
+    operation_employee_position_list = (By.XPATH, '//li/span[text()="{operation_employee_position}"]'.format(
+        operation_employee_position=setting_erk_data_info.employee["operation_employee_position"]))
+    date_open_attributes_operation_employee = (By.XPATH, '//div[text()="Дата відкриття"]')
+    region_attributes_operation_employee = (By.XPATH, '//div[text()="Регіон"]')
+    region_attributes_operation_employee_list = (By.XPATH, '//li[text()="{operation_employee_region}"]'.format(
+        operation_employee_region=setting_erk_data_info.employee["operation_employee_region"]))
+    operation_employee_x_form_trigger_first = (By.CLASS_NAME, 'x-form-trigger-first')

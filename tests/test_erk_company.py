@@ -160,7 +160,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.insert_value_field_position_employee(browser,
                                                   setting_erk_data_info.employee['position_employee'])
         time.sleep(1)
-        self.select_position_employee_list(browser)
+        self.select_operation_employee_position_list(browser)
         self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_employee'])
         self.insert_value_field_asfo_employee(browser, setting_erk_data_info.employee['asfo_employee'])
         self.insert_value_field_license_employee(browser,
