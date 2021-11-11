@@ -32,7 +32,8 @@ class ErkEmployeeLocator:
             value_operator_registrar_attributes_employee=setting_erk_data_info.employee[
                 "value_operator_registrar_attributes_employee"]))
 
-    form_attribute_employee = (By.CSS_SELECTOR, 'div[id*=ub-wnd-erc_obj_cp_values].x-window')
+    # form_attribute_employee = (By.CSS_SELECTOR, 'div[id*=ub-wnd-erc_obj_cp_values].x-window')
+    form_attribute_employee = (By.XPATH, '//span[contains(@class,"x-header-text") and text()="Атрибут"]')
     notarius_status_attributes_employee_list = (
         By.XPATH, '//li/span[text()="{value_notarius_status_attributes_employee}"]'.format(
             value_notarius_status_attributes_employee=setting_erk_data_info.employee[

@@ -144,6 +144,8 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
     def test_add_employee_company(self, start_session):
         browser = start_session
         self.click_tab_employee(browser)
+        # import pdb;
+        # pdb.set_trace()
         self.click_form_employee(browser)
         self.visible_form_edit_employee(browser)
         self.insert_value_field_category_employee(browser,
@@ -152,15 +154,15 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.select_category_employee_list(browser)
         time.sleep(1)
         self.insert_value_field_last_name_employee(browser, setting_erk_data_info.employee[
-            'last_name_employee'])
+            'last_name_company_employee'])
         self.insert_value_field_first_name_employee(browser, setting_erk_data_info.employee[
-            'first_name_employee'])
+            'first_name_company_employee'])
         self.insert_value_field_father_name_employee(browser, setting_erk_data_info.employee[
             'father_name_employee'])
         self.insert_value_field_position_employee(browser,
                                                   setting_erk_data_info.employee['position_employee'])
         time.sleep(1)
-        self.select_operation_employee_position_list(browser)
+        self.select_position_employee_list(browser)
         self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_employee'])
         self.insert_value_field_asfo_employee(browser, setting_erk_data_info.employee['asfo_employee'])
         self.insert_value_field_license_employee(browser,
@@ -205,5 +207,5 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.click_btn_admit_employee(browser)
         self.click_btn_save_and_close_employee(browser)
         self.check_invisible_form_edit_employee(browser)
-        self.check_text_fio_employee(browser)
+        self.check_text_fio_company_employee(browser)
         self.create_screenshot(browser)
