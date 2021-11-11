@@ -19,7 +19,7 @@ python3.6 -m venv .virtualenv
 # -x  Print commands and their arguments as they are executed.
 # set -ex
 
-# Install requirements
+# Install requirements.txt
 ./.virtualenv/bin/python3.6 -m pip install -r ./requirements
 
 # 3 Step

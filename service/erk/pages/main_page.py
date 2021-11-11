@@ -22,7 +22,7 @@ class ErkMainPage(ErkMainLocator):
         base.get_visible_element(driver, self.desktop_select_button_users)
 
     def click_sublabel_employee(self, driver):
-        base.move_to_element_and_click(driver, self.sublabel_employee, index=1)
+        base.move_to_element_and_click(driver, self.sublabel_employee, index=0)
 
     def click_sublabel_user(self, driver):
         base.move_to_element_and_click(driver, self.sublabel_user, index=1)
@@ -38,4 +38,8 @@ class ErkMainPage(ErkMainLocator):
 
     def click_sublabel_operation_company(self, driver):
         base.move_to_element_and_click(driver, self.sublabel_company)
+
+    def check_invisible_v_enter_active(self, driver):
+        base.check_invisible_element(driver, self.v_enter_active)
+
 

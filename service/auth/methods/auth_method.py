@@ -116,3 +116,4 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
         self.insert_input_select_file(driver, data_auth_test[name_test]['key_path'])
         self.insert_input_passw(driver, data_auth_test[name_test]['passw_key'])
         self.check_invisible_button_is_disabled(driver)
+

@@ -39,11 +39,20 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def insert_value_field_first_name_employee(self, driver, value):
         base.get_web_elements(driver, self.inputs_name_employee)[2].send_keys(value)
 
+    def insert_value_field_first_name_employee_employee(self, driver, value):
+        base.get_web_elements(driver, self.inputs_name_employee)[1].send_keys(value)
+
     def insert_value_field_last_name_employee(self, driver, value):
         base.get_web_elements(driver, self.inputs_name_employee)[1].send_keys(value)
 
+    def insert_value_field_last_name_employee_employee(self, driver, value):
+        base.get_web_elements(driver, self.inputs_name_employee)[0].send_keys(value)
+
     def insert_value_field_father_name_employee(self, driver, value):
         base.get_web_elements(driver, self.inputs_name_employee)[3].send_keys(value)
+
+    def insert_value_field_father_name_employee_employee(self, driver, value):
+        base.get_web_elements(driver, self.inputs_name_employee)[2].send_keys(value)
 
     def visible_form_edit_employee(self, driver):
         base.get_visible_element(driver, self.text_edit_employee)
@@ -97,6 +106,9 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def click_btn_save_and_close_employee(self, driver):
         base.move_to_element_and_click(driver, self.btn_save_and_close_employee, index=1)
 
+    def click_btn_save_and_close_operation_employee(self, driver):
+        base.move_to_element_and_click(driver, self.btn_save_and_close_employee)
+
     def check_invisible_form_edit_employee(self, driver):
         base.check_invisible_element(driver, self.text_edit_employee)
 
@@ -107,3 +119,42 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
                                              first_name_employee=setting_erk_data_info.employee['first_name_employee'],
                                              father_name_employee=setting_erk_data_info.employee[
                                                  'father_name_employee']))
+
+    def visible_operation_employee(self, driver):
+        base.get_visible_element(driver, self.text_edit_operation_employee)
+
+    def insert_value_operation_employee_company(self, driver, value):
+        base.get_web_element(driver, self.operation_employee_company).send_keys(value)
+
+    def select_operation_employee_company_list(self, driver):
+        base.move_to_element_and_click(driver, self.operation_employee_company_list)
+
+    def insert_value_operation_employee_category(self, driver, value):
+        base.get_web_element(driver, self.field_category_employee).send_keys(value)
+
+    def select_operation_employee_category_list(self, driver):
+        base.move_to_element_and_click(driver, self.operation_employee_category_list)
+
+    def select_operation_employee_position_list(self, driver):
+        base.move_to_element_and_click(driver, self.operation_employee_position_list)
+
+    def insert_value_field_phone_operation_employee(self, driver, value):
+        base.get_web_element(driver, self.field_phone_employee).send_keys(value)
+
+    def insert_value_field_additional_operation_employee(self, driver, value):
+        base.get_web_element(driver, self.field_additional_employee).send_keys(value)
+
+    def click_tab_attributes_operation_employee(self, driver):
+        base.move_to_element_and_click(driver, self.tab_attributes_employee)
+
+    def double_click_date_open_attributes_operation_employee(self, driver):
+        base.double_click_element(driver, self.date_open_attributes_operation_employee)
+
+    def double_click_region_attributes_operation_employee(self, driver):
+        base.double_click_element(driver, self.region_attributes_operation_employee)
+
+    def select_operator_region_attributes_operation_employee_list(self, driver):
+        base.move_to_element_and_click(driver, self.region_attributes_operation_employee_list)
+
+    def click_operation_employee_x_form_trigger_first(self, driver):
+        base.move_to_element_and_click(driver, self.operation_employee_x_form_trigger_first, index=8)

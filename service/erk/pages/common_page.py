@@ -17,3 +17,4 @@ class ErkCommonPage(ErkCommonLocator):
 
     def click_btn_menu_add(self, driver):
         base.move_to_element_and_click(driver, self.btn_menu_add)
+

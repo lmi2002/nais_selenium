@@ -10,3 +10,4 @@ pytest-xdist==1.30.0
 pytest-check==0.3.7
 pytest-rerunfailures==10.0
 pdfminer.six==20201018
+bs4==0.0.1
