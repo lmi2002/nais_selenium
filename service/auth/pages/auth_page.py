@@ -4,8 +4,7 @@ from settings.setting_sreenshots import SettingsScreenshots
 
 
 class AuthPage(AuthLocator):
-    sc = SettingsScreenshots()
-
+    
     def get_user(self, driver):
         return base.get_web_element(driver, self.user)
 
