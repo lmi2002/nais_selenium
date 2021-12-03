@@ -5,12 +5,11 @@ import pytest
 
 from service.drrp.list_auth_test import message_text_invalid_cert_login_passw
 from service.auth.methods.auth_method import AuthMethod
-from settings.setting_sreenshots import SettingsScreenshots
 
 
 @allure.severity(allure.severity_level.NORMAL)
 class TestUbAuth(AuthMethod):
-    # ok
+
     @pytest.mark.auth
     def test_valid_login_passw(self, start_browser, request):
         browser = start_browser
@@ -22,7 +21,6 @@ class TestUbAuth(AuthMethod):
         self.check_visible_u_navbar_dropdown(browser)
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_empty_fields_login_passw(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -34,7 +32,6 @@ class TestUbAuth(AuthMethod):
         self.check_text_required_field_passw(browser)
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_empty_login(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -45,7 +42,6 @@ class TestUbAuth(AuthMethod):
         self.check_text_required_field_login(browser)
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_empty_passw(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -56,7 +52,6 @@ class TestUbAuth(AuthMethod):
         self.check_text_required_field_passw(browser)
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_invalid_login_passw(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -66,7 +61,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_empty_fields_second_level(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -75,7 +69,6 @@ class TestUbAuth(AuthMethod):
         assert self.get_attr_btn_load(browser) == 'true'
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_invalid_type_device(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -95,7 +88,6 @@ class TestUbAuth(AuthMethod):
         self.visible_el_select_dropdown_empty(browser)
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_invalid_key(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -105,7 +97,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_invalid_passw_key(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -117,7 +108,6 @@ class TestUbAuth(AuthMethod):
         self.check_text_message_invalid_passw_of_key(browser)
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_spec_char_in_login(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -127,7 +117,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_spec_char_in_passw(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -137,7 +126,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     # Только пробелы в поле
     @pytest.mark.auth
     def test_space_char_in_login(self, start_browser_auth, request):
@@ -148,7 +136,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     # Только пробелы в поле
     @pytest.mark.auth
     def test_space_char_in_passw(self, start_browser_auth, request):
@@ -159,7 +146,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     # Несколько пробелов в начале и в конце  текста
     @pytest.mark.auth
     def test_space_char_in_text_login(self, start_browser_auth, request):
@@ -172,7 +158,6 @@ class TestUbAuth(AuthMethod):
         self.check_visible_u_navbar_dropdown(browser)
         self.create_screenshot(browser)
 
-    # ok
     # Несколько пробелов в начале и в конце  текста
     @pytest.mark.auth
     def test_space_char_in_text_passw(self, start_browser_auth, request):
@@ -183,7 +168,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.skip
     @pytest.mark.auth
     def test_xss_in_login(self, start_browser_auth, request):
@@ -194,7 +178,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.skip
     @pytest.mark.auth
     def test_html_tags_in_login(self, start_browser_auth, request):
@@ -205,7 +188,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.skip
     @pytest.mark.auth
     def test_sql_in_login(self, start_browser_auth, request):
@@ -216,7 +198,6 @@ class TestUbAuth(AuthMethod):
         assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
-    # ok
     @pytest.mark.auth
     def test_back_page(self, start_browser_auth, request):
         browser = start_browser_auth
@@ -229,6 +210,3 @@ class TestUbAuth(AuthMethod):
         # Check
         self.visible_entry(browser)
         self.create_screenshot(browser)
-
-
-

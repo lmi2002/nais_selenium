@@ -3,6 +3,7 @@ import time
 import allure
 import pytest
 
+from helpers import func
 from helpers.func import get_data_tomorrow
 from service.auth.methods.auth_method import AuthMethod
 from service.erk.pages.common_page import ErkCommonPage
@@ -10,6 +11,7 @@ from service.erk.pages.company_page import ErkCompanyPage
 from service.erk.pages.employee_page import ErkEmployeePage
 from service.erk.pages.main_page import ErkMainPage
 from settings import setting_erk_data_info
+from settings.setting_project import REMOTE_SERVER
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -22,6 +24,8 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
     @pytest.mark.erk_company
     def test_create_company(self, start_session):
         browser = start_session
+        if func.get_host_name() == REMOTE_SERVER:
+            self.click_u_sidebar_collapse_button(browser)
         self.click_desktop_select_button(browser)
         self.click_u_desktop_drawer_item_title(browser)
         self.visible_desktop_select_button_users(browser)
@@ -163,7 +167,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
                                                   setting_erk_data_info.employee['position_employee'])
         time.sleep(1)
         self.select_position_employee_list(browser)
-        self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_employee'])
+        self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_company_employee'])
         self.insert_value_field_asfo_employee(browser, setting_erk_data_info.employee['asfo_employee'])
         self.insert_value_field_license_employee(browser,
                                                  setting_erk_data_info.employee['code_employee'])

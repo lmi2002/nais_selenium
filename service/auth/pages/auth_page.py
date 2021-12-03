@@ -1,9 +1,10 @@
 from helpers import base
 from service.auth.locators.auth_locator import AuthLocator
+from settings.setting_sreenshots import SettingsScreenshots
 
 
 class AuthPage(AuthLocator):
-
+    
     def get_user(self, driver):
         return base.get_web_element(driver, self.user)
 
@@ -52,8 +53,7 @@ class AuthPage(AuthLocator):
     def visible_el_popup_parent_hidden(self, driver):
         base.get_visible_element(driver, self.el_popup_parent_hidden)
 
-    @staticmethod
-    def click_input_type_key(driver):
+    def click_input_type_key(self, driver):
         driver.execute_script("document.getElementsByTagName('input')[2].click()")
 
     def check_text_in_ub_dialog_break_word(self, driver):
@@ -80,3 +80,6 @@ class AuthPage(AuthLocator):
 
     def visible_entry(self, driver):
         base.get_visible_element(driver, self.entry)
+
+    def click_btn_OK_install(self, driver):
+        base.move_to_element_and_click(driver, self.btn_OK_install)

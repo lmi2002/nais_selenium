@@ -2,6 +2,7 @@ import re
 import datetime
 import time
 import io
+import socket
 
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
@@ -63,3 +64,8 @@ def extract_text_from_pdf(pdf_path):
 
     if text:
         return text
+
+
+def get_host_name():
+    hostname = socket.gethostname()
+    return socket.gethostbyname(hostname)

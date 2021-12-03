@@ -16,3 +16,4 @@ class ErkMainLocator:
     sublabel_search_statement = (By.XPATH, '//ul/li[contains(@role,"menuitem")]/span[text()="Заявки"]')
     close_tab_admin = (By.CSS_SELECTOR, '.u-navbar__tab-close-button')
     v_enter_active = (By.CLASS_NAME, 'v-enter-active')
+    u_sidebar_collapse_button = (By.CLASS_NAME, 'u-sidebar__collapse-button')

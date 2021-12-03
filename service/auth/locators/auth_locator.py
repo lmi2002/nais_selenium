@@ -21,4 +21,4 @@ class AuthLocator:
     el_form_item_error = (By.CLASS_NAME, 'el-form-item__error')
     el_select_dropdown_empty = (By.CLASS_NAME, 'el-select-dropdown__empty')
     type_key_list_1 = (By.CSS_SELECTOR, '.el-scrollbar__view.el-select-dropdown__list')
-
+    btn_OK_install = (By.XPATH, '//*[contains(text(),"Ок")]/..')
