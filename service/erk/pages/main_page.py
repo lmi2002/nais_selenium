@@ -45,4 +45,7 @@ class ErkMainPage(ErkMainLocator):
     def check_invisible_v_enter_active(self, driver):
         base.check_invisible_element(driver, self.v_enter_active)
 
+    def click_u_sidebar_collapse_button(self, driver):
+        base.move_to_element_and_click(driver, self.u_sidebar_collapse_button)
+
 

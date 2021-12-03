@@ -10,7 +10,7 @@ import pytest
 class TestDrrpApi:
     path = 'https://register.test.nais.gov.ua/ubql'
 
-    authorization = 'UB 20d77559617a4910e654a9fd'  # Авторизируемся и берем в заголовке Authorization
+    authorization = 'UB ed81b15a61a7e5dcbb0d8c45'  # Авторизируемся и берем в заголовке Authorization
     accept = 'application/json, text/plain, */*'
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     content_type = 'application/json;charset=UTF-8'

@@ -59,7 +59,11 @@ def get_visible_elements(driver, item):
 
 
 def get_alert(driver):
-    return wait(driver).until(expected_conditions.alert_is_present())
+    try:
+        return wait(driver).until(expected_conditions.alert_is_present())
+    except TimeoutException as e:
+        ssc.create_screenshot(driver)
+        raise AlertNotFoundException('Alert,', e)
 
 
 def check_text_present_in_element(driver, item, text):

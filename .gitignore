@@ -18,3 +18,4 @@ tests/test_api.py
 allure/reports/*
 storages/files_pdf/*
 storages/pattern_pdf/*
+screenshots/

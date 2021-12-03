@@ -1,11 +1,13 @@
 import allure
 import pytest
 
+from helpers import func
 from service.auth.methods.auth_method import AuthMethod
 from service.erk.pages.common_page import ErkCommonPage
 from service.erk.pages.main_page import ErkMainPage
 from service.erk.pages.search_page import ErkSearchPage
 from settings import setting_erk_data_info
+from settings.setting_project import REMOTE_SERVER
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -16,6 +18,8 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
     @pytest.mark.erk_search
     def test_search_open_page_search_company(self, start_session):
         browser = start_session
+        if func.get_host_name() == REMOTE_SERVER:
+            self.click_u_sidebar_collapse_button(browser)
         self.click_desktop_select_button(browser)
         self.click_u_desktop_drawer_item_title(browser)
         self.visible_desktop_select_button_users(browser)
