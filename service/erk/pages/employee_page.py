@@ -1,3 +1,6 @@
+import time
+
+from exception import InvisibleCountElementsException
 from helpers import base
 from service.erk.locators.common_locator import ErkCommonLocator
 from service.erk.locators.employee_locator import ErkEmployeeLocator
@@ -17,6 +20,9 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
 
     def select_category_employee_list(self, driver):
         base.move_to_element_and_click(driver, self.category_employee_list)
+
+    def click_field_position_employee(self, driver):
+        base.get_web_element(driver, self.field_position_employee)
 
     def insert_value_field_position_employee(self, driver, value):
         base.get_web_element(driver, self.field_position_employee).send_keys(value)
@@ -66,8 +72,8 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def visible_tab_employee(self, driver):
         base.get_visible_element(driver, self.tab_employee)
 
-    def click_tab_attributes_employee(self, driver):
-        base.move_to_element_and_click(driver, self.tab_attributes_employee, index=1)
+    def click_tab_attributes_employee(self, driver, index=None):
+        base.move_to_element_and_click(driver, self.tab_attributes_employee, index=index)
 
     def double_click_date_start_status_attributes_employee(self, driver):
         base.double_click_element(driver, self.date_start_status_attributes_employee)
@@ -100,11 +106,11 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def select_notarius_status_attributes_employee_list(self, driver):
         base.move_to_element_and_click(driver, self.notarius_status_attributes_employee_list)
 
-    def select_notarius_position_attributes_employee_list(self, driver):
-        base.move_to_element_and_click(driver, self.notarius_position_attributes_employee_list, index=1)
+    def select_notarius_position_attributes_employee_list(self, driver, index=None):
+        base.move_to_element_and_click(driver, self.notarius_position_attributes_employee_list, index=index)
 
-    def click_btn_save_and_close_employee(self, driver):
-        base.move_to_element_and_click(driver, self.btn_save_and_close_employee, index=1)
+    def click_btn_save_and_close_employee(self, driver, index=None):
+        base.move_to_element_and_click(driver, self.btn_save_and_close_employee, index=index)
 
     def click_btn_save_and_close_operation_employee(self, driver):
         base.move_to_element_and_click(driver, self.btn_save_and_close_employee)
@@ -140,6 +146,9 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def select_operation_employee_position_list(self, driver):
         base.move_to_element_and_click(driver, self.operation_employee_position_list)
 
+    def select_operation_employee_notarius_position(self, driver):
+        base.move_to_element_and_click(driver, self.operation_employee_notarius_position)
+
     def insert_value_field_phone_operation_employee(self, driver, value):
         base.get_web_element(driver, self.field_phone_employee).send_keys(value)
 
@@ -160,3 +169,105 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
 
     def click_operation_employee_x_form_trigger_first(self, driver):
         base.move_to_element_and_click(driver, self.operation_employee_x_form_trigger_first, index=8)
+
+    def count_elem_x_grid_data_row_employee(self, driver):
+        return len(base.get_web_elements(driver, self.x_grid_data_row_employee))
+
+    def double_click_x_grid_data_row_employee(self, driver):
+        base.double_click_element(driver, self.x_grid_data_row_employee)
+
+    def click_tab_substitution_employee(self, driver):
+        base.move_to_element_and_click(driver, self.tab_substitution_employee)
+
+    def click_form_substitution_employee(self, driver):
+        base.move_to_element_and_click(driver, self.fas_fa_plus_employee)
+
+    def visible_form_substitution_employee(self, driver):
+        base.get_visible_element(driver, self.form_substitution_employee)
+
+    def click_substitution_employee_category(self, driver):
+        base.move_to_element_and_click(driver, self.field_substitution_employee, index=4)
+
+    def click_substitution_employee_company(self, driver):
+        base.move_to_element_and_click(driver, self.field_substitution_employee, index=5)
+
+    def insert_substitution_employee_category(self, driver, value):
+        base.get_web_elements(driver, self.field_substitution_employee)[4].send_keys(value)
+
+    def select_substitution_employee_category_list(self, driver):
+        base.move_to_element_and_click(driver, self.substitution_employee_category_list)
+
+    def insert_substitution_employee_company(self, driver, value):
+        base.get_web_elements(driver, self.field_substitution_employee)[5].send_keys(value)
+
+    def select_substitution_employee_company_list(self, driver):
+        base.move_to_element_and_click(driver, self.substitution_employee_company_list)
+
+    def click_substitution_employee_region(self, driver):
+        base.move_to_element_and_click(driver, self.substitution_employee_region)
+
+    def insert_substitution_employee_region(self, driver, value):
+        base.get_web_element(driver, self.substitution_employee_region).send_keys(value)
+
+    def select_substitution_employee_region_list(self, driver):
+        base.move_to_element_and_click(driver, self.substitution_employee_region_list)
+
+    def click_substitution_employee_type(self, driver):
+        base.move_to_element_and_click(driver, self.substitution_employee_type)
+
+    def insert_substitution_employee_type(self, driver, value):
+        base.get_web_element(driver, self.substitution_employee_type).send_keys(value)
+
+    def select_substitution_employee_type_list(self, driver):
+        base.move_to_element_and_click(driver, self.substitution_employee_type_list)
+
+    def visible_tab_active_employee(self, driver):
+        base.get_visible_element(driver, self.tab_active_employee)
+
+    def visible_form_form_passed_employee(self, driver):
+        base.get_visible_element(driver, self.form_passed_employee)
+
+    def select_passed_employee_region_list(self, driver):
+        base.move_to_element_and_click(driver, self.passed_employee_region_list)
+
+    def insert_passed_employee_region(self, driver, value):
+        base.get_web_element(driver, self.substitution_employee_region).send_keys(value)
+
+    def select_passed_employee_category_company_list(self, driver):
+        base.move_to_element_and_click(driver, self.passed_employee_category_company_list)
+
+    def select_passed_employee_company_list(self, driver):
+        base.move_to_element_and_click(driver, self.passed_employee_company_list)
+
+    def click_passed_employee_category(self, driver):
+        base.move_to_element_and_click(driver, self.field_substitution_employee, index=6)
+
+    def insert_passed_employee_category(self, driver, value):
+        base.get_web_elements(driver, self.field_substitution_employee)[6].send_keys(value)
+
+    def select_passed_employee_category_list(self, driver):
+        base.move_to_element_and_click(driver, self.passed_employee_category_list)
+
+    def click_btn_continue_and_close_employee(self, driver):
+        base.move_to_element_and_click(driver, self.btn_continue_and_close_employee)
+
+    def visible_form_fio_employee_dublicated(self, driver):
+        base.get_visible_element(driver, self.form_fio_employee_dublicated)
+
+    def text_list_state_employee(self, driver):
+        return [elem.text for elem in base.get_web_elements(driver, self.x_grid_cell_last)]
+
+    def check_visible_row_employee(self, driver, count):
+        timeout = base.timeout
+        poll = 0.5
+        end_time = time.time() + timeout
+        time.sleep(1)
+        while True:
+            count_elem = self.count_elem_x_grid_data_row_employee(driver)
+            if count_elem < count:
+                return True
+            time.sleep(poll)
+            if time.time() > end_time:
+                break
+        base.ssc.create_screenshot(driver)
+        raise InvisibleCountElementsException(count)

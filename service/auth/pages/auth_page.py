@@ -83,3 +83,6 @@ class AuthPage(AuthLocator):
 
     def click_btn_OK_install(self, driver):
         base.move_to_element_and_click(driver, self.btn_OK_install)
+
+    def visible_client_login_form(self, driver):
+        base.get_visible_element(driver, self.client_login_form)
