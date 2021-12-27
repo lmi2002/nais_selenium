@@ -29,8 +29,11 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.click_desktop_select_button(browser)
         self.click_u_desktop_drawer_item_title(browser)
         self.visible_desktop_select_button_users(browser)
-        self.click_label_operations(browser)
-        self.visible_label_search_is_opened(browser)
+        if func.get_host_name() == REMOTE_SERVER:
+            self.open_label_operations(browser)
+        else:
+            self.click_label_operations(browser)
+            self.visible_label_search_is_opened(browser)
         self.click_sublabel_operation_company(browser)
         self.visible_short_name(browser)
         self.click_btn_menu_add(browser)
@@ -148,8 +151,6 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
     def test_add_employee_company(self, start_session):
         browser = start_session
         self.click_tab_employee(browser)
-        # import pdb;
-        # pdb.set_trace()
         self.click_form_employee(browser)
         self.visible_form_edit_employee(browser)
         self.insert_value_field_category_employee(browser,
@@ -174,7 +175,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.insert_value_field_phone_employee(browser, setting_erk_data_info.employee['phone_employee'])
         self.insert_value_field_additional_employee(browser, setting_erk_data_info.employee['additional_employee'])
 
-        self.click_tab_attributes_employee(browser)
+        self.click_tab_attributes_employee(browser, index=1)
 
         self.double_click_date_start_status_attributes_employee(browser)
         self.click_btn_admit_employee(browser)
@@ -207,9 +208,9 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
                                                           setting_erk_data_info.employee[
                                                               'value_notarius_position_attributes_employee'])
         time.sleep(1)
-        self.select_notarius_position_attributes_employee_list(browser)
+        self.select_notarius_position_attributes_employee_list(browser, index=1)
         self.click_btn_admit_employee(browser)
-        self.click_btn_save_and_close_employee(browser)
+        self.click_btn_save_and_close_employee(browser, index=1)
         self.check_invisible_form_edit_employee(browser)
         self.check_text_fio_company_employee(browser)
         self.create_screenshot(browser)

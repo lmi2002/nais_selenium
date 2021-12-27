@@ -48,4 +48,5 @@ class ErkMainPage(ErkMainLocator):
     def click_u_sidebar_collapse_button(self, driver):
         base.move_to_element_and_click(driver, self.u_sidebar_collapse_button)
 
-
+    def open_label_operations(self, driver):
+        driver.execute_script('document.querySelector(".el-submenu ul").style.display = null;')

@@ -115,4 +115,11 @@ data_auth_test = {
         "passw_key": passw_key
     },
 
+    "test_check_one_session": {
+        "login": login,
+        "passw": passw,
+        "key_path": key_path,
+        "passw_key": passw_key
+    },
+
 }

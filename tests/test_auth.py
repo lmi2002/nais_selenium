@@ -3,8 +3,9 @@ import time
 import allure
 import pytest
 
-from service.drrp.list_auth_test import message_text_invalid_cert_login_passw
+from service.drrp.list_auth_test import message_text_invalid_cert_login_passw, data_auth_test
 from service.auth.methods.auth_method import AuthMethod
+from settings import setting_project
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -210,3 +211,25 @@ class TestUbAuth(AuthMethod):
         # Check
         self.visible_entry(browser)
         self.create_screenshot(browser)
+
+    # В настройках конфига сервера приложения нужно установить 1 пользователь 1 сессия
+    @pytest.mark.skip
+    @pytest.mark.auth
+    def test_check_one_session(self, start_browser_auth, request):
+        browser = start_browser_auth
+        test_name = request.node.name
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level(browser, test_name)
+        self.check_visible_u_navbar_dropdown(browser)
+        browser.execute_script('window.open("{url}");'.format(url=setting_project.URL))
+        browser.switch_to_window(browser.window_handles[1])
+        self.get_passw(browser).send_keys(data_auth_test[test_name]['passw'])
+        self.get_entry(browser).click()
+
+        self.login_auth_second_level(browser, test_name)
+        self.check_visible_u_navbar_dropdown(browser)
+        browser.switch_to_window(browser.window_handles[0])
+        self.click_desktop_select_button(browser)
+        self.visible_client_login_form(browser)
+
+

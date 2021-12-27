@@ -58,3 +58,13 @@ class AlertNotFoundException(Exception):
 
     def __str__(self):
         return "The element with {0} was not found".format(self.item)
+
+
+class InvisibleCountElementsException(Exception):
+    def __init__(self, count, cause=None):
+        super().__init__(self)
+        self.cause = cause
+        self.count = count
+
+    def __str__(self):
+        return "Elements != {count}".format(count=self.count)

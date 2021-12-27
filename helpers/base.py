@@ -1,3 +1,5 @@
+import time
+
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
@@ -8,7 +10,7 @@ from settings.setting_sreenshots import SettingsScreenshots
 
 from exception import *
 
-timeout = 30
+timeout = 60
 delay = 1
 
 ssc = SettingsScreenshots()
