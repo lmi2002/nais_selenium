@@ -4,8 +4,8 @@ from service.erk.locators.company_locator import ErkCompanyLocator
 
 
 class ErkCompanyPage(ErkCompanyLocator, ErkCommonLocator):
-    def visible_short_name(self, driver):
-        base.get_visible_element(driver, self.operation_company_short_name)
+    def visible_category(self, driver):
+        base.get_visible_element(driver, self.operation_company_name_column_category)
 
     def visible_tab_general_statements_company(self, driver):
         base.get_visible_element(driver, self.tab_general_statements_company)

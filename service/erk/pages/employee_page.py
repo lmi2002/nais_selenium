@@ -93,9 +93,12 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def click_btn_admit_employee(self, driver):
         base.move_to_element_and_click(driver, self.btn_admit_employee)
 
-    def insert_value_field_value_attributes_employee(self, driver, value):
-        elem = base.move_to_element_and_click(driver, self.field_value_attributes_employee, index=1)
+    def insert_value_field_value_attributes_employee(self, driver, value, index=None):
+        elem = base.move_to_element_and_click(driver, self.field_value_attributes_employee, index=index)
         elem.send_keys(value)
+
+    def click_value_field_value_attributes_employee(self, driver, index=None):
+        base.move_to_element_and_click(driver, self.field_value_attributes_employee, index=index)
 
     def select_operator_registrar_attributes_employee_list(self, driver):
         base.move_to_element_and_click(driver, self.operator_registrar_attributes_employee_list)
@@ -271,3 +274,7 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
                 break
         base.ssc.create_screenshot(driver)
         raise InvisibleCountElementsException(count)
+
+    def get_el(self, driver):
+        return driver.execute_script(
+            'return document.evaluate("//li/span[text()="Вінницька обл."]", node, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,null)')

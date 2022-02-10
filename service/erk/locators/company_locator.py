@@ -4,7 +4,7 @@ from settings import setting_erk_data_info
 
 
 class ErkCompanyLocator:
-    operation_company_short_name = (By.XPATH, '//span[text()="Скорочення"]/..')
+    operation_company_name_column_category = (By.XPATH, '//span[text()="Категорія"]/..')
     operation_company_ext_gen = (By.CSS_SELECTOR, 'td[id*="ext-gen"]')
     operation_company_ubcombobox = (By.CSS_SELECTOR, 'input[id*=ubcombobox]')
     operation_category_name = (

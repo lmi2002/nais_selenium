@@ -22,4 +22,6 @@ class AuthLocator:
     el_select_dropdown_empty = (By.CLASS_NAME, 'el-select-dropdown__empty')
     type_key_list_1 = (By.CSS_SELECTOR, '.el-scrollbar__view.el-select-dropdown__list')
     btn_OK_install = (By.XPATH, '//*[contains(text(),"Ок")]/..')
-
+    form_select_certificate = (By.XPATH, '//span[text()="Оберіть АЦСК"]/..')
+    input_selected_acsk = (By.CSS_SELECTOR, 'input[placeholder="Оберіть АЦСК"]')
+    form_select_certificate_file = (By.XPATH, '//span[text()="Виберіть файли сертифікатів"]/..')

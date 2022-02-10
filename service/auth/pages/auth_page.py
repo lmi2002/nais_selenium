@@ -11,11 +11,17 @@ class AuthPage(AuthLocator):
     def get_passw(self, driver):
         return base.get_web_elements(driver, self.passw)[1]
 
-    def get_entry(self, driver):
-        return base.get_web_element(driver, self.entry)
+    def get_entry(self, driver, index=None):
+        if index is None:
+            return base.get_web_element(driver, self.entry)
+        else:
+            return base.get_web_elements(driver, self.entry)[index]
 
-    def insert_input_select_file(self, driver, value):
-        base.get_web_element(driver, self.input_select_file).send_keys(value)
+    def insert_input_select_file(self, driver, value, index=None):
+        if index is None:
+            base.get_web_element(driver, self.input_select_file).send_keys(value)
+        else:
+            base.get_web_elements(driver, self.input_select_file)[index].send_keys(value)
 
     def insert_input_passw(self, driver, value):
         base.get_web_elements(driver, self.input_passw)[1].send_keys(value)
@@ -86,3 +92,20 @@ class AuthPage(AuthLocator):
 
     def visible_client_login_form(self, driver):
         base.get_visible_element(driver, self.client_login_form)
+
+    def visible_form_select_certificate(self, driver):
+        base.get_visible_element(driver, self.form_select_certificate)
+
+    def click_input_selected_acsk(self, driver):
+        base.move_to_element_and_click(driver, self.input_selected_acsk)
+
+    def get_attr_select_dropdown_hover(self, driver):
+        driver.execute_script("document.querySelectorAll('.el-scrollbar__view.el-select-dropdown__list')[1] \
+        .querySelectorAll('.el-select-dropdown__item')[1].setAttribute('class', 'hover')")
+
+    def click_select_dropdown(self, driver):
+        driver.execute_script("document.querySelectorAll('.el-scrollbar__view.el-select-dropdown__list')[1] \
+        .querySelectorAll('.el-select-dropdown__item')[1].click()")
+
+    def visible_form_select_certificate_file(self, driver):
+        base.get_visible_element(driver, self.form_select_certificate_file)

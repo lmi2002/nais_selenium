@@ -7,10 +7,10 @@ import pytest
 
 
 @allure.severity(allure.severity_level.NORMAL)
-class TestDrrpApi:
+class TestApi:
     path = 'https://register.test.nais.gov.ua/ubql'
 
-    authorization = 'UB ed81b15a61a7e5dcbb0d8c45'  # Авторизируемся и берем в заголовке Authorization
+    authorization = 'UB f5115d3e61f91bd9633d44e2'  # Авторизируемся и берем в заголовке Authorization
     accept = 'application/json, text/plain, */*'
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     content_type = 'application/json;charset=UTF-8'
@@ -34,7 +34,6 @@ class TestDrrpApi:
 
     # Головне меню → Реєстрація та обробка заяв → Пошук заяв
 
-    @pytest.mark.api
     def test_search_statement_date(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -52,7 +51,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_num(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -69,7 +67,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_date_type_st(self):
         data = [
             {
@@ -90,7 +87,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_date_state_st(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -109,7 +105,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_date_kind_sta_nt(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -128,7 +123,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_address(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -153,7 +147,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_onm(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -172,7 +165,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_cad_num(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -191,7 +183,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_person_params_date_person_name(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -213,7 +204,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_person_params_date_person_code(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -234,7 +224,6 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
     def test_search_statement_company_params_date_company_name(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -256,7 +245,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_statement_company_params_date_company_code(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -281,7 +270,7 @@ class TestDrrpApi:
     # Головне меню → Реєстрація та обробка заяв → Пошук заяв в БД про реєстрацію заяв та запитів
     # При обновлении тестовой БД, для этого блока тестов данные нужно подготавливать.
 
-    @pytest.mark.api
+
     def test_search_statement_from_DB_params_cad_num(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -300,7 +289,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_statement_from_DB_params_address(self):
         data = [
             {
@@ -329,7 +318,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_statement_from_DB_params_id_st(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -351,7 +340,7 @@ class TestDrrpApi:
 
     # Головне меню → Реєстрація та обробка заяв → Пошук рішень
 
-    @pytest.mark.api
+
     def test_search_decision_params_num(self):
         data_1 = [{
             "entity": "rrpUb_decisionCard",
@@ -397,7 +386,7 @@ class TestDrrpApi:
         assert response_2.status_code == 200
         assert bool(response_2.json()[0].get('searchResult')) == True
 
-    @pytest.mark.api
+
     def test_search_decision_params_date(self):
         data = [{
             "entity": "rrpUb_decisionCard",
@@ -415,7 +404,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('searchResult')) == True
 
-    @pytest.mark.api
+
     def test_search_decision_params_statement_num(self):
         data_1 = [{
             "entity": "rrpUb_decisionCard",
@@ -461,7 +450,7 @@ class TestDrrpApi:
         assert response_2.status_code == 200
         assert bool(response_2.json()[0].get('searchResult')) == True
 
-    @pytest.mark.api
+
     def test_search_decision_params_date_type_decision(self):
         data = [
             {
@@ -482,7 +471,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('searchResult')) == True
 
-    @pytest.mark.api
+
     def test_search_decision_params_date_state_decision(self):
         data = [
             {
@@ -503,7 +492,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('searchResult')) == True
 
-    @pytest.mark.api
+
     def test_search_decision_params_date_unlimited_company(self):
         data = [
             {
@@ -526,7 +515,7 @@ class TestDrrpApi:
     # Головне меню → Реєстрація та обробка заяв → Черга заяв
 
     # Когда статус кода будет приходить 200 написать дополнительную проверку
-    @pytest.mark.api
+
     def test_prepare_queue(self):
         data = [{
             "entity": "rrpUb_requestSearchQuery",
@@ -539,7 +528,7 @@ class TestDrrpApi:
 
     # Головне меню → Реєстрація та обробка розділів → Пошук → Розділи
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_onm(self):
         data = [{
             "entity": "rrpSec_search",
@@ -555,7 +544,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_cad_num(self):
         data = [{
             "entity": "rrpSec_search",
@@ -571,7 +560,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_owner_num(self):
         data = [
             {
@@ -590,7 +579,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_irp_num(self):
         data = [
             {
@@ -609,7 +598,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_mortgage_num(self):
         data = [
             {
@@ -628,7 +617,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_limitation_num(self):
         data = [
             {
@@ -647,7 +636,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_statement_num(self):
         data = [
             {
@@ -666,7 +655,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_date_created_realty(self):
         data = [
             {
@@ -686,7 +675,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_address_realty(self):
         data = [
             {
@@ -710,7 +699,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_realty_params_ext_option_cad_num(self):
         data = [
             {
@@ -731,7 +720,7 @@ class TestDrrpApi:
 
     # Головне меню → Реєстрація та обробка розділів → Пошук → Права власності
 
-    @pytest.mark.api
+
     def test_search_section_property_params_onm(self):
         data = [
             {
@@ -749,7 +738,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_cad_num(self):
         data = [
             {
@@ -767,7 +756,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_owner_num(self):
         data = [
             {
@@ -785,7 +774,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_statement_num(self):
         data = [
             {
@@ -806,7 +795,7 @@ class TestDrrpApi:
         assert bool(response.json()[0].get('resultData')) == True
 
     @pytest.mark.skip
-    @pytest.mark.api
+
     def test_search_section_property_params_date_created_property(self):
         data = [
             {
@@ -827,7 +816,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         # assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_decision_num(self):
         data = [
             {
@@ -847,7 +836,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_search_person_and_company_name(self):
         data = [
             {
@@ -867,7 +856,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_search_person_and_company_code(self):
         data = [
             {
@@ -887,7 +876,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_search_person_name(self):
         data = [
             {
@@ -907,7 +896,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_search_person_code(self):
         data = [
             {
@@ -927,7 +916,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_search_company_name(self):
         data = [
             {
@@ -948,7 +937,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_search_company_code(self):
         data = [
             {
@@ -968,7 +957,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_address_property(self):
         data = [
             {
@@ -993,7 +982,7 @@ class TestDrrpApi:
         assert response.status_code == 200
         assert bool(response.json()[0].get('resultData')) == True
 
-    @pytest.mark.api
+
     def test_search_section_property_params_ext_option_cad_num(self):
         data = [
             {

@@ -271,7 +271,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
     def test_search_open_page_search_user(self, start_session):
         browser = start_session
         self.click_close_tab_admin_first(browser)
-        self.click_sublabel_user(browser)
+        self.click_sublabel_user(browser, index=1)
         assert self.visible_found_users(browser)
         self.create_screenshot(browser)
 

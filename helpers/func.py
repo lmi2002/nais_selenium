@@ -1,3 +1,4 @@
+import os
 import re
 import datetime
 import time
@@ -69,3 +70,14 @@ def extract_text_from_pdf(pdf_path):
 def get_host_name():
     hostname = socket.gethostname()
     return socket.gethostbyname(hostname)
+
+
+def get_text_from_file(file_name):
+    with open(file_name, encoding='utf-8') as f:
+        return f.read()
+
+
+def get_file_response(file_name, dir_name, project_name):
+    return os.path.abspath(
+        '../api/{project_name}/files/{dir_name}/{file_name}{ext_file}'.format(
+            file_name=file_name, dir_name=dir_name, project_name=project_name, ext_file='.txt'))
