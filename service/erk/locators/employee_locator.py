@@ -98,3 +98,4 @@ class ErkEmployeeLocator:
     btn_continue_and_close_employee = (By.CSS_SELECTOR, 'a[data-qtip="Продовжити"]')
     form_fio_employee_dublicated = (
         By.XPATH, '//span[text()="В Системі знайдено співробітників з ПІБ, аналогічним вказаному"]')
+

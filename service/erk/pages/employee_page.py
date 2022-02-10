@@ -168,7 +168,7 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
         base.double_click_element(driver, self.region_attributes_operation_employee)
 
     def select_operator_region_attributes_operation_employee_list(self, driver):
-        base.move_to_element_and_click(driver, self.region_attributes_operation_employee_list)
+        driver.execute_script("document.querySelectorAll('.x-list-plain')[3].querySelectorAll('li')[1].click()")
 
     def click_operation_employee_x_form_trigger_first(self, driver):
         base.move_to_element_and_click(driver, self.operation_employee_x_form_trigger_first, index=8)
@@ -260,6 +260,9 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def text_list_state_employee(self, driver):
         return [elem.text for elem in base.get_web_elements(driver, self.x_grid_cell_last)]
 
+    def click_sse(self, driver):
+        driver.execute_script("document.querySelectorAll('.x-list-plain')[3].querySelectorAll('li')[1].click()")
+
     def check_visible_row_employee(self, driver, count):
         timeout = base.timeout
         poll = 0.5
@@ -275,6 +278,3 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
         base.ssc.create_screenshot(driver)
         raise InvisibleCountElementsException(count)
 
-    def get_el(self, driver):
-        return driver.execute_script(
-            'return document.evaluate("//li/span[text()="Вінницька обл."]", node, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE,null)')

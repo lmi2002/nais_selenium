@@ -185,6 +185,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
 
         self.double_click_operator_registrar_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_operator_registrar_attributes_employee'], index=1)
@@ -194,6 +195,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
 
         self.double_click_notarius_status_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_notarius_status_attributes_employee'], index=1)
@@ -204,6 +206,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
 
         self.double_click_notarius_position_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_notarius_position_attributes_employee'], index=1)

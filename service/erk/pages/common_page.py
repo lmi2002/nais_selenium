@@ -23,22 +23,6 @@ class ErkCommonPage(ErkCommonLocator):
     def click_btn_loupe(self, driver):
         base.move_to_element_and_click(driver, self.btn_loupe)
 
-    # def check_invisible_loaded_page(self, driver):
-    #     timeout = base.timeout
-    #     poll = 0.5
-    #     end_time = time.time() + timeout
-    #     time.sleep(1)
-    #     while True:
-    #         value = driver.execute_script(
-    #             "return document.querySelector('.x-mask-msg').style.getPropertyValue('display')")
-    #         if value == 'none':
-    #             return True
-    #         time.sleep(poll)
-    #         if time.time() > end_time:
-    #             break
-    #     base.ssc.create_screenshot(driver)
-    #     raise VisibleLoadedPageException()
-
     def click_btn_filter(self, driver):
         base.move_to_element_and_click(driver, self.btn_filter)
 

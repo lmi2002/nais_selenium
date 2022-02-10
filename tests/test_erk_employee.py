@@ -76,16 +76,9 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.visible_form_attribute_employee(browser)
 
         self.click_value_field_value_attributes_employee(browser, index=2)
-        # self.click_operation_employee_x_form_trigger_first(browser)
-        self.insert_value_field_value_attributes_employee(browser,
-                                                          setting_erk_data_info.employee["operation_employee_region"],
-                                                          index=2)
-        # self.insert_operation_employee_x_form_trigger_first(browser,
-        #                                                     setting_erk_data_info.employee["operation_employee_region"])
-        ew = self.get_el(browser)
+        self.click_operation_employee_x_form_trigger_first(browser)
+        time.sleep(2)
         self.select_operator_region_attributes_operation_employee_list(browser)
-        # import pdb;
-        # pdb.set_trace()
         self.click_btn_admit_employee(browser)
         self.double_click_date_open_attributes_operation_employee(browser)
         self.click_btn_admit_employee(browser)
@@ -176,6 +169,8 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
 
         self.double_click_operator_registrar_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        # import pdb;
+        # pdb.set_trace()
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_operator_registrar_attributes_employee'], index=1)
@@ -211,4 +206,3 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.check_visible_row_employee(browser, 3)
         assert self.text_list_state_employee(browser) == ['діє', 'не діє']
         self.create_screenshot(browser)
-
