@@ -15,4 +15,3 @@ class ErkCommonLocator:
     search_param = (By.CSS_SELECTOR, '.x-box-target .x-menu-item')
     input_textfield = (By.CSS_SELECTOR, 'input[id*="textfield"]')
     btn_change_company = (By.CSS_SELECTOR, 'a[data-qtip="Перехід до іншої організації"]')
-    li = (By.TAG_NAME, 'li')

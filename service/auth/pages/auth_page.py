@@ -4,7 +4,7 @@ from settings.setting_sreenshots import SettingsScreenshots
 
 
 class AuthPage(AuthLocator):
-    
+
     def get_user(self, driver):
         return base.get_web_element(driver, self.user)
 
@@ -98,10 +98,6 @@ class AuthPage(AuthLocator):
 
     def click_input_selected_acsk(self, driver):
         base.move_to_element_and_click(driver, self.input_selected_acsk)
-
-    def get_attr_select_dropdown_hover(self, driver):
-        driver.execute_script("document.querySelectorAll('.el-scrollbar__view.el-select-dropdown__list')[1] \
-        .querySelectorAll('.el-select-dropdown__item')[1].setAttribute('class', 'hover')")
 
     def click_select_dropdown(self, driver):
         driver.execute_script("document.querySelectorAll('.el-scrollbar__view.el-select-dropdown__list')[1] \

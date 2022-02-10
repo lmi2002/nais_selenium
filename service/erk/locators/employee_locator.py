@@ -56,8 +56,6 @@ class ErkEmployeeLocator:
         position_employee=setting_erk_data_info.employee["position_employee"]))
     date_open_attributes_operation_employee = (By.XPATH, '//div[text()="Дата відкриття"]')
     region_attributes_operation_employee = (By.XPATH, '//div[text()="Регіон"]')
-    region_attributes_operation_employee_list = (By.XPATH, '//li/span[text()="{operation_employee_region}"]'.format(
-        operation_employee_region=setting_erk_data_info.employee["operation_employee_region"]))
     operation_employee_x_form_trigger_first = (By.CLASS_NAME, 'x-form-trigger-first')
     x_grid_data_row_employee = (By.CLASS_NAME, 'x-grid-data-row')
     x_grid_cell_last = (By.CLASS_NAME, 'x-grid-cell-last')
