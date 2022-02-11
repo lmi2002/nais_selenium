@@ -3,7 +3,7 @@ import time
 import allure
 import pytest
 
-from service.drrp.list_auth_test import message_text_invalid_cert_login_passw, data_auth_test
+from service.auth.list_auth_test import message_text_invalid_cert_login_passw, data_auth_test
 from service.auth.methods.auth_method import AuthMethod
 from settings import setting_project
 
@@ -59,7 +59,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
@@ -95,7 +95,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
@@ -103,7 +103,7 @@ class TestUbAuth(AuthMethod):
         browser = start_browser_auth
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
-        self.login_auth_second_level(browser, test_name)
+        self.login_auth_second_level_w_o_added_certificate(browser, test_name)
 
         # Check
         self.check_text_message_invalid_passw_of_key(browser)
@@ -115,7 +115,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
@@ -124,7 +124,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     # Только пробелы в поле
@@ -134,7 +134,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     # Только пробелы в поле
@@ -144,7 +144,8 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        time.sleep(1)
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     # Несколько пробелов в начале и в конце  текста
@@ -166,7 +167,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.skip
@@ -176,7 +177,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.skip
@@ -186,7 +187,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.skip
@@ -196,7 +197,7 @@ class TestUbAuth(AuthMethod):
         test_name = request.node.name
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) == message_text_invalid_cert_login_passw
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth

@@ -4,7 +4,8 @@ passw = project_rule[PROJECT][RULE]['passw']
 login = project_rule[PROJECT][RULE]['login']
 key_path = project_rule[PROJECT][RULE]['key_path']
 passw_key = project_rule[PROJECT][RULE]['passw_key']
-message_text_invalid_cert_login_passw = 'В доступі відмовлено. Невірний сертифікат, логін або пароль'
+message_text_invalid_cert_login_passw = ['В доступі відмовлено. Невірний сертифікат, логін або пароль',
+                                         'Сертифікат не знайдено']
 
 data_auth_test = {
 
