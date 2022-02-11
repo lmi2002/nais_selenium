@@ -35,7 +35,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
             self.click_label_operations(browser)
             self.visible_label_search_is_opened(browser)
         self.click_sublabel_operation_company(browser)
-        self.visible_short_name(browser)
+        self.visible_category(browser)
         self.click_btn_menu_add(browser)
         self.visible_tab_general_statements_company(browser)
         self.click_field_operation_company_category(browser)
@@ -185,18 +185,20 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
 
         self.double_click_operator_registrar_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
-                                                              'value_operator_registrar_attributes_employee'])
+                                                              'value_operator_registrar_attributes_employee'], index=1)
 
         self.select_operator_registrar_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
 
         self.double_click_notarius_status_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
-                                                              'value_notarius_status_attributes_employee'])
+                                                              'value_notarius_status_attributes_employee'], index=1)
 
         time.sleep(1)
         self.select_notarius_status_attributes_employee_list(browser)
@@ -204,9 +206,10 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
 
         self.double_click_notarius_position_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
-                                                              'value_notarius_position_attributes_employee'])
+                                                              'value_notarius_position_attributes_employee'], index=1)
         time.sleep(1)
         self.select_notarius_position_attributes_employee_list(browser, index=1)
         self.click_btn_admit_employee(browser)

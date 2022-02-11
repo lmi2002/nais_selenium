@@ -27,8 +27,8 @@ class ErkMainPage(ErkMainLocator):
     def click_search_sublabel_employee(self, driver):
         base.move_to_element_and_click(driver, self.sublabel_employee, index=1)
 
-    def click_sublabel_user(self, driver):
-        base.move_to_element_and_click(driver, self.sublabel_user, index=1)
+    def click_sublabel_user(self, driver, index=None):
+        base.move_to_element_and_click(driver, self.sublabel_user, index=index)
 
     def click_sublabel_search_statement(self, driver):
         base.move_to_element_and_click(driver, self.sublabel_search_statement, index=0)

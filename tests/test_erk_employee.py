@@ -5,7 +5,7 @@ import pytest
 
 from helpers import func
 from service.auth.methods.auth_method import AuthMethod
-from service.erk.method.method_common import ErkMethodMain
+from service.erk.method.common_method import ErkMethodMain
 from service.erk.pages.employee_page import ErkEmployeePage
 from service.erk.pages.main_page import ErkMainPage
 from settings import setting_erk_data_info
@@ -75,9 +75,10 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.double_click_region_attributes_operation_employee(browser)
         self.visible_form_attribute_employee(browser)
 
+        self.click_value_field_value_attributes_employee(browser, index=2)
         self.click_operation_employee_x_form_trigger_first(browser)
+        time.sleep(2)
         self.select_operator_region_attributes_operation_employee_list(browser)
-
         self.click_btn_admit_employee(browser)
         self.double_click_date_open_attributes_operation_employee(browser)
         self.click_btn_admit_employee(browser)
@@ -90,7 +91,6 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         assert self.count_elem_x_grid_data_row_employee(browser) == 1
         self.create_screenshot(browser)
 
-    # @pytest.mark.skip
     @pytest.mark.erk
     @pytest.mark.admin
     def test_add_substitution_employee(self, start_session):
@@ -169,9 +169,11 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
 
         self.double_click_operator_registrar_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        # import pdb;
+        # pdb.set_trace()
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
-                                                              'value_operator_registrar_attributes_employee'])
+                                                              'value_operator_registrar_attributes_employee'], index=1)
 
         self.select_operator_registrar_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
@@ -180,7 +182,7 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.visible_form_attribute_employee(browser)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
-                                                              'value_notarius_status_attributes_employee'])
+                                                              'value_notarius_status_attributes_employee'], index=1)
 
         time.sleep(1)
         self.select_notarius_status_attributes_employee_list(browser)
@@ -190,7 +192,7 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.visible_form_attribute_employee(browser)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
-                                                              'value_notarius_position_attributes_employee'])
+                                                              'value_notarius_position_attributes_employee'], index=1)
         time.sleep(1)
         self.select_notarius_position_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
