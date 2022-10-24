@@ -5,6 +5,7 @@ import pytest
 from service.auth.list_auth_test import data_auth_test
 from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
+from settings import setting_project
 from settings.setting_browser import SettingsBrowser
 from settings.setting_project import *
 from settings.setting_sreenshots import SettingsScreenshots
@@ -46,7 +47,7 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
 
     @pytest.fixture(scope="session")
     def start_session(self):
-        browser = self.desktop_browser()
+        browser = self.desktop_browser(setting_project.URL)
         try:
             self.login(browser)
             yield browser
@@ -58,7 +59,7 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
     @pytest.fixture
     def start_browser_with_login(self):
 
-        browser = self.desktop_browser()
+        browser = self.desktop_browser(setting_project.URL)
         try:
             self.login(browser)
             yield browser
@@ -71,7 +72,7 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
 
     @pytest.fixture
     def start_browser(self):
-        browser = self.desktop_browser()
+        browser = self.desktop_browser(setting_project.URL)
         try:
             yield browser
             self.logout(browser)
@@ -84,7 +85,7 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
 
     @pytest.fixture
     def start_browser_auth(self):
-        browser = self.desktop_browser()
+        browser = self.desktop_browser(setting_project.URL)
         try:
             yield browser
         except Exception:
@@ -148,4 +149,3 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
         self.insert_input_passw(driver, data_auth_test[name_test]['passw_key'])
         self.check_invisible_button_is_disabled(driver)
         self.click_btn_load(driver)
-

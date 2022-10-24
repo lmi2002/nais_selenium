@@ -18,6 +18,7 @@ tests/test_api.py
 allure/reports/*
 storages/files_pdf/*
 storages/pattern_pdf/*
+storages/online_minjust_pdf/*
 screenshots/
 extension/
 api/

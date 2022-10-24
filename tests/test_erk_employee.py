@@ -54,6 +54,7 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         time.sleep(2)
         self.select_operation_employee_category_list(browser)
 
+        time.sleep(2)
         self.insert_value_field_last_name_employee_employee(browser, setting_erk_data_info.employee[
             'last_name_employee'])
         self.insert_value_field_first_name_employee_employee(browser, setting_erk_data_info.employee[
@@ -85,7 +86,7 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
 
         self.click_btn_save_and_close_operation_employee(browser)
 
-        time.sleep(4)
+        time.sleep(5)
         self.filter_form(browser, setting_erk_data_info.employee['code_employee'], index=5)
         time.sleep(2)
         assert self.count_elem_x_grid_data_row_employee(browser) == 1
@@ -169,8 +170,7 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
 
         self.double_click_operator_registrar_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
-        # import pdb;
-        # pdb.set_trace()
+
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_operator_registrar_attributes_employee'], index=1)
