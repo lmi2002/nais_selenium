@@ -10,6 +10,7 @@ import allure
 from helpers import base
 from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
+from settings import setting_project
 from settings.setting_browser import SettingsBrowser
 from settings.setting_project import project_rule, PROJECT, RULE
 from settings.setting_sreenshots import SettingsScreenshots
@@ -21,7 +22,7 @@ class TestJenkins(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots
     @pytest.mark.skip
     @pytest.mark.check_jenkins
     def test_check_jenkins_register(self):
-        browser = self.desktop_browser()
+        browser = self.desktop_browser(setting_project.URL)
         cur_url = browser.current_url
         print('Opened ' + cur_url)
         print('title = ' + browser.title)

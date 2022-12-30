@@ -151,6 +151,16 @@ def select_value(driver, item, value):
         raise ElementNotFoundException(item, e)
 
 
+def select_index(driver, item, index):
+    try:
+        select_element = driver.find_element(*item)
+        time.sleep(2)
+        Select(select_element).select_by_index(index)
+    except TimeoutException as e:
+        ssc.create_screenshot(driver)
+        raise ElementNotFoundException(item, e)
+
+
 def get_element_present_text(driver, text):
     locator = (By.XPATH, '//*[text()="{text}"]'.format(text=text))
     try:
@@ -252,3 +262,16 @@ def get_element_locator(driver, locator):
     except TimeoutException as e:
         ssc.create_screenshot(driver)
         raise TextNotFoundException(locator, e)
+
+
+def get_element_locator(driver, locator):
+    locator = locator
+    try:
+        return get_web_element(driver, locator)
+    except TimeoutException as e:
+        ssc.create_screenshot(driver)
+        raise TextNotFoundException(locator, e)
+
+
+def refresh_page(driver):
+    driver.refresh()

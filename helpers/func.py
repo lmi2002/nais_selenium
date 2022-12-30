@@ -4,6 +4,7 @@ import datetime
 import time
 import io
 import socket
+import csv
 
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
@@ -71,8 +72,11 @@ def get_host_name():
     hostname = socket.gethostname()
     return socket.gethostbyname(hostname)
 
-
 def get_text_from_file(file_name):
+    """
+
+    :rtype: object
+    """
     with open(file_name, encoding='utf-8') as f:
         return f.read()
 
@@ -81,3 +85,28 @@ def get_file_response(file_name, dir_name, project_name):
     return os.path.abspath(
         '../api/{project_name}/files/{dir_name}/{file_name}{ext_file}'.format(
             file_name=file_name, dir_name=dir_name, project_name=project_name, ext_file='.txt'))
+
+
+def uni_get_file_response(file_name, dir_name, project_name):
+    return os.path.abspath(
+        '../api/{project_name}/files/{dir_name}/{file_name}{ext_file}'.format(
+            file_name=file_name, dir_name=dir_name, project_name=project_name, ext_file='.txt'))
+
+
+def get_text_from_csv(file_name):
+    data = []
+    with open(file_name, newline='') as csvfile:
+        reader = csv.reader(csvfile, delimiter=';')
+        for row in reader:
+            data.append(row)
+    return data
+
+
+def text_to_csv(file_name, data):
+    with open(file_name, 'a') as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerows(data)
+
+
+def get_list_files(dirname):
+    return os.listdir(dirname)

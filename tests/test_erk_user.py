@@ -34,3 +34,5 @@ class TestErkUser(AuthMethod, ErkMainPage, ErkMethodMain):
 
         self.click_sublabel_user(browser)
         self.click_btn_menu_add(browser)
+        import pdb;
+        pdb.set_trace()

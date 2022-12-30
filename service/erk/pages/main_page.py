@@ -7,7 +7,7 @@ class ErkMainPage(ErkMainLocator):
         base.move_to_element_and_click(driver, self.desktop_select_button)
 
     def click_u_desktop_drawer_item_title(self, driver):
-        base.move_to_element_and_click(driver, self.u_desktop_drawer_item_title, index=3)
+        base.move_to_element_and_click(driver, self.u_desktop_drawer_item_title, index=4)
 
     def click_label_search(self, driver):
         base.move_to_element_and_click(driver, self.label_search)

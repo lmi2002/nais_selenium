@@ -18,6 +18,8 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
     @pytest.mark.erk_search
     def test_search_open_page_search_company(self, start_session):
         browser = start_session
+        import pdb;
+        pdb.set_trace()
         if func.get_host_name() == REMOTE_SERVER:
             self.click_u_sidebar_collapse_button(browser)
         self.click_desktop_select_button(browser)
@@ -164,7 +166,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
         self.check_invisible_tr_ubtableview(browser)
         self.insert_value_field_street(browser, setting_erk_data_info.company['street'])
         self.click_btn_search(browser)
-        assert self.count_elem_tr_ubtableview(browser) == 11
+        assert self.count_elem_tr_ubtableview(browser) == 12
         self.create_screenshot(browser)
 
     @pytest.mark.erk
