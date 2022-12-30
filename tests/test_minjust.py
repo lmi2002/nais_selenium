@@ -15,7 +15,7 @@ class SettingsBrowser(SettingsScreenshots):
     @staticmethod
     def get_executable_path():
         if func.get_host_name() != REMOTE_SERVER:
-            executable_path = os.path.abspath('./drivers/win_local/chromedriver.exe')
+            executable_path = os.path.abspath('../drivers/win_local/chromedriver.exe')
         else:
             executable_path = os.path.abspath('../drivers/win_jen/chromedriver.exe')
         return executable_path

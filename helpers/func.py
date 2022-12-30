@@ -72,8 +72,11 @@ def get_host_name():
     hostname = socket.gethostname()
     return socket.gethostbyname(hostname)
 
-
 def get_text_from_file(file_name):
+    """
+
+    :rtype: object
+    """
     with open(file_name, encoding='utf-8') as f:
         return f.read()
 

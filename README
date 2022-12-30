@@ -1,0 +1,22 @@
+pytest -v -s --alluredir="D:\Project\nais_selenium\allure\reports" test_erk_search.py
+
+Запуск тестов модуля
+pytest test_mod.py
+
+Запуск тестов из директории
+pytest testing/
+
+Запуск тестов, удовлетворяющих ключевому выражению
+pytest -k "MyClass and not method"
+
+Вывод отчета
+allure serve D:\Project\nais_selenium\allure\reports
+
+Debugger
+import pdb; pdb.set_trace()
+pytest --setup-show test_scope.py
+py.test --pdb test_erk_search.py
+
+
+Создание виртуальное окружение
+python -m venv venv
