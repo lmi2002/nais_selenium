@@ -1,15 +1,18 @@
-import os
 import re
 import datetime
 import time
 import io
 import socket
 import csv
+from PyPDF2 import PdfReader
 
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfpage import PDFPage
+from pdfminer.high_level import extract_text as fallback_text_extraction
+
+from settings.setting_browser import *
 
 
 def left_only_digits(string):
@@ -45,7 +48,6 @@ def get_data_tomorrow():
 def get_generate_num():
     return int(round(time.time() * 1000))
 
-
 def extract_text_from_pdf(pdf_path):
     resource_manager = PDFResourceManager()
     fake_file_handle = io.StringIO()
@@ -68,9 +70,21 @@ def extract_text_from_pdf(pdf_path):
         return text
 
 
+def extract_text_from_pdf_pypdf2(pdf_path):
+    text = ""
+    try:
+        reader = PdfReader(pdf_path)
+        for page in reader.pages:
+            text += page.extract_text()
+    except Exception as exc:
+        text = fallback_text_extraction(pdf_path)
+    return text
+
+
 def get_host_name():
     hostname = socket.gethostname()
     return socket.gethostbyname(hostname)
+
 
 def get_text_from_file(file_name):
     """
@@ -110,3 +124,15 @@ def text_to_csv(file_name, data):
 
 def get_list_files(dirname):
     return os.listdir(dirname)
+
+# Доработать функцию чтобы удалла загруженные файлы
+def delete_files(dirname, q_left=None, q_del=None):
+    """
+    Сan choose one variable (q_left or q_del)
+    :param q_left: amount last files to be left in dir
+    :param q_del: amount first files to be delete in dir
+    :param dirname:
+    :return:
+    """
+    lst = get_list_files(dirname)
+    return lst

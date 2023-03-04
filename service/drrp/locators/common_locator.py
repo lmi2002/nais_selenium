@@ -10,7 +10,7 @@ class DrrpCommonLocator:
     btn_registretion = (By.XPATH, '//span[text()="Зареєструвати"]/..')
     btn_sing = (By.XPATH, '//span[text()="Підписати ЕЦП"]/..')
     user_code = (By.XPATH, '//span[text()="{user_code}"]/..'.format(
-        user_code=project_rule[PROJECT][RULE]['login']))
+        user_code=project_rule.get(PROJECT).get(RULE).get('username')))
     exit = (By.XPATH, '//span[contains(text(), "Вихід")]')
     user_menu_cash = (By.XPATH, '//span[text()="Дані, що збережено"]/../..')
     clear_local_store = (By.XPATH, '//span[text()="Очистити локальне сховище"]/../..')
@@ -36,6 +36,5 @@ class DrrpCommonLocator:
     close_tab_ub64 = (By.CLASS_NAME, 'u-navbar__tab-close-button')
     u_navbar_dropdown = (By.CLASS_NAME, 'u-navbar__dropdown')
     iframe = (By.TAG_NAME, 'iframe')
-    # $x('//*[@x-placement="bottom-start"]//li/span[text()="Файл"]')
 
 

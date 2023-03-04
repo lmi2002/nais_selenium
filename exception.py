@@ -68,3 +68,30 @@ class InvisibleCountElementsException(Exception):
 
     def __str__(self):
         return "Elements != {count}".format(count=self.count)
+
+class NotDownloadNewPdfException(Exception):
+    def __init__(self, cause=None):
+        super().__init__(self)
+        self.cause = cause
+
+    def __str__(self):
+        return "Not found download new pdf"
+
+class NotElementsDropdownListException(Exception):
+    def __init__(self, cause=None):
+        super().__init__(self)
+        self.cause = cause
+
+    def __str__(self):
+        return "Not elements dropdown list"
+
+class NotFoundElementException(Exception):
+    def __init__(self, text, cause=None):
+        super().__init__(self)
+        self.text = text
+        self.cause = cause
+
+    def __str__(self):
+        return "No element {}".format(self.text)
+
+

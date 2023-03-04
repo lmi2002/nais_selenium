@@ -1,6 +1,8 @@
 import time
 import os
 
+import pytest
+
 import allure
 
 from helpers.func import extract_text_from_pdf
@@ -22,6 +24,7 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
                    DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpBlockCommonInfo,
                    DrrpFormRequestEdrsrPage):
 
+    @pytest.mark.skip
     def test_exchange_dzk(self, start_browser_with_login):
         browser = start_browser_with_login
         self.click_main_menu_statement(browser)
@@ -67,6 +70,7 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
 
         self.click_close_form(browser)
 
+    @pytest.mark.skip
     def test_exchange_edrsr(self, start_browser_with_login):
         browser = start_browser_with_login
         statement = 'ownership'

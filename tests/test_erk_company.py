@@ -19,6 +19,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
     dict_company = {}
     dict_company['company_name'] = setting_erk_data_info.company['operation_company_name']
 
+
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_company

@@ -9,9 +9,8 @@ import pytest
 @allure.severity(allure.severity_level.NORMAL)
 class TestApi:
     path = 'https://register.test.nais.gov.ua/ubql'
-    # path = 'https://ernb.dev.nais.gov.ua/ubql'
 
-    authorization = 'UB d9ecbf1f637cb1fdd8939d6c'  # Авторизируемся и берем в заголовке Authorization
+    authorization = 'UB 9a3f92d963ff3e7b86a89949'  # Авторизируемся и берем в заголовке Authorization
     accept = 'application/json, text/plain, */*'
     user_agent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
     content_type = 'application/json;charset=UTF-8'

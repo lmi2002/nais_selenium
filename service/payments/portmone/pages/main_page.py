@@ -27,7 +27,7 @@ class PortmoneMainPage(PortmoneMainLocator):
         base.move_to_element_and_click(driver, self.btn_payment_confirm)
 
     def check_current_url(self, driver, number):
-        url = OnlineMinjustAuthMethod.host + 'managers/services/payment-result/extracts/' + number
+        url = OnlineMinjustAuthMethod.host + 'managers/services/extract/id/' + number
         time.sleep(2)
         assert base.get_current_url(driver) == url
 
