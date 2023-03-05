@@ -16,9 +16,7 @@ pytest.xml
 pip-selfcheck.json
 tests/test_api.py
 allure/reports/*
-storages/files_pdf/*
-storages/pattern_pdf/*
-storages/online_minjust_pdf/*
+storages/
 screenshots/
 extension/
 api/
