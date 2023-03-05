@@ -11,3 +11,4 @@ pytest-check==0.3.7
 pytest-rerunfailures==10.0
 pdfminer.six==20201018
 bs4==0.0.1
+PyPDF2==3.0.1

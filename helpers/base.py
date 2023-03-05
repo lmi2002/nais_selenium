@@ -27,7 +27,6 @@ def get_web_element(driver, item):
         ssc.create_screenshot(driver)
         raise ElementNotFoundException(item, e)
 
-
 def get_web_elements(driver, item):
     try:
         return wait(driver).until(expected_conditions.presence_of_all_elements_located(item))
@@ -75,6 +74,16 @@ def check_text_present_in_element(driver, item, text):
     except TimeoutException as e:
         ssc.create_screenshot(driver)
         raise TextNotFoundException(item, text, e)
+
+def check_text_present_in_element_b(driver, item, text):
+    """
+        Method return type bool
+    """
+    try:
+        wait(driver).until(expected_conditions.text_to_be_present_in_element(item, text))
+        return True
+    except TimeoutException as e:
+        return False
 
 
 def check_value_present_in_element(driver, item, value):
@@ -134,6 +143,19 @@ def title_is(driver, text):
 def state_load_page(driver):
     return driver.execute_script("return document.readyState")
 
+def create_window(driver):
+    return driver.execute_script("window.open('');")
+
+def get_windows(driver):
+    return driver.window_handles
+
+def switch_to_window(driver, index=None):
+    if index is None:
+        win = get_windows(driver)[0]
+        driver.switch_to.window(win)
+    else:
+        win = get_windows(driver)[index]
+        driver.switch_to.window(win)
 
 def scroll_to_element(driver, item):
     try:
@@ -250,15 +272,6 @@ def get_elements_locator(driver, locator):
     locator = locator
     try:
         return get_web_elements(driver, locator)
-    except TimeoutException as e:
-        ssc.create_screenshot(driver)
-        raise TextNotFoundException(locator, e)
-
-
-def get_element_locator(driver, locator):
-    locator = locator
-    try:
-        return get_web_element(driver, locator)
     except TimeoutException as e:
         ssc.create_screenshot(driver)
         raise TextNotFoundException(locator, e)

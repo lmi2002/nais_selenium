@@ -8,6 +8,9 @@ class AuthPage(AuthLocator):
     def get_user(self, driver):
         return base.get_web_element(driver, self.user)
 
+    def check_visible_field_user(self, driver):
+        base.get_visible_element(driver, self.user)
+
     def get_passw(self, driver):
         return base.get_web_elements(driver, self.passw)[1]
 

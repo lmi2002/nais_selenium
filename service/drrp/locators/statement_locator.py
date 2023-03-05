@@ -110,7 +110,7 @@ class DrrpStatementLocator:
     li_is_opened = (By.CLASS_NAME, "is-opened")
     span_get_erd = (By.XPATH, '//span[text()="Отримати з ЄРД"]/..')
     get_edrsr = (By.XPATH, '//*[node()="Запит до ЄДРСР"]/../..')
-
+    sub_menu_create_queue_statement = (By.XPATH, '//span[text()="Черга заяв, поданих в електронній формі"]')
 
 class DrrpFormRequestEdrsrLocator:
     form_request_edrsr = (By.XPATH, '//span[text()="Запит до ЄДРСР"]')

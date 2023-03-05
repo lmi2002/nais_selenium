@@ -30,11 +30,11 @@ class TestJenkins(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots
         self.create_screenshot(browser)
         browser.close()
 
-    @pytest.mark.skip
+    # @pytest.mark.skip
     @pytest.mark.check_jenkins
-    def test_check_jenkins_ukrnet(self):
+    def test_check_jenkins_beebom(self):
         browser = self.desk_browser()
-        assert browser.title == 'UKR.NET: Всі новини України, останні новини дня в Україні та Світі'
+        assert browser.title == 'Beebom - Tech That Matters'
         self.create_screenshot(browser)
         browser.close()
 

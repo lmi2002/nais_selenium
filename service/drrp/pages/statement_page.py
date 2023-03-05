@@ -338,6 +338,9 @@ class DrrpStatementPage(DrrpStatementLocator, DrrpCommonLocator):
     def click_get_edrsr(self, driver):
         base.move_to_element_and_click(driver, self.get_edrsr)
 
+    def click_sub_menu_create_queue_statement(self, driver):
+        base.move_to_element_and_click(driver, self.sub_menu_create_queue_statement)
+
 
 class DrrpFormRequestEdrsrPage(DrrpFormRequestEdrsrLocator):
 
