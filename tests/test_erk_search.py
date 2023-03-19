@@ -16,7 +16,7 @@ class TestErkSearch(AuthMethod, ErkMainPage, ErkSearchPage, ErkCommonPage):
     @pytest.mark.admin
     @pytest.mark.erk_search
     def test_auth(self, start_session):
-        browser = start_session(setting_project.URL)
+        browser = start_session
         data_admin = setting_project.project_rule.get('erk').get('admin')
         AuthMethod().login(browser, data_admin.get('username'), data_admin.get('passw'),
                             data_admin.get('key_path'), data_admin.get('passw_key'),
