@@ -3,12 +3,12 @@ import time
 import allure
 import pytest
 
-from service.auth.list_auth_test import message_text_invalid_cert_login_passw, data_auth_test
+from service.auth.list_auth_test import data_auth_test, message_text_invalid_cert_login_passw, \
+    message_text_session_mode_singleton
 from service.auth.methods.auth_method import AuthMethod
 from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
 from service.drrp.pages.statement_page import DrrpStatementPage
-from settings import setting_project
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -16,23 +16,19 @@ class TestUbAuth(AuthMethod):
 
     @pytest.mark.auth
     def test_valid_login_passw(self, start_browser, request):
-        browser = start_browser
         test_name = request.node.name
-        username = data_auth_test[test_name].get('username')
-        passw = data_auth_test[test_name].get('passw')
-        key_path = data_auth_test[test_name].get('key_path')
-        passw_key = data_auth_test[test_name].get('passw_key')
-        cer = data_auth_test[test_name].get('certificate')
-        self.login1(browser, username, passw, key_path, passw_key, cer)
+        browser = start_browser
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level(browser, test_name)
 
         # Check
         self.check_visible_u_navbar_dropdown(browser)
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_empty_fields_login_passw(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_empty_fields_login_passw(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
 
         # Check
@@ -41,9 +37,9 @@ class TestUbAuth(AuthMethod):
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_empty_login(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_empty_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
 
         # Check
@@ -51,9 +47,9 @@ class TestUbAuth(AuthMethod):
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_empty_passw(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_empty_passw(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
 
         # Check
@@ -61,26 +57,27 @@ class TestUbAuth(AuthMethod):
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_invalid_login_passw(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_invalid_login_passw(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_empty_fields_second_level(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_empty_fields_second_level(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         assert self.get_attr_btn_load(browser) == 'true'
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_invalid_type_device(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_invalid_type_device(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.visible_el_popup_parent_hidden(browser)
         self.visible_v_modal(browser)
@@ -97,18 +94,19 @@ class TestUbAuth(AuthMethod):
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_invalid_key(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_invalid_key(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_invalid_passw_key(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_invalid_passw_key(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level_w_o_added_certificate(browser, test_name)
 
@@ -117,38 +115,41 @@ class TestUbAuth(AuthMethod):
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_spec_char_in_login(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_spec_char_in_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_spec_char_in_passw(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_spec_char_in_passw(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
-        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
-        self.create_screenshot(browser)
-
-    # Только пробелы в поле
-    @pytest.mark.auth
-    def test_space_char_in_login(self, start_browser_auth, request):
-        browser = start_browser_auth
-        test_name = request.node.name
-        self.login_auth_first_level(browser, test_name)
-        self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     # Только пробелы в поле
     @pytest.mark.auth
-    def test_space_char_in_passw(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_space_char_in_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
+        assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
+        self.create_screenshot(browser)
+
+    # Только пробелы в поле
+    @pytest.mark.auth
+    def test_space_char_in_passw(self, start_browser, request):
+        test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
         time.sleep(1)
@@ -157,9 +158,9 @@ class TestUbAuth(AuthMethod):
 
     # Несколько пробелов в начале и в конце  текста
     @pytest.mark.auth
-    def test_space_char_in_text_login(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_space_char_in_text_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
 
@@ -169,48 +170,52 @@ class TestUbAuth(AuthMethod):
 
     # Несколько пробелов в начале и в конце  текста
     @pytest.mark.auth
-    def test_space_char_in_text_passw(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_space_char_in_text_passw(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.skip
     @pytest.mark.auth
-    def test_xss_in_login(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_xss_in_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.skip
     @pytest.mark.auth
-    def test_html_tags_in_login(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_html_tags_in_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.skip
     @pytest.mark.auth
-    def test_sql_in_login(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_sql_in_login(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level(browser, test_name)
+        time.sleep(1)
         assert self.check_text_in_ub_dialog_break_word(browser) in message_text_invalid_cert_login_passw
         self.create_screenshot(browser)
 
     @pytest.mark.auth
-    def test_back_page(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_back_page(self, start_browser, request):
         test_name = request.node.name
+        browser = start_browser
         self.login_auth_first_level(browser, test_name)
         self.login_auth_second_level_wo_click(browser, test_name)
         browser.back()
@@ -220,48 +225,22 @@ class TestUbAuth(AuthMethod):
         self.visible_entry(browser)
         self.create_screenshot(browser)
 
-    @pytest.mark.skip
     @pytest.mark.auth
-    def test_user_session_mode_singleton(self, start_browser_auth, request):
-        browser = start_browser_auth
+    def test_user_session_mode_displacing(self, start_browser, request):
         test_name = request.node.name
-        host = data_auth_test[test_name].get('host')
-        username = data_auth_test[test_name].get('username')
-        passw = data_auth_test[test_name].get('passw')
-        key_path = data_auth_test[test_name].get('key_path')
-        passw_key = data_auth_test[test_name].get('passw_key')
-        cer = data_auth_test[test_name].get('certificate')
+        host = data_auth_test.get(test_name).get('host')
+        browser = start_browser
         browser.get(host)
-        self.login1(browser, username, passw, key_path, passw_key, cer)
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level(browser, test_name)
         self.check_visible_u_navbar_dropdown(browser)
 
         browser.execute_script('window.open("{url}");'.format(url=host))
         browser.switch_to_window(browser.window_handles[1])
-        self.login1_w_o_certificate(browser, '', passw, key_path, passw_key)
-        self.get_entry(browser).click()
-        self.check_visible_u_navbar_dropdown(browser)
-        browser.switch_to_window(browser.window_handles[0])
-        self.click_desktop_select_button(browser)
-        self.visible_client_login_form(browser)
-        self.create_screenshot(browser)
+        self.clear_text_user_field(browser)
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level_w_o_added_certificate(browser, test_name)
 
-    @pytest.mark.auth
-    def test_user_session_mode_displacing(self, start_browser_auth, request):
-        browser = start_browser_auth
-        test_name = request.node.name
-        host = data_auth_test[test_name].get('host')
-        username = data_auth_test[test_name].get('username')
-        passw = data_auth_test[test_name].get('passw')
-        key_path = data_auth_test[test_name].get('key_path')
-        passw_key = data_auth_test[test_name].get('passw_key')
-        cer = data_auth_test[test_name].get('certificate')
-        browser.get(host)
-        self.login1(browser, username, passw, key_path, passw_key, cer)
-        self.check_visible_u_navbar_dropdown(browser)
-
-        browser.execute_script('window.open("{url}");'.format(url=host))
-        browser.switch_to_window(browser.window_handles[1])
-        self.login1_w_o_certificate(browser, '', passw, key_path, passw_key)
         self.check_visible_u_navbar_dropdown(browser)
         browser.switch_to_window(browser.window_handles[0])
         DrrpCommonPage().click_main_menu_statement(browser)
@@ -269,5 +248,31 @@ class TestUbAuth(AuthMethod):
         DrrpStatementPage().click_sub_menu_create_statement(browser)
         AuthPage().check_visible_field_user(browser)
         self.create_screenshot(browser)
+
+    @pytest.mark.auth
+    def test_user_session_mode_singleton(self, start_browser, request):
+        test_name = request.node.name
+        host = data_auth_test.get(test_name).get('host')
+        browser = start_browser
+        browser.get(host)
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level(browser, test_name)
+        self.check_visible_u_navbar_dropdown(browser)
+
+        browser.execute_script('window.open("{url}");'.format(url=host))
+        browser.switch_to_window(browser.window_handles[1])
+        self.clear_text_user_field(browser)
+        self.login_auth_first_level(browser, test_name)
+        self.login_auth_second_level_w_o_added_certificate(browser, test_name)
+        time.sleep(2)
+        self.check_text_message_session_mode_singleton(browser, message_text_session_mode_singleton)
+        browser.switch_to_window(browser.window_handles[0])
+        DrrpCommonPage().click_main_menu_statement(browser)
+        time.sleep(2)
+        DrrpStatementPage().click_sub_menu_create_statement(browser)
+        self.logout(browser)
+        self.create_screenshot(browser)
+
+
 
 

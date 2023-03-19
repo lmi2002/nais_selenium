@@ -16,6 +16,7 @@ from service.drrp.methods.block_person import DrrpBlockPerson
 from service.drrp.methods.block_statement import DrrpBlockStatement
 from service.drrp.methods.ubdocument import DrrpUbdocument
 from service.drrp.pages.statement_page import DrrpFormRequestEdrsrPage
+from settings import setting_project
 from settings.setting_data_info import data_info
 
 
@@ -24,9 +25,17 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
                    DrrpBlockPayment, DrrpBlockPerson, DrrpBlockStatement, DrrpBlockCommonInfo,
                    DrrpFormRequestEdrsrPage):
 
+    data_notar = setting_project.project_rule.get('drrp').get('notarius')
+
     @pytest.mark.skip
-    def test_exchange_dzk(self, start_browser_with_login):
-        browser = start_browser_with_login
+    @pytest.mark.rrp
+    @pytest.mark.notarius
+    @pytest.mark.interfice_exchange
+    def test_exchange_dzk(self, start_browser):
+        browser = start_browser
+        self.login(browser, self.data_notar.get('username'), self.data_notar.get('passw'),
+                            self.data_notar.get('key_path'), self.data_notar.get('passw_key'),
+                            self.data_notar.get('certificate'))
         self.click_main_menu_statement(browser)
         self.visible_li_is_opened(browser)
         self.click_sub_menu_create_statement(browser)
@@ -47,8 +56,15 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
 
         self.click_close_form(browser)
 
-    def test_exchange_dabi(self, start_browser_with_login):
-        browser = start_browser_with_login
+    @pytest.mark.skip
+    @pytest.mark.rrp
+    @pytest.mark.notarius
+    @pytest.mark.interfice_exchange
+    def test_exchange_dabi(self, start_browser):
+        browser = start_browser
+        self.login(browser, self.data_notar.get('username'), self.data_notar.get('passw'),
+                   self.data_notar.get('key_path'), self.data_notar.get('passw_key'),
+                   self.data_notar.get('certificate'))
         self.click_main_menu_statement(browser)
         self.visible_li_is_opened(browser)
         self.click_sub_menu_create_statement(browser)
@@ -71,8 +87,15 @@ class TestExchange(AuthMethod, DrrpBlockOnm, DrrpUbdocument, BlockAddressOnm, Dr
         self.click_close_form(browser)
 
     @pytest.mark.skip
-    def test_exchange_edrsr(self, start_browser_with_login):
-        browser = start_browser_with_login
+    @pytest.mark.rrp
+    @pytest.mark.notarius
+    @pytest.mark.interfice_exchange
+    def test_exchange_edrsr(self, start_browser):
+        browser = start_browser
+        self.login(browser, self.data_notar.get('username'), self.data_notar.get('passw'),
+                   self.data_notar.get('key_path'), self.data_notar.get('passw_key'),
+                   self.data_notar.get('certificate'))
+
         statement = 'ownership'
 
         self.click_main_menu_statement(browser)

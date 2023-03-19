@@ -7,6 +7,7 @@ import time
 import requests
 
 from exception import NotDownloadNewPdfException, NotElementsDropdownListException
+from helpers import base
 from helpers.func import get_list_files, extract_text_from_pdf_pypdf2
 from service.online_minjust.pages.main_page import OnlineMinjustMainPage
 from service.payments.portmone.methods.main_method import PortmoneMainMethod
@@ -20,7 +21,7 @@ class OnlineMinjustMainMethod:
     def get_list_download_files(self):
         return set(get_list_files(self.dirname))
 
-    def update_list_download_files(self, files):
+    def update_list_download_files(self, browser, files):
         timeout = 60
         poll = 0.5
         end_time = time.time() + timeout
@@ -36,6 +37,7 @@ class OnlineMinjustMainMethod:
             if time.time() > end_time:
                 # print('блок: 3')
                 break
+        base.ssc.create_screenshot(browser)
         raise NotDownloadNewPdfException()
 
     def get_abspath_file(self, name_file):
@@ -48,16 +50,16 @@ class OnlineMinjustMainMethod:
         for elem in set_files:
             return elem
 
-    def auth_online_minjust(self, browser):
+    def auth_online_minjust(self, browser, path_key, key_passw):
         OnlineMinjustMainPage().select_csk(browser, 28)
-        OnlineMinjustMainPage().insert_input_select_file(browser)
-        OnlineMinjustMainPage().insert_input_pkey_password(browser)
+        OnlineMinjustMainPage().insert_input_select_file(browser, path_key)
+        OnlineMinjustMainPage().insert_input_pkey_password(browser, key_passw)
         OnlineMinjustMainPage().click_submit_ecp(browser)
 
-    def pass_to_page_service(self, browser):
+    def pass_to_page_service(self, browser, path_key, key_passw):
         OnlineMinjustMainPage().click_btn_pass_to_rrp(browser)
         OnlineMinjustMainPage().click_btn_pass_to_info_rrp(browser)
-        self.auth_online_minjust(browser)
+        self.auth_online_minjust(browser, path_key, key_passw)
         OnlineMinjustMainPage().click_btn_service(browser)
         time.sleep(2)
 
@@ -72,6 +74,7 @@ class OnlineMinjustMainMethod:
             time.sleep(poll)
             if time.time() > end_time:
                 break
+        base.ssc.create_screenshot(browser)
         raise NotElementsDropdownListException()
 
     def validation_infospravka(self, driver, files, number, pattern_file, prop=None, owner_prop=False, all_prop=False):
@@ -109,7 +112,7 @@ class OnlineMinjustMainMethod:
         OnlineMinjustMainPage().close_tab_portmone(driver)
         OnlineMinjustMainPage().switch_to_tab_online_minjust(driver)
         OnlineMinjustMainPage().click_new_first_loaded_payment(driver, new_number)
-        file = OnlineMinjustMainMethod().update_list_download_files(files)
+        file = OnlineMinjustMainMethod().update_list_download_files(driver, files)
         file_path = OnlineMinjustMainMethod().get_abspath_file(file)
 
         # извлечение текста с загруженного pdf файла
