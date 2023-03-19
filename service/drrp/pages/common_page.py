@@ -12,9 +12,6 @@ class DrrpCommonPage(AuthLocator, DrrpCommonLocator):
     def click_user_exit(self, driver):
         base.move_to_element_and_click(driver, self.exit)
 
-    def visible_client_login_form(self, driver):
-        base.get_visible_element(driver, self.client_login_form)
-
     def move_user_menu_cash(self, driver):
         base.move_to_element(driver, self.user_menu_cash)
 

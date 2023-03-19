@@ -22,11 +22,11 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
     def select_csk(self, driver, index):
         base.select_index(driver, self.cas_servers_select, index)
 
-    def insert_input_select_file(self, driver):
-        base.get_web_element(driver, self.pkey_file_input).send_keys(project_rule[PROJECT][RULE]['key_path'])
+    def insert_input_select_file(self, driver, key_path):
+        base.get_web_element(driver, self.pkey_file_input).send_keys(key_path)
 
-    def insert_input_pkey_password(self, driver):
-        base.get_web_element(driver, self.pkey_password).send_keys(project_rule[PROJECT][RULE]['passw_key'])
+    def insert_input_pkey_password(self, driver, passw_key):
+        base.get_web_element(driver, self.pkey_password).send_keys(passw_key)
 
     def click_submit_ecp(self, driver):
         base.move_to_element_and_click(driver, self.submit_ecp)

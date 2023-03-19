@@ -288,3 +288,5 @@ def get_element_locator(driver, locator):
 
 def refresh_page(driver):
     driver.refresh()
+
+

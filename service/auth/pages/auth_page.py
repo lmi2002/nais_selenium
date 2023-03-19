@@ -1,3 +1,5 @@
+from selenium.webdriver.common.keys import Keys
+
 from helpers import base
 from service.auth.locators.auth_locator import AuthLocator
 from settings.setting_sreenshots import SettingsScreenshots
@@ -93,9 +95,6 @@ class AuthPage(AuthLocator):
     def click_btn_OK_install(self, driver):
         base.move_to_element_and_click(driver, self.btn_OK_install)
 
-    def visible_client_login_form(self, driver):
-        base.get_visible_element(driver, self.client_login_form)
-
     def visible_form_select_certificate(self, driver):
         base.get_visible_element(driver, self.form_select_certificate)
 
@@ -108,3 +107,9 @@ class AuthPage(AuthLocator):
 
     def visible_form_select_certificate_file(self, driver):
         base.get_visible_element(driver, self.form_select_certificate_file)
+
+    def check_text_message_session_mode_singleton(self, driver, text):
+        base.check_text_present_in_element(driver, self.ub_dialog_break_word, text)
+
+    def clear_text_user_field(self, driver):
+        base.get_web_element(driver, self.user).send_keys(Keys.CONTROL, 'a', Keys.BACKSPACE)

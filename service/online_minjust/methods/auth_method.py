@@ -1,22 +1,24 @@
-import os
-
 import pytest
 
 from settings.setting_browser import SettingsBrowser
+from settings.setting_sreenshots import SettingsScreenshots
 
 
-class OnlineMinjustAuthMethod(SettingsBrowser):
+class OnlineMinjustAuthMethod:
     host = 'https://online.test.nais.gov.ua/'
+
+    @pytest.fixture
+    def host_obu(self):
+        return self.host
 
 
     @pytest.fixture
-    def start_module_obu(self):
-        browser = None
+    def start_browser_obu(self, host_obu):
+        browser = SettingsBrowser().desktop_browser(host_obu)
         try:
-            browser = self.desktop_browser(self.host)
             yield browser
-        except Exception:
             browser.quit()
-        else:
+        except Exception:
+            SettingsScreenshots().create_screenshot(browser)
             browser.quit()
 

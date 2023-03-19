@@ -3,6 +3,7 @@ import time
 import allure
 import pytest
 
+import setting_project
 from helpers.func import get_data_today
 from service.drrp.list_data_validation import onm_validation, statement_validation_second, person_validation, \
     address_onm_validation
@@ -42,7 +43,7 @@ class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBloc
     def test_create_statement(self, start_session, statement):
 
         data_list = []
-        browser = start_session
+        browser = start_session(setting_project.URL)
 
         statement_validation_first = (
             'зареєстровано', self.statement_name[statement], get_data_today(), project_rule[PROJECT][RULE]['name_user'])
@@ -112,7 +113,7 @@ class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBloc
     @pytest.mark.smoke
     @pytest.mark.notarius
     def test_search_statement(self, start_session):
-        browser = start_session
+        browser = start_session(setting_project.URL)
         statement_num = self.data_dict.get('ownership')[0]
         # self.click_main_menu_statement(browser)
         self.click_sub_menu_search_statement(browser)
@@ -127,7 +128,7 @@ class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBloc
     @pytest.mark.smoke
     @pytest.mark.notarius
     def test_edit_statement(self, start_session):
-        browser = start_session
+        browser = start_session(setting_project.URL)
         self.click_button_perform_action(browser)
         self.click_menu_edit(browser)
         self.insert_value_form_edit_statement_field_reason(browser, "Помилка")
@@ -141,7 +142,7 @@ class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBloc
     @pytest.mark.smoke
     @pytest.mark.notarius
     def test_undo_last_action(self, start_session):
-        browser = start_session
+        browser = start_session(setting_project.URL)
         self.click_button_perform_action(browser)
         self.click_form_edit_statement_undo_last_action(browser)
         self.insert_value_form_edit_statement_field_reason(browser, "Помилка")
@@ -163,7 +164,7 @@ class TestDrrpStatement(AuthMethod, BlockAddressOnm, DrrpBlockDocument, DrrpBloc
         #     'зареєстровано', 'про державну реєстрацію прав та їх обтяжень', get_data_today(),
         #     project_rule[PROJECT][RULE]['name_user'])
 
-        browser = start_session
+        browser = start_session(setting_project.URL)
         self.click_button_perform_action(browser)
         self.move_to_form_edit_statement_decision(browser)
         self.click_decision_sub_menu_make_decision(browser)

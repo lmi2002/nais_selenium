@@ -5,6 +5,7 @@ import io
 import socket
 import csv
 from PyPDF2 import PdfReader
+import os
 
 from pdfminer.converter import TextConverter
 from pdfminer.pdfinterp import PDFPageInterpreter

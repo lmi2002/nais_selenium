@@ -8,8 +8,7 @@ from service.auth.methods.auth_method import AuthMethod
 from service.erk.method.common_method import ErkMethodMain
 from service.erk.pages.employee_page import ErkEmployeePage
 from service.erk.pages.main_page import ErkMainPage
-from settings import setting_erk_data_info
-from settings.setting_project import REMOTE_SERVER
+from settings import setting_erk_data_info, setting_project
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -26,15 +25,25 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
     @pytest.mark.erk
     @pytest.mark.admin
     @pytest.mark.erk_employee
+    def test_auth(self, start_session):
+        browser = start_session
+        data_admin = setting_project.project_rule.get('erk').get('admin')
+        AuthMethod().login(browser, data_admin.get('username'), data_admin.get('passw'),
+                            data_admin.get('key_path'), data_admin.get('passw_key'),
+                            data_admin.get('certificate'))
+
+    @pytest.mark.erk
+    @pytest.mark.admin
+    @pytest.mark.erk_employee
     def test_create_employee(self, start_session):
         browser = start_session
-        if func.get_host_name() == REMOTE_SERVER:
+        if func.get_host_name() == setting_project.REMOTE_SERVER:
             self.click_u_sidebar_collapse_button(browser)
 
         self.click_desktop_select_button(browser)
         self.click_u_desktop_drawer_item_title(browser)
         self.visible_desktop_select_button_users(browser)
-        if func.get_host_name() == REMOTE_SERVER:
+        if func.get_host_name() == setting_project.REMOTE_SERVER:
             self.open_label_operations(browser)
         else:
             self.click_label_operations(browser)
@@ -145,12 +154,14 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.click_substitution_employee_company(browser)
         self.insert_substitution_employee_company(browser,
                                                   setting_erk_data_info.employee['passed_employee_new_company'])
+        time.sleep(2)
         self.select_passed_employee_company_list(browser)
         self.click_passed_employee_category(browser)
+        time.sleep(2)
         self.insert_passed_employee_category(browser,
                                              setting_erk_data_info.employee['passed_employee_new_category_employee'])
 
-        time.sleep(1)
+        time.sleep(2)
         self.select_passed_employee_category_list(browser)
         self.click_btn_continue_and_close_employee(browser)
         self.visible_operation_employee(browser)
@@ -171,6 +182,7 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.double_click_operator_registrar_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
 
+        time.sleep(2)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_operator_registrar_attributes_employee'], index=1)
@@ -180,20 +192,22 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
 
         self.double_click_notarius_status_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(2)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_notarius_status_attributes_employee'], index=1)
 
-        time.sleep(1)
+        time.sleep(2)
         self.select_notarius_status_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
 
         self.double_click_notarius_position_attributes_employee(browser)
         self.visible_form_attribute_employee(browser)
+        time.sleep(2)
         self.insert_value_field_value_attributes_employee(browser,
                                                           setting_erk_data_info.employee[
                                                               'value_notarius_position_attributes_employee'], index=1)
-        time.sleep(1)
+        time.sleep(2)
         self.select_notarius_position_attributes_employee_list(browser)
         self.click_btn_admit_employee(browser)
         self.click_btn_save_and_close_employee(browser)
