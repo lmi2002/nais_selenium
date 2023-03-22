@@ -17,6 +17,7 @@ class OnlineMinjustAuthMethod:
         browser = SettingsBrowser().desktop_browser(host_obu)
         try:
             yield browser
+            SettingsScreenshots().create_screenshot(browser)
             browser.quit()
         except Exception:
             SettingsScreenshots().create_screenshot(browser)

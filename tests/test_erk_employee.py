@@ -115,21 +115,25 @@ class TestErkEmployee(AuthMethod, ErkMainPage, ErkMethodMain, ErkEmployeePage):
         self.click_substitution_employee_region(browser)
         self.insert_substitution_employee_region(browser,
                                                  setting_erk_data_info.employee['substitution_employee_region'])
+        time.sleep(2)
         self.select_substitution_employee_region_list(browser)
 
         self.click_substitution_employee_category(browser)
         self.insert_substitution_employee_category(browser,
                                                    setting_erk_data_info.employee['substitution_employee_category'])
+        time.sleep(2)
         self.select_substitution_employee_category_list(browser)
 
         self.click_substitution_employee_company(browser)
 
         self.insert_substitution_employee_company(browser,
                                                   setting_erk_data_info.employee['substitution_employee_company'])
+        time.sleep(2)
         self.select_substitution_employee_company_list(browser)
 
         self.click_substitution_employee_type(browser)
         self.insert_substitution_employee_type(browser, setting_erk_data_info.employee['substitution_employee_type'])
+        time.sleep(2)
         self.select_substitution_employee_type_list(browser)
         self.click_btn_admit_employee(browser)
         assert self.count_elem_x_grid_data_row_employee(browser) == 1
