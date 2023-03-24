@@ -1,7 +1,7 @@
-from service.erk.pages.common_page import ErkCommonPage
+from service.erc.pages.common_page import ErcCommonPage
 
 
-class ErkMethodMain(ErkCommonPage):
+class ErcMethodMain(ErcCommonPage):
 
     def filter_form(self, driver, value, index=None):
         self.click_btn_filter(driver)

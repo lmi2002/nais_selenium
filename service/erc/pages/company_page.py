@@ -1,9 +1,9 @@
 from helpers import base
-from service.erk.locators.common_locator import ErkCommonLocator
-from service.erk.locators.company_locator import ErkCompanyLocator
+from service.erc.locators.common_locator import ErcCommonLocator
+from service.erc.locators.company_locator import ErcCompanyLocator
 
 
-class ErkCompanyPage(ErkCompanyLocator, ErkCommonLocator):
+class ErcCompanyPage(ErcCompanyLocator, ErcCommonLocator):
     def visible_category(self, driver):
         base.get_visible_element(driver, self.operation_company_name_column_category)
 

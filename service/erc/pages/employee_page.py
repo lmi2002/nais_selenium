@@ -2,12 +2,12 @@ import time
 
 from exception import InvisibleCountElementsException
 from helpers import base
-from service.erk.locators.common_locator import ErkCommonLocator
-from service.erk.locators.employee_locator import ErkEmployeeLocator
-from settings import setting_erk_data_info
+from service.erc.locators.common_locator import ErcCommonLocator
+from service.erc.locators.employee_locator import ErcEmployeeLocator
+from settings import setting_erc_data_info
 
 
-class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
+class ErcEmployeePage(ErcEmployeeLocator, ErcCommonLocator):
 
     def click_tab_employee(self, driver):
         base.move_to_element_and_click(driver, self.tab_employee)
@@ -124,11 +124,11 @@ class ErkEmployeePage(ErkEmployeeLocator, ErkCommonLocator):
     def check_text_fio_company_employee(self, driver):
         base.get_element_containing_text(driver,
                                          '{last_name_company_employee} {first_name_company_employee} {father_name_employee}'.format(
-                                             last_name_company_employee=setting_erk_data_info.employee[
+                                             last_name_company_employee=setting_erc_data_info.employee[
                                                  'last_name_company_employee'],
-                                             first_name_company_employee=setting_erk_data_info.employee[
+                                             first_name_company_employee=setting_erc_data_info.employee[
                                                  'first_name_company_employee'],
-                                             father_name_employee=setting_erk_data_info.employee[
+                                             father_name_employee=setting_erc_data_info.employee[
                                                  'father_name_employee']))
 
     def visible_operation_employee(self, driver):

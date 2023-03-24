@@ -6,33 +6,33 @@ import pytest
 from helpers import func
 from helpers.func import get_data_tomorrow
 from service.auth.methods.auth_method import AuthMethod
-from service.erk.pages.common_page import ErkCommonPage
-from service.erk.pages.company_page import ErkCompanyPage
-from service.erk.pages.employee_page import ErkEmployeePage
-from service.erk.pages.main_page import ErkMainPage
-from settings import setting_erk_data_info, setting_project
+from service.erc.pages.common_page import ErcCommonPage
+from service.erc.pages.company_page import ErcCompanyPage
+from service.erc.pages.employee_page import ErcEmployeePage
+from service.erc.pages.main_page import ErcMainPage
+from settings import setting_erc_data_info, setting_project
 
 
 @allure.severity(allure.severity_level.NORMAL)
-class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, ErkEmployeePage):
+class TestErcCompany(AuthMethod, ErcMainPage, ErcCompanyPage, ErcCommonPage, ErcEmployeePage):
     dict_company = {}
-    dict_company['company_name'] = setting_erk_data_info.company['operation_company_name']
+    dict_company['company_name'] = setting_erc_data_info.company['operation_company_name']
 
 
-    @pytest.mark.erk
+    @pytest.mark.Erc
     @pytest.mark.admin
-    @pytest.mark.erk_company
+    @pytest.mark.Erc_company
     def test_auth(self, start_session):
         browser = start_session
-        data_admin = setting_project.project_rule.get('erk').get('admin')
+        data_admin = setting_project.project_rule.get('Erc').get('admin')
         AuthMethod().login(browser, data_admin.get('username'), data_admin.get('passw'),
                             data_admin.get('key_path'), data_admin.get('passw_key'),
                             data_admin.get('certificate'))
 
 
-    @pytest.mark.erk
+    @pytest.mark.Erc
     @pytest.mark.admin
-    @pytest.mark.erk_company
+    @pytest.mark.Erc_company
     def test_create_company(self, start_session):
         browser = start_session
         if func.get_host_name() == setting_project.REMOTE_SERVER:
@@ -52,61 +52,61 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.click_field_operation_company_category(browser)
 
         self.insert_value_field_operation_category_name(browser,
-                                                        setting_erk_data_info.company['operation_company_category'])
+                                                        setting_erc_data_info.company['operation_company_category'])
         time.sleep(2)
         self.select_operation_category_name(browser)
         time.sleep(1)
         self.insert_value_operation_company_name(browser, self.dict_company['company_name'])
         self.insert_value_operation_company_shortname(browser, self.dict_company['company_name'])
-        self.insert_value_operation_company_phone(browser, setting_erk_data_info.company['operation_company_phone'])
-        self.insert_value_operation_company_edrpou(browser, setting_erk_data_info.company['operation_company_edrpou'])
-        self.insert_value_operation_company_asfo(browser, setting_erk_data_info.company['operation_company_asfo'])
+        self.insert_value_operation_company_phone(browser, setting_erc_data_info.company['operation_company_phone'])
+        self.insert_value_operation_company_edrpou(browser, setting_erc_data_info.company['operation_company_edrpou'])
+        self.insert_value_operation_company_asfo(browser, setting_erc_data_info.company['operation_company_asfo'])
         self.insert_value_operation_company_locality(browser,
-                                                     setting_erk_data_info.company['operation_company_locality'])
+                                                     setting_erc_data_info.company['operation_company_locality'])
         time.sleep(2)
         self.select_operation_company_locality(browser)
         self.click_operation_company_region(browser)
         self.insert_value_field_operation_category_region(browser,
-                                                          setting_erk_data_info.company['operation_company_region'])
+                                                          setting_erc_data_info.company['operation_company_region'])
         time.sleep(2)
         self.select_operation_company_region(browser)
 
         self.insert_value_operation_company_address_index(browser,
-                                                          setting_erk_data_info.company['operation_company_index'])
+                                                          setting_erc_data_info.company['operation_company_index'])
         self.insert_value_field_operation_category_address_address(browser,
-                                                                   setting_erk_data_info.company[
+                                                                   setting_erc_data_info.company[
                                                                        'operation_company_address'])
         time.sleep(2)
         self.select_operation_company_address_address(browser)
 
         self.insert_value_operation_company_address_street(browser,
-                                                           setting_erk_data_info.company['operation_company_street'])
+                                                           setting_erc_data_info.company['operation_company_street'])
 
         self.click_operation_company_post(browser)
 
-        self.insert_value_operation_company_post_index(browser, setting_erk_data_info.company[
+        self.insert_value_operation_company_post_index(browser, setting_erc_data_info.company[
             'operation_company_index'])
 
-        self.insert_value_field_operation_company_post_address(browser, setting_erk_data_info.company[
+        self.insert_value_field_operation_company_post_address(browser, setting_erc_data_info.company[
             'operation_company_address'])
 
         time.sleep(2)
         self.select_operation_company_post_address(browser)
 
         self.insert_value_operation_company_post_street(browser,
-                                                        setting_erk_data_info.company['operation_company_street'])
+                                                        setting_erc_data_info.company['operation_company_street'])
 
         self.click_operation_company_subord(browser)
-        self.insert_value_operation_company_subord(browser, setting_erk_data_info.company['operation_company_subord'])
+        self.insert_value_operation_company_subord(browser, setting_erc_data_info.company['operation_company_subord'])
         self.select_operation_company_subord_list(browser)
 
         self.click_btn_save(browser)
         time.sleep(4)
         self.create_screenshot(browser)
 
-    @pytest.mark.erk
+    @pytest.mark.Erc
     @pytest.mark.admin
-    @pytest.mark.erk_company
+    @pytest.mark.Erc_company
     def test_add_service_area(self, start_session):
         browser = start_session
         self.click_tab_service_area(browser)
@@ -119,9 +119,9 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         assert self.count_elem_grid_company(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.erk
+    @pytest.mark.Erc
     @pytest.mark.admin
-    @pytest.mark.erk_company
+    @pytest.mark.Erc_company
     def test_rename_company(self, start_session):
         browser = start_session
         self.click_tab_rename_company(browser)
@@ -143,9 +143,9 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
 
     # Не доделан!
     @pytest.mark.skip
-    @pytest.mark.erk
+    @pytest.mark.Erc
     @pytest.mark.admin
-    @pytest.mark.erk_company
+    @pytest.mark.Erc_company
     def test_add_doc_company(self, start_session):
         browser = start_session
         self.click_tab_doc_company(browser)
@@ -156,35 +156,35 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.insert_value_input_select_file(browser, "122")
         self.create_screenshot(browser)
 
-    @pytest.mark.erk
+    @pytest.mark.Erc
     @pytest.mark.admin
-    @pytest.mark.erk_company
+    @pytest.mark.Erc_company
     def test_add_employee_company(self, start_session):
         browser = start_session
         self.click_tab_employee(browser)
         self.click_form_employee(browser)
         self.visible_form_edit_employee(browser)
         self.insert_value_field_category_employee(browser,
-                                                  setting_erk_data_info.employee['category_employee'])
+                                                  setting_erc_data_info.employee['category_employee'])
         time.sleep(1)
         self.select_category_employee_list(browser)
         time.sleep(1)
-        self.insert_value_field_last_name_employee(browser, setting_erk_data_info.employee[
+        self.insert_value_field_last_name_employee(browser, setting_erc_data_info.employee[
             'last_name_company_employee'])
-        self.insert_value_field_first_name_employee(browser, setting_erk_data_info.employee[
+        self.insert_value_field_first_name_employee(browser, setting_erc_data_info.employee[
             'first_name_company_employee'])
-        self.insert_value_field_father_name_employee(browser, setting_erk_data_info.employee[
+        self.insert_value_field_father_name_employee(browser, setting_erc_data_info.employee[
             'father_name_employee'])
         self.insert_value_field_position_employee(browser,
-                                                  setting_erk_data_info.employee['position_employee'])
+                                                  setting_erc_data_info.employee['position_employee'])
         time.sleep(1)
         self.select_position_employee_list(browser)
-        self.insert_value_field_code_employee(browser, setting_erk_data_info.employee['code_company_employee'])
-        self.insert_value_field_asfo_employee(browser, setting_erk_data_info.employee['asfo_employee'])
+        self.insert_value_field_code_employee(browser, setting_erc_data_info.employee['code_company_employee'])
+        self.insert_value_field_asfo_employee(browser, setting_erc_data_info.employee['asfo_employee'])
         self.insert_value_field_license_employee(browser,
-                                                 setting_erk_data_info.employee['code_employee'])
-        self.insert_value_field_phone_employee(browser, setting_erk_data_info.employee['phone_employee'])
-        self.insert_value_field_additional_employee(browser, setting_erk_data_info.employee['additional_employee'])
+                                                 setting_erc_data_info.employee['code_employee'])
+        self.insert_value_field_phone_employee(browser, setting_erc_data_info.employee['phone_employee'])
+        self.insert_value_field_additional_employee(browser, setting_erc_data_info.employee['additional_employee'])
 
         self.click_tab_attributes_employee(browser, index=1)
 
@@ -198,7 +198,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.visible_form_attribute_employee(browser)
         time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
-                                                          setting_erk_data_info.employee[
+                                                          setting_erc_data_info.employee[
                                                               'value_operator_registrar_attributes_employee'], index=1)
 
         self.select_operator_registrar_attributes_employee_list(browser)
@@ -208,7 +208,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.visible_form_attribute_employee(browser)
         time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
-                                                          setting_erk_data_info.employee[
+                                                          setting_erc_data_info.employee[
                                                               'value_notarius_status_attributes_employee'], index=1)
 
         time.sleep(1)
@@ -219,7 +219,7 @@ class TestErkCompany(AuthMethod, ErkMainPage, ErkCompanyPage, ErkCommonPage, Erk
         self.visible_form_attribute_employee(browser)
         time.sleep(1)
         self.insert_value_field_value_attributes_employee(browser,
-                                                          setting_erk_data_info.employee[
+                                                          setting_erc_data_info.employee[
                                                               'value_notarius_position_attributes_employee'], index=1)
         time.sleep(1)
         self.select_notarius_position_attributes_employee_list(browser, index=1)
