@@ -2,7 +2,7 @@ from selenium.webdriver.common.keys import Keys
 
 from helpers import base
 from service.auth.locators.auth_locator import AuthLocator
-from settings.setting_sreenshots import SettingsScreenshots
+from settings.setting_allure import SettingAllure
 
 
 class AuthPage(AuthLocator):

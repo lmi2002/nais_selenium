@@ -1,7 +1,7 @@
 import pytest
 
 from settings.setting_browser import SettingsBrowser
-from settings.setting_sreenshots import SettingsScreenshots
+from settings.setting_allure import SettingAllure
 
 
 class OnlineMinjustAuthMethod:
@@ -17,9 +17,9 @@ class OnlineMinjustAuthMethod:
         browser = SettingsBrowser().desktop_browser(host_obu)
         try:
             yield browser
-            SettingsScreenshots().create_screenshot(browser)
+            SettingAllure().create_screenshot(browser)
             browser.quit()
         except Exception:
-            SettingsScreenshots().create_screenshot(browser)
+            SettingAllure().create_screenshot(browser)
             browser.quit()
 

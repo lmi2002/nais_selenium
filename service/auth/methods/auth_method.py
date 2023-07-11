@@ -9,10 +9,10 @@ from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
 from service.iit.pages.iit_page import IitPage
 from settings.setting_browser import SettingsBrowser, URL
-from settings.setting_sreenshots import SettingsScreenshots
+from settings.setting_allure import SettingAllure
 
 
-class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots):
+class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingAllure):
 
 
     @pytest.fixture(scope="session")
@@ -22,7 +22,7 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
             yield browser
             browser.quit()
         except Exception:
-            SettingsScreenshots().create_screenshot(browser)
+            SettingAllure().create_screenshot(browser)
             browser.quit()
 
     @pytest.fixture
@@ -30,10 +30,10 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
         browser = SettingsBrowser().desktop_browser(URL)
         try:
             yield browser
-            SettingsScreenshots().create_screenshot(browser)
+            SettingAllure().create_screenshot(browser)
             browser.quit()
         except Exception:
-            SettingsScreenshots().create_screenshot(browser)
+            SettingAllure().create_screenshot(browser)
             browser.quit()
 
     def login(self, driver, username, passw, key_path, passw_key, cer):
