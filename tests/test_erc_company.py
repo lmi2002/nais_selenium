@@ -19,20 +19,20 @@ class TestErcCompany(AuthMethod, ErcMainPage, ErcCompanyPage, ErcCommonPage, Erc
     dict_company['company_name'] = setting_erc_data_info.company['operation_company_name']
 
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_company
+    @pytest.mark.erc_company
     def test_auth(self, start_session):
         browser = start_session
-        data_admin = setting_project.project_rule.get('Erc').get('admin')
+        data_admin = setting_project.project_rule.get('erc').get('admin')
         AuthMethod().login(browser, data_admin.get('username'), data_admin.get('passw'),
                             data_admin.get('key_path'), data_admin.get('passw_key'),
                             data_admin.get('certificate'))
 
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_company
+    @pytest.mark.erc_company
     def test_create_company(self, start_session):
         browser = start_session
         if func.get_host_name() == setting_project.REMOTE_SERVER:
@@ -104,9 +104,9 @@ class TestErcCompany(AuthMethod, ErcMainPage, ErcCompanyPage, ErcCommonPage, Erc
         time.sleep(4)
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_company
+    @pytest.mark.erc_company
     def test_add_service_area(self, start_session):
         browser = start_session
         self.click_tab_service_area(browser)
@@ -119,9 +119,9 @@ class TestErcCompany(AuthMethod, ErcMainPage, ErcCompanyPage, ErcCommonPage, Erc
         assert self.count_elem_grid_company(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_company
+    @pytest.mark.erc_company
     def test_rename_company(self, start_session):
         browser = start_session
         self.click_tab_rename_company(browser)
@@ -143,9 +143,9 @@ class TestErcCompany(AuthMethod, ErcMainPage, ErcCompanyPage, ErcCommonPage, Erc
 
     # Не доделан!
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_company
+    @pytest.mark.erc_company
     def test_add_doc_company(self, start_session):
         browser = start_session
         self.click_tab_doc_company(browser)
@@ -156,9 +156,9 @@ class TestErcCompany(AuthMethod, ErcMainPage, ErcCompanyPage, ErcCommonPage, Erc
         self.insert_value_input_select_file(browser, "122")
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_company
+    @pytest.mark.erc_company
     def test_add_employee_company(self, start_session):
         browser = start_session
         self.click_tab_employee(browser)

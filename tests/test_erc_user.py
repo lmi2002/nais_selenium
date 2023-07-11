@@ -1,4 +1,3 @@
-import time
 import pytest
 import allure
 
@@ -17,7 +16,7 @@ class TestErcUser(AuthMethod, ErcMainPage, ErcMethodMain):
     @pytest.mark.Erc_user
     def test_auth(self, start_session):
         browser = start_session(setting_project.URL)
-        data_admin = setting_project.project_rule.get('Erc').get('admin')
+        data_admin = setting_project.project_rule.get('erc').get('admin')
         AuthMethod().login(browser, data_admin.get('username'), data_admin.get('passw'),
                             data_admin.get('key_path'), data_admin.get('passw_key'),
                             data_admin.get('certificate'))
@@ -44,5 +43,3 @@ class TestErcUser(AuthMethod, ErcMainPage, ErcMethodMain):
 
         self.click_sublabel_user(browser)
         self.click_btn_menu_add(browser)
-        import pdb;
-        pdb.set_trace()

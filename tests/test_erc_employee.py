@@ -27,7 +27,7 @@ class TestErcEmployee(AuthMethod, ErcMainPage, ErcMethodMain, ErcEmployeePage):
     @pytest.mark.Erc_employee
     def test_auth(self, start_session):
         browser = start_session
-        data_admin = setting_project.project_rule.get('Erc').get('admin')
+        data_admin = setting_project.project_rule.get('erc').get('admin')
         AuthMethod().login(browser, data_admin.get('username'), data_admin.get('passw'),
                             data_admin.get('key_path'), data_admin.get('passw_key'),
                             data_admin.get('certificate'))
