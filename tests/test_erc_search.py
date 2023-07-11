@@ -173,7 +173,7 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         self.check_invisible_tr_ubtableview(browser)
         self.insert_value_field_street(browser, setting_erc_data_info.company['street'])
         self.click_btn_search(browser)
-        assert self.count_elem_tr_ubtableview(browser) == 12
+        assert self.count_elem_tr_ubtableview(browser) == 13
         self.create_screenshot(browser)
 
     @pytest.mark.Erc
