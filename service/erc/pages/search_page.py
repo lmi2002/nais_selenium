@@ -1,8 +1,8 @@
 from helpers import base
-from service.erk.locators.search_locator import ErkSearchLocator
+from service.erc.locators.search_locator import ErcSearchLocator
 
 
-class ErkSearchPage(ErkSearchLocator):
+class ErcSearchPage(ErcSearchLocator):
 
     def insert_value_field_name(self, driver, value):
         base.get_web_element(driver, self.field_name).send_keys(value)

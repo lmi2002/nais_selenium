@@ -10,7 +10,7 @@ from settings.setting_sreenshots import SettingsScreenshots
 
 from exception import *
 
-timeout = 60
+timeout = 100
 delay = 1
 
 ssc = SettingsScreenshots()
@@ -59,9 +59,11 @@ def get_visible_elements(driver, item):
         raise ElementNotFoundException(item, e)
 
 
-def get_alert(driver):
+def alert_accept(driver):
     try:
-        return wait(driver).until(expected_conditions.alert_is_present())
+        wait(driver).until(expected_conditions.alert_is_present())
+        alert = driver.switch_to.alert
+        alert.accept()
     except TimeoutException as e:
         ssc.create_screenshot(driver)
         raise AlertNotFoundException('Alert,', e)

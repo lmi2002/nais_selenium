@@ -19,7 +19,7 @@ from settings.setting_online_minjust_data_info import onm, cad_num, address, own
     company_name, owner_address, company_onm, owner_address_zaborona
 from service.online_minjust.methods.auth_method import OnlineMinjustAuthMethod
 from service.online_minjust.pages.main_page import OnlineMinjustMainPage
-from settings.setting_sreenshots import SettingsScreenshots
+
 
 
 @allure.severity(allure.severity_level.NORMAL)
@@ -42,7 +42,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().insert_input_field_onm(browser, onm)
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust
@@ -71,7 +70,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().insert_input_field_num_appart(browser, address.get('appartment'))
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust
@@ -88,7 +86,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().insert_input_field_cad_num(browser, cad_num)
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust
@@ -107,7 +104,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, prop=prop,
                                                          owner_prop=True)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust
@@ -125,7 +121,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, owner_prop=True,
                                                          all_prop=True)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust
@@ -144,7 +139,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, prop=prop,
                                                          owner_prop=True)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust
@@ -162,7 +156,6 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, owner_prop=True,
                                                          all_prop=True)
-        SettingsScreenshots().create_screenshot(browser)
 
     # @pytest.mark.skip
     @pytest.mark.online_minjust

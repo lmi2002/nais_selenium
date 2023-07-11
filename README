@@ -1,4 +1,4 @@
-pytest -v -s --alluredir="D:\Project\nais_selenium\allure\reports" test_erk_search.py
+pytest -v -s --alluredir="D:\Project\nais_selenium\allure\reports" test_erc_search.py
 
 Запуск тестов модуля
 pytest test_mod.py
@@ -15,7 +15,7 @@ allure serve D:\Project\nais_selenium\allure\reports
 Debugger
 import pdb; pdb.set_trace()
 pytest --setup-show test_scope.py
-py.test --pdb test_erk_search.py
+py.test --pdb test_erc_search.py
 
 
 Создание виртуальное окружение

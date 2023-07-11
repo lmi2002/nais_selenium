@@ -1,10 +1,10 @@
 import time
 
 from helpers import base
-from service.erk.locators.common_locator import ErkCommonLocator
+from service.erc.locators.common_locator import ErcCommonLocator
 
 
-class ErkCommonPage(ErkCommonLocator):
+class ErcCommonPage(ErcCommonLocator):
     def click_btn_search(self, driver):
         base.move_to_element_and_click(driver, self.btn_search, index=1)
 

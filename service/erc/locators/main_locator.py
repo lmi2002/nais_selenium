@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 
 
-class ErkMainLocator:
+class ErcMainLocator:
     desktop_select_button = (By.CLASS_NAME, 'desktop-select-button')
     desktop_select_button_users = (
         By.XPATH,

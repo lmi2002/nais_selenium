@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 
 import time
-
 import pytest
 
 from service.auth.list_auth_test import data_auth_test
 from service.auth.pages.auth_page import AuthPage
 from service.drrp.pages.common_page import DrrpCommonPage
+from service.iit.pages.iit_page import IitPage
 from settings.setting_browser import SettingsBrowser, URL
 from settings.setting_sreenshots import SettingsScreenshots
 
@@ -30,6 +30,7 @@ class AuthMethod(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots)
         browser = SettingsBrowser().desktop_browser(URL)
         try:
             yield browser
+            SettingsScreenshots().create_screenshot(browser)
             browser.quit()
         except Exception:
             SettingsScreenshots().create_screenshot(browser)

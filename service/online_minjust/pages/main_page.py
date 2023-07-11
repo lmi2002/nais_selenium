@@ -11,7 +11,7 @@ from settings.setting_project import project_rule, PROJECT, RULE
 class OnlineMinjustMainPage(OnlineMinjustMainLocator):
 
     def click_btn_pass_to_rrp(self, driver):
-        base.move_to_element_and_click(driver, self.btn_pass_to_rrp, index=1)
+        base.move_to_element_and_click(driver, self.btn_pass_to_rrp)
 
     def click_btn_pass_to_info_rrp(self, driver):
         base.move_to_element_and_click(driver, self.btn_pass_to_info_rrp)

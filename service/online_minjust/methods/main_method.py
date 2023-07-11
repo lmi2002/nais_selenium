@@ -51,7 +51,7 @@ class OnlineMinjustMainMethod:
             return elem
 
     def auth_online_minjust(self, browser, path_key, key_passw):
-        OnlineMinjustMainPage().select_csk(browser, 28)
+        OnlineMinjustMainPage().select_csk(browser, 30)
         OnlineMinjustMainPage().insert_input_select_file(browser, path_key)
         OnlineMinjustMainPage().insert_input_pkey_password(browser, key_passw)
         OnlineMinjustMainPage().click_submit_ecp(browser)

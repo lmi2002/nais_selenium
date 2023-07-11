@@ -1,5 +1,3 @@
-import time
-
 from service.iit.pages.iit_page import IitPage
 
 

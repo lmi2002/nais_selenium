@@ -15,6 +15,6 @@ class IitPage(IitLocator):
     def click_btn_set(self, driver):
         base.click(driver, self.btn_set)
 
-    def click_alert(self, driver):
-        alert = base.get_alert(driver)
-        alert.dismiss()
+    @staticmethod
+    def click_alert(driver):
+        base.alert_accept(driver)

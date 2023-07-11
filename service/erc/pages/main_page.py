@@ -1,8 +1,8 @@
-from service.erk.locators.main_locator import ErkMainLocator
+from service.erc.locators.main_locator import ErcMainLocator
 from helpers import base
 
 
-class ErkMainPage(ErkMainLocator):
+class ErcMainPage(ErcMainLocator):
     def click_desktop_select_button(self, driver):
         base.move_to_element_and_click(driver, self.desktop_select_button)
 
