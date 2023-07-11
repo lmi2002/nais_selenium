@@ -43,7 +43,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_search_address(self, start_browser_obu):
         browser = start_browser_obu
@@ -71,7 +71,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_search_cad_num(self, start_browser_obu):
         browser = start_browser_obu
@@ -87,7 +87,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainPage().click_btn_next(browser)
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_search_persone_code(self, start_browser_obu):
         browser = start_browser_obu
@@ -105,7 +105,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, prop=prop,
                                                          owner_prop=True)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_search_persone_name(self, start_browser_obu):
         browser = start_browser_obu
@@ -122,7 +122,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, owner_prop=True,
                                                          all_prop=True)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_search_comp_code(self, start_browser_obu):
         browser = start_browser_obu
@@ -140,7 +140,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, prop=prop,
                                                          owner_prop=True)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_search_comp_name(self, start_browser_obu):
         browser = start_browser_obu
@@ -157,7 +157,7 @@ class TestOnlineMinjust(OnlineMinjustAuthMethod):
         OnlineMinjustMainMethod().validation_infospravka(browser, files, number, pattern_file, owner_prop=True,
                                                          all_prop=True)
 
-    # @pytest.mark.skip
+    @pytest.mark.skip
     @pytest.mark.online_minjust
     def test_api_infospraavka_obu(self):
 

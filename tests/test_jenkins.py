@@ -13,11 +13,11 @@ from service.drrp.pages.common_page import DrrpCommonPage
 from settings import setting_project
 from settings.setting_browser import SettingsBrowser
 from settings.setting_project import project_rule, PROJECT, RULE
-from settings.setting_sreenshots import SettingsScreenshots
+from settings.setting_allure import SettingAllure
 
 
 @allure.severity(allure.severity_level.NORMAL)
-class TestJenkins(SettingsBrowser, AuthPage, DrrpCommonPage, SettingsScreenshots):
+class TestJenkins(SettingsBrowser, AuthPage, DrrpCommonPage, SettingAllure):
 
     @pytest.mark.skip
     @pytest.mark.check_jenkins

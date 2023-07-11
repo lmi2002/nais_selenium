@@ -11,6 +11,7 @@ from helpers import base
 from helpers.func import get_list_files, extract_text_from_pdf_pypdf2
 from service.online_minjust.pages.main_page import OnlineMinjustMainPage
 from service.payments.portmone.methods.main_method import PortmoneMainMethod
+from settings.setting_allure import SettingAllure
 from settings.setting_browser import SettingsBrowser
 
 
@@ -114,6 +115,8 @@ class OnlineMinjustMainMethod:
         OnlineMinjustMainPage().click_new_first_loaded_payment(driver, new_number)
         file = OnlineMinjustMainMethod().update_list_download_files(driver, files)
         file_path = OnlineMinjustMainMethod().get_abspath_file(file)
+
+        SettingAllure.save_pdf_file(file_path)
 
         # извлечение текста с загруженного pdf файла
         time.sleep(4)

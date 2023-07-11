@@ -6,14 +6,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support.select import Select
-from settings.setting_sreenshots import SettingsScreenshots
+from settings.setting_allure import SettingAllure
 
 from exception import *
 
 timeout = 100
 delay = 1
 
-ssc = SettingsScreenshots()
+ssc = SettingAllure()
 
 
 def wait(driver):
