@@ -5,6 +5,7 @@ from service.payments.portmone.pages.main_page import PortmoneMainPage
 
 class PortmoneMainMethod:
     def payment_on_site(self, browser, number=None):
+        PortmoneMainPage().check_title_portmone(browser)
         PortmoneMainPage().insert_field_number_card(browser)
         PortmoneMainPage().insert_field_exp_date_card(browser)
         PortmoneMainPage().insert_field_cvv2_card(browser)

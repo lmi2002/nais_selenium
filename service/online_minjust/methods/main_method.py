@@ -108,7 +108,6 @@ class OnlineMinjustMainMethod:
         OnlineMinjustMainPage().check_text_cost(driver, u'30,00 грн')
         OnlineMinjustMainPage().check_text_data(driver)
         OnlineMinjustMainPage().click_btn_payment_confirm(driver)
-        time.sleep(1)
         PortmoneMainMethod().payment_on_site(driver, number=new_number)
         OnlineMinjustMainPage().close_tab_portmone(driver)
         OnlineMinjustMainPage().switch_to_tab_online_minjust(driver)
