@@ -79,12 +79,12 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             base.refresh_page(driver)
             new_number = self.get_text_first_number(driver)
             if (new_number != number):
-                # print(new_number)
+                print(new_number)
                 return new_number
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise NotFoundElementException('new ' + number)
 
     def check_visible_new_first_number_payment(self, driver, number):
@@ -96,12 +96,12 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             elem = self.get_first_number_payment(driver)
             href = elem.get_attribute('href')
             if number in href:
-                # print(number)
+                print(number)
                 return elem
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise NotFoundElementException('btn new payment ' + number)
 
     def check_visible_new_first_number_select_obj(self, driver, number):
@@ -118,7 +118,7 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise NotFoundElementException('btn select obj ' + number)
 
     def click_new_first_number_select_obj(self, driver, number):
@@ -127,7 +127,7 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
 
     def check_visible_new_first_number_select_all_obj(self, driver, number):
         path = OnlineMinjustAuthMethod().host + 'managers/services/extract/p/' + number
-        # print('path: ' + path)
+        print('path: ' + path)
         timeout = 120
         poll = 0.5
         end_time = time.time() + timeout
@@ -135,13 +135,13 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             base.refresh_page(driver)
             elem = self.get_first_number_payment(driver, index=1)
             href = elem.get_attribute('href')
-            # print('href: ' + href)
+            print('href: ' + href)
             if path in href:
                 return elem
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise NotFoundElementException('btn select all obj ' + number)
 
     def click_new_first_number_select_all_obj(self, driver, number):
@@ -189,7 +189,7 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise NotFoundElementException('btn loaded ' + number)
 
     def click_new_first_loaded_payment(self, driver, number):
@@ -262,7 +262,7 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
         timeout = 120
         poll = 0.5
         end_time = time.time() + timeout
-        # print(path)
+        print(path)
         while True:
             base.refresh_page(driver)
             elem = self.get_first_number_payment(driver)
@@ -272,7 +272,7 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise NotFoundElementException('btn select obj ' + number)
 
     def click_new_first_number_select_obj_zaborona(self, driver, number):
@@ -303,5 +303,5 @@ class OnlineMinjustMainPage(OnlineMinjustMainLocator):
             time.sleep(poll)
             if time.time() > end_time:
                 break
-        base.ssc.create_screenshot(driver)
+        base.sa.create_screenshot(driver)
         raise TextNotFoundException(item, text)

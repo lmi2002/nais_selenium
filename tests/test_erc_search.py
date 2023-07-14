@@ -12,9 +12,9 @@ from settings import setting_erc_data_info, setting_project
 @allure.severity(allure.severity_level.NORMAL)
 class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_auth(self, start_session):
         browser = start_session
         data_admin = setting_project.project_rule.get('erc').get('admin')
@@ -22,9 +22,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
                             data_admin.get('key_path'), data_admin.get('passw_key'),
                             data_admin.get('certificate'))
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_open_page_search_company(self, start_session):
         browser = start_session
         if func.get_host_name() == setting_project.REMOTE_SERVER:
@@ -38,9 +38,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.visible_found_companyes(browser)
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_name(self, start_session):
         browser = start_session
         self.insert_value_field_name(browser, setting_erc_data_info.company['name'])
@@ -48,9 +48,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_code(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -60,9 +60,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_category(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -74,9 +74,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         self.create_screenshot(browser)
 
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_state(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -87,9 +87,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_region(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -100,9 +100,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_address(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -113,9 +113,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_rk(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -126,9 +126,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         self.create_screenshot(browser)
 
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_subord(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -140,9 +140,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_asfo(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -152,9 +152,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_index(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -164,9 +164,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 6
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_company_params_street(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -176,9 +176,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 13
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_open_page_search_employee(self, start_session):
         browser = start_session
         self.click_close_tab_admin_first(browser)
@@ -186,9 +186,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.visible_found_employees(browser)
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_fio(self, start_session):
         browser = start_session
         self.insert_value_field_employee_first_name(browser, setting_erc_data_info.employee['first_name'])
@@ -198,9 +198,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_license(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -211,9 +211,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         self.create_screenshot(browser)
 
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_state(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -224,9 +224,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_category(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -237,9 +237,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_position(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -250,9 +250,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_code(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -262,9 +262,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_employee_params_asfo(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -274,9 +274,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_open_page_search_user(self, start_session):
         browser = start_session
         self.click_close_tab_admin_first(browser)
@@ -284,9 +284,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.visible_found_users(browser)
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_user_params_login(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -298,9 +298,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
 
     # Тест забирает всю память
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_user_params_state(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -313,9 +313,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
 
     # Тест забирает всю память
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_user_params_user_web(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -326,9 +326,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_user_params_category(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -340,9 +340,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_user_params_role_rk(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -354,9 +354,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_user_params_role_web(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -368,9 +368,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_open_page_search_statement(self, start_session):
         browser = start_session
         self.click_close_tab_admin_first(browser)
@@ -378,9 +378,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.visible_found_companyes(browser)
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_st_num(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -390,9 +390,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_employee(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -403,9 +403,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_fio(self, start_session):
         browser = start_session
         self.insert_value_field_employee_first_name(browser, setting_erc_data_info.statement['first_name'])
@@ -415,9 +415,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_user(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -428,9 +428,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_date_period(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -441,9 +441,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_state(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -454,9 +454,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         assert self.count_elem_tr_ubtableview(browser) > 0
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_progress(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)
@@ -468,9 +468,9 @@ class TestErcSearch(AuthMethod, ErcMainPage, ErcSearchPage, ErcCommonPage):
         self.create_screenshot(browser)
 
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
-    @pytest.mark.Erc_search
+    @pytest.mark.erc_search
     def test_search_statement_params_blocked(self, start_session):
         browser = start_session
         self.click_btn_clear(browser)

@@ -33,3 +33,6 @@ class PortmoneMainPage(PortmoneMainLocator):
 
     def check_text_present_in_total_amount(self, driver, text):
         base.check_text_present_in_element(driver, self.total_amount, text)
+
+    def check_title_portmone(self, driver):
+        base.title_is(driver, "Portmone.com")
