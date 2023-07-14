@@ -11,7 +11,7 @@ from settings import setting_project
 @allure.severity(allure.severity_level.NORMAL)
 class TestErcUser(AuthMethod, ErcMainPage, ErcMethodMain):
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
     @pytest.mark.Erc_user
     def test_auth(self, start_session):
@@ -23,7 +23,7 @@ class TestErcUser(AuthMethod, ErcMainPage, ErcMethodMain):
 
     # Нет возможности создать пользователя через меню Организация>Пользователь. Ошибка 500
     @pytest.mark.skip
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
     @pytest.mark.Erc_user
     def test_create_user(self, start_session):

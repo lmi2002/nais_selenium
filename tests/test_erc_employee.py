@@ -22,7 +22,7 @@ class TestErcEmployee(AuthMethod, ErcMainPage, ErcMethodMain, ErcEmployeePage):
         father_name_employee=setting_erc_data_info.employee['father_name_employee'],
         space=" ")
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
     @pytest.mark.Erc_employee
     def test_auth(self, start_session):
@@ -32,7 +32,7 @@ class TestErcEmployee(AuthMethod, ErcMainPage, ErcMethodMain, ErcEmployeePage):
                             data_admin.get('key_path'), data_admin.get('passw_key'),
                             data_admin.get('certificate'))
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
     @pytest.mark.Erc_employee
     def test_create_employee(self, start_session):
@@ -101,7 +101,7 @@ class TestErcEmployee(AuthMethod, ErcMainPage, ErcMethodMain, ErcEmployeePage):
         assert self.count_elem_x_grid_data_row_employee(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
     def test_add_substitution_employee(self, start_session):
         browser = start_session
@@ -139,7 +139,7 @@ class TestErcEmployee(AuthMethod, ErcMainPage, ErcMethodMain, ErcEmployeePage):
         assert self.count_elem_x_grid_data_row_employee(browser) == 1
         self.create_screenshot(browser)
 
-    @pytest.mark.Erc
+    @pytest.mark.erc
     @pytest.mark.admin
     def test_employee_passed_company(self, start_session):
         browser = start_session
